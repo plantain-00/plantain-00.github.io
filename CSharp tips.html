@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>C# tips</title>
+</head>
+<body>
+<h2>Layout RenderSection</h2>
+<pre>
+1. Layout
+@RenderSection("Head")
+2. Body
+@section Head{
+    &lt;h2>Head&lt;/h2>
+}
+</pre>
+<h2>Login by NT account</h2>
+<pre>
+1. Web.config
+&lt;system.web>
+    &lt;authentication mode="Windows">&lt;/authentication>
+&lt;/system.web>
+2. Code
+HttpContext.Current.User.Identity.Name
+3. IIS -> 身份验证
+匿名是否验证：禁用
+Windows验证：启用
+4. IIS -> 应用程序池
+v4.0/NetworkService/集成
+5. 防火墙添加规则
+</pre>
+<h2>msi package</h2>
+<pre>
+msiexec /package "path-to-package"
+</pre>
+<h2>Comparer</h2>
+<pre>
+public class Product
+{
+    public string Name { get; set; }
+    public int Code { get; set; }
+}
+
+public class ProductComparer : IEqualityComparer&lt;Product>
+{
+    public bool Equals(Product x, Product y)
+    {
+        if (Object.ReferenceEquals(x, y))
+        {
+            return true;
+        }
+        if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+        {
+            return false;
+        }
+        return x.Code == y.Code && x.Name == y.Name;
+    }
+
+    public int GetHashCode(Product product)
+    {
+        if (Object.ReferenceEquals(product, null))
+        {
+            return 0;
+        }
+        int hashProductName = product.Name == null ? 0 : product.Name.GetHashCode();
+        int hashProductCode = product.Code.GetHashCode();
+        return hashProductName ^ hashProductCode;
+    }
+}
+</pre>
+<h2>Unit test</h2>
+<pre>
+1.Run methods without run whole application
+2.Unit test case shouldn't depend on other test cases
+3.Use mock tool to help with that
+</pre>
+<h2>log4net</h2>
+<pre>
+[assembly: XmlConfigurator(Watch = true)]
+
+public static class Log
+{
+    public static readonly ILog INSTANCE;
+    static Log()
+    {
+        INSTANCE = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        if (INSTANCE == null)
+        {
+            throw new Exception("Log.INSTANCE == null");
+        }
+    }
+}
+</pre>
+
+<pre>
+&lt;configSections>
+    &lt;section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net" />
+&lt;/configSections>
+&lt;startup useLegacyV2RuntimeActivationPolicy="true">
+    &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0" />
+&lt;/startup>
+&lt;log4net>
+    &lt;root>
+    &lt;appender-ref ref="UdpAppender" />
+        &lt;!--&lt;appender-ref ref="RollingFileAppender"/>-->
+    &lt;/root>
+    &lt;appender name="UdpAppender" type="log4net.Appender.UdpAppender">
+    &lt;remoteAddress value="127.0.0.1" />
+    &lt;remotePort value="7071" />
+        &lt;layout type="log4net.Layout.XmlLayoutSchemaLog4j" />
+    &lt;/appender>
+    &lt;!--&lt;appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+        &lt;file value="log.txt" />
+        &lt;appendToFile value="true" />
+        &lt;rollingStyle value="Size" />
+        &lt;maxSizeRollBackups value="10" />
+        &lt;maximumFileSize value="100KB" />
+        &lt;staticLogFileName value="true" />
+        &lt;layout type="log4net.Layout.PatternLayout">
+            &lt;conversionPattern value="%date [%thread] %-5level - %message%newline" />
+        &lt;/layout>
+    &lt;/appender>-->
+&lt;/log4net>
+</pre>
+<h2>web.config connectionStrings</h2>
+<pre>
+cd "C:\Windows\Microsoft.NET\Framework64\v4.0.30319"
+aspnet_regiis.exe -pef   "connectionStrings"   "E:\inetpub\ABC" -prov "DataProtectionConfigurationProvider"
+aspnet_regiis -pdf "connectionStrings" "E:\inetpub\ABC"
+</pre>
+<h2>file size</h2>
+<pre>
+&lt;form action="" method="POST" enctype="multipart/form-data">
+&lt;/form>
+&lt;system.web>
+    &lt;httpRuntime
+        maxRequestLength="40690"
+        useFullyQualifiedRedirectUrl="true"
+        executionTimeout="6000"
+        minFreeThreads="8"
+        minLocalRequestFreeThreads="4"
+        appRequestQueueLimit="100"
+        enableVersionHeader="true" />
+&lt;/system.web>
+</pre>
+</body>
+</html>

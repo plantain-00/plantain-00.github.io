@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+
+<style>
+    .cover {
+        background: #808080;
+        bottom: 0;
+        display: none;
+        filter: alpha(opacity:50);
+        left: 0;
+        opacity: 0.5;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+
+    button {
+        cursor: pointer;
+    }
+</style>
+
+<button onclick="showCover();">Click</button>
+<br/>
+<button style="margin-top: 1000px;">sdadsad</button>
+<button style="position: fixed;left: 20px;top:120px;">vvfvvfv</button>
+
+<div id="cover" class="cover">
+    <div style="margin: 50px auto;border: solid 1px #000000;border-radius: 3px;display: block;padding: 10px;width:120px;">
+        <button id="ok">OK</button>
+        <button id="cancel">Cancel</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var timer;
+    var leftTime;
+
+    function showCover() {
+        $("#cover").css("display", "block");
+
+        timer = setInterval(function () {
+            if (leftTime > 0) {
+                leftTime--;
+                $("#cancel").text("cancel(" + leftTime + ")");
+            } else {
+                clear();
+                send();
+            }
+        }, 1000);
+        leftTime = 5;
+        $("#cancel").text("cancel(" + leftTime + ")");
+    }
+
+    function send() {
+        alert("success!");
+    }
+
+    function clear() {
+        if (timer != undefined) {
+            clearInterval(timer);
+            timer = undefined;
+            $("#cover").css("display", "none");
+        }
+    }
+
+    $("#ok").on("click", function () {
+        clear();
+        send();
+    });
+
+    $("#cancel").on("click", function () {
+        clear();
+        alert("cancelled!");
+    });
+</script>

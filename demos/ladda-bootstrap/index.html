@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="spin.min.js"></script>
+<script src="ladda.min.js"></script>
+<link href="ladda-themeless.min.css" rel="stylesheet"/>
+
+<button id="test" class="btn btn-primary ladda-button" data-style="expand-left">
+    <span class="ladda-label">Submit</span>
+</button>
+
+<a target="_blank" href="http://msurguy.github.io/ladda-bootstrap/">More</a>
+
+<script type="text/javascript">
+    $(function () {
+        $('#test').click(function () {
+            var ladda = Ladda.create(this);
+            ladda.start();
+            $.post("https://api.github.com/", {},
+                    function (response) {
+                    }, "json")
+                    .always(function () {
+                        ladda.stop();
+                    });
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .the-label {
+            border: #d44137 1px solid;
+            border-radius: 5px;
+
+            padding: 10px;
+            margin: 5px;
+
+            display: inline-block;
+
+            background-color: white;
+            color: #d44137;
+
+            cursor: pointer;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .the-label:hover {
+            -moz-box-shadow: 0 0 10px #d44137;
+            -webkit-box-shadow: 0 0 10px #d44137;
+            box-shadow: 0 0 10px #d44137;
+        }
+
+        .the-label input {
+            position: absolute;
+            clip: rect(0,0,0,0);
+        }
+
+        .active {
+            background-color: #d44137;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<label class="the-label active">
+    <input type="checkbox" name="test1" checked>Checkbox 1
+</label>
+<label class="the-label">
+    <input type="checkbox" name="test1">Checkbox 2
+</label>
+<label class="the-label">
+    <input type="checkbox" name="test1">Checkbox 3
+</label>
+
+<br/>
+
+<label class="the-label active">
+    <input type="radio" name="test2" checked>radio 1
+</label>
+<label class="the-label">
+    <input type="radio" name="test2">radio 2
+</label>
+<label class="the-label">
+    <input type="radio" name="test2">radio 3
+</label>
+
+<script type="application/javascript" src="../../javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".the-label input[type=checkbox]").change(function () {
+            var label = $(this).parent();
+            if (this.checked) {
+                label.addClass("active");
+            } else {
+                label.removeClass("active");
+            }
+        });
+        $(".the-label input[type=radio]").change(function () {
+            $(".the-label input[type=radio]").each(function () {
+                var label = $(this).parent();
+                if (this.checked) {
+                    label.addClass("active");
+                } else {
+                    label.removeClass("active");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="bootstrap-combobox.js"></script>
+<link href="bootstrap-combobox.css" rel="stylesheet"/>
+
+<div style="width: 200px;">
+    <select id="test">
+        <option></option>
+        <option value="PA">Pennsylvania</option>
+        <option value="CT">Connecticut</option>
+        <option value="NY">New York</option>
+        <option value="MD">Maryland</option>
+        <option value="VA">Virginia</option>
+    </select>
+</div>
+
+<br/>
+
+<a target="_blank" href="https://github.com/danielfarrell/bootstrap-combobox">More</a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#test').combobox();
+    });
+</script>

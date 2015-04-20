@@ -1,0 +1,28 @@
+<script src="../../javascripts/jquery.min.js"></script>
+
+<script src="jquery.autocomplete.min.js"></script>
+
+<input type="text" name="country" id="autocomplete"/>
+
+<style>
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+	.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+	.autocomplete-selected { background: #F0F0F0; }
+	.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+	.autocomplete-group { padding: 2px 5px; }
+	.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>
+
+<a target="_blank" href="https://github.com/devbridge/jQuery-Autocomplete">More</a>
+
+<script type="text/javascript">
+    var countries = [
+	   { value: 'Andorra', data: 'AD' },
+	   { value: 'Zimbabwe', data: 'ZZ' }
+	];
+
+	$('#autocomplete').autocomplete({
+		lookup: countries,
+        minChars:0
+	});
+</script>

@@ -1,0 +1,18 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="jquery.bootstrap-growl.min.js"></script>
+
+<button id="test">Click This</button>
+
+<br/>
+
+<a target="_blank" href="https://github.com/ifightcrime/bootstrap-growl">More</a>
+
+<script type="text/javascript">
+    $("#test").click(function () {
+        $.bootstrapGrowl("This is a test.", {type: 'success'});
+    });
+</script>

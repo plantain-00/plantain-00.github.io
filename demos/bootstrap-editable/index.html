@@ -1,0 +1,48 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="js/jquery.mockjax.js"></script>
+<script src="js/bootstrap-editable.min.js"></script>
+<link href="css/bootstrap-editable.css" rel="stylesheet"/>
+
+<div style="margin: 150px">
+    <a href="#" id="status" data-value="2"></a>
+</div>
+
+<a target="_blank" href="https://github.com/vitalets/x-editable">More</a>
+
+<script type="text/javascript">
+    $.mockjax({
+        url: '/list',
+        responseTime: 400,
+        responseText: [
+            {value: 1, text: 'status 1'},
+            {value: 2, text: 'status 2'},
+            {value: 3, text: 'status 3'}
+        ]
+    });
+
+    $('#status').editable({
+        type: 'select',
+        url: '/post',
+        pk: 1,
+        placement: 'top',
+        title: 'select status',
+        source: '/list'
+    });
+
+    $.mockjax({
+        url: '/post',
+        responseTime: 400,
+        response: function (settings) {
+            if (settings.data.value === '3') {
+                this.status = 500;
+                this.responseText = 'Validation error!';
+            } else {
+                this.responseText = '';
+            }
+        }
+    });
+</script>

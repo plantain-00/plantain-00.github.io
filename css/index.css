@@ -1,0 +1,120 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI Webfont", "Microsoft YaHei", Arial, sans-serif;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+nav {
+  background-color: #000000;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+.nav-1 {
+  float: left;
+}
+.nav-1 ul {
+  position: absolute;
+  display: none;
+  background-color: #000000;
+}
+.nav-1 ul li {
+  clear: both;
+  width: 100%;
+}
+.anchor {
+  display: block;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: white;
+  transition: font-size 0.5s;
+  -moz-transition: font-size 0.5s;
+  -webkit-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+}
+.anchor:link {
+  color: white;
+}
+.anchor:hover {
+  text-decoration: underline;
+  background-color: #e5e5e5;
+  font-size: 18px;
+  color: #000000;
+}
+.anchor:active {
+  text-decoration: underline;
+}
+article {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 70px;
+  margin-bottom: 50px;
+  border: 1px #000000 solid;
+  border-radius: 5px;
+  padding: 25px;
+  background-color: #fbfbfb;
+}
+article section {
+  margin: 20px 0;
+  border: 1px #000000 solid;
+  border-radius: 5px;
+  padding: 25px;
+}
+article section ul li {
+  float: left;
+  border: 1px black solid;
+  border-radius: 3px;
+  margin: 10px;
+  text-align: center;
+}
+article section ul li a {
+  width: 160px;
+  height: 120px;
+  padding: 15px;
+  color: #000000;
+  display: block;
+  position: relative;
+}
+article section ul li a div {
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 120px;
+  background-color: #00b38a;
+  color: white;
+  position: absolute;
+  opacity: 0.5;
+}
+article section ul li a:link {
+  color: #000000;
+}
+article section ul li a:hover {
+  text-decoration: underline;
+  background-color: #e5e5e5;
+}
+article section ul li a:active {
+  text-decoration: underline;
+}
+article section ul li a:visited {
+  color: #000000;
+}
+article section ul:before {
+  content: " ";
+  display: table;
+}
+article section ul:after {
+  content: " ";
+  display: table;
+  clear: both;
+}

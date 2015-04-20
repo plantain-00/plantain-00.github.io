@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<form>
+    <h2>Input</h2>
+    <textarea rows="6" id="input"></textarea>
+    <br>
+    <button type="submit" id="calculate">Calculate</button>
+    <h2>Result</h2>
+    <input id="result" style="width:300px;">
+    <br>
+</form>
+<script src="md5.min.js"></script>
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+    $("#calculate").click(function(){
+	    $("#result").val(md5($("#input").val()));
+		return false;
+	});
+</script>
+</body> 
+</html>

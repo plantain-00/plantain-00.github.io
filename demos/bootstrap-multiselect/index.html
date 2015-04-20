@@ -1,0 +1,25 @@
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="bootstrap-multiselect.js"></script>
+<link href="bootstrap-multiselect.css" rel="stylesheet"/>
+
+<select id="test" multiple="multiple">
+    <option value="cheese">Cheese</option>
+    <option value="tomatoes">Tomatoes</option>
+    <option value="mozarella">Mozzarella</option>
+    <option value="mushrooms">Mushrooms</option>
+    <option value="pepperoni">Pepperoni</option>
+    <option value="onions">Onions</option>
+</select>
+
+<br/>
+
+<a target="_blank" href="http://davidstutz.github.io/bootstrap-multiselect/">More</a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#test').multiselect();
+    });
+</script>

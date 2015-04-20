@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="bootstrap-hover-dropdown.min.js"></script>
+
+<li class="dropdown" style="list-style-type: none;">
+    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" data-hover="dropdown" data-delay="1000"
+       data-close-others="false">
+        Account <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">My Account</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Change Email</a></li>
+        <li><a tabindex="-1" href="#">Change Password</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Logout</a></li>
+    </ul>
+</li>
+
+<br/>
+
+<a target="_blank" href="https://github.com/CWSpear/bootstrap-hover-dropdown">More</a>
+
+<script type="text/javascript">
+    $('.dropdown-toggle').dropdownHover({
+        delay: 500
+    });
+</script>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>best practice of supporting as much browsers as possible at least price</title>
+</head>
+<body>
+<h2>1. Program by HTML5 and CSS3</h2>
+
+<h2>2. Use support-wide-browser's js libraries, such as JQuery and knockout.js</h2>
+
+<h2>3. Use plugins for the above js library</h2>
+
+<h2>4. If IE's version is < 9, add
+    <a href="https://github.com/aFarkas/html5shiv">html5shiv.js</a>
+    ,
+    <a href="https://github.com/scottjehl/Respond">respond.js</a>
+    ,
+    <a href="https://github.com/es-shims/es5-shim">es5-shim</a>
+    and
+    <a href="https://github.com/keithclark/selectivizr">selectivizr.js</a>
+</h2>
+
+<h2>5. If IE's version is < 8, add <a href="https://github.com/douglascrockford/JSON-js">json2.js</a></h2>
+
+<h2>6. Use bootstrap's <a href="https://github.com/twbs/bootstrap/tree/master/less/mixins">mixins</a></h2>
+
+<h2>7. Set first meta tag</h2>
+<pre>
+&lt;head>
+&lt;meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE">
+</pre>
+<h2>8. Set viewport for mobile phone</h2>
+<pre>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+</pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<script src="zepto.min.js"></script>
+
+<a target="_blank" href="http://zeptojs.com/">More</a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: 'https://api.github.com/gists',
+            dataType: 'jsonp',
+            success: function (data) {
+                alert(JSON.stringify(data));
+            }
+        });
+    })
+</script>

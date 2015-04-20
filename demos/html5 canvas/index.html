@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <canvas id="c"></canvas>
+        <script type="text/javascript">
+            var canvas = document.getElementById("c");
+            var context = canvas.getContext("2d");
+            context.fillRect(0, 0, 100, 100);
+            context.fillStyle = "#EEEEFF";
+            context.fillRect(0, 0, 400, 300);
+            context.fillStyle = "#00f";
+            context.font = "italic 30px sans-serif";
+            context.textBaseline = 'top';
+            context.fillText("fill example", 0, 0);
+            var w = window.open(canvas.toDataURL("image/jpeg"), "smallwin", "width=400,height=350");
+        </script>
+    </body>
+</html>

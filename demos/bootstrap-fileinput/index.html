@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="fileinput.min.js"></script>
+<link href="fileinput.min.css" rel="stylesheet"/>
+
+<div style="width: 500px;">
+    <input type="file" id="test" multiple="true">
+</div>
+
+<br/>
+
+<a target="_blank" href="https://github.com/kartik-v/bootstrap-fileinput">More</a>
+
+<script type="text/javascript">
+    $("#test").fileinput({
+        allowedFileExtensions: ['jpg', 'gif', 'png', 'txt'],
+        maxFileSize: 100,//kb
+        maxFileCount: 2
+    });
+</script>

@@ -1,0 +1,119 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+
+<style>
+    .prompt-item {
+
+    }
+
+    .prompt-container {
+        z-index: 999;
+        max-width: 300px;
+        max-height: 500px;
+        position: absolute;
+    }
+
+    .prompt-item-suspend {
+        background-color: #F0F0F0;
+    }
+</style>
+
+<input type="text" id="inputId" style="margin-top: 50px;margin-left: 50px;">
+
+<div class="prompt-container" id="prompt-container" style="display: none;">
+    <div class="prompt-item prompt-item-suspend">First</div>
+    <div class="prompt-item">Second</div>
+    <div class="prompt-item">Third</div>
+</div>
+
+<script type="text/javascript">
+    var isInContainer;
+    var currentItemIndex = 0;
+    var container = $("#prompt-container");
+    var allItem = container.children();
+    var input = $("#inputId");
+    container.css("width", input.outerWidth());
+    var offset = input.offset();
+    container.css("left", offset.left);
+    container.css("top", offset.top + input.outerHeight());
+
+    input.focus(function () {
+        showPrompt();
+    }).blur(function () {
+        if (isInContainer != true) {
+            hidePrompt();
+        }
+    }).keydown(function (event) {
+        switch (event.which) {
+            case 13://enter
+                event.preventDefault();
+                hidePrompt();
+                return;
+            case 38://up
+                move(true);
+                break;
+            case 40://down
+                move(false);
+                break;
+        }
+        showPrompt();
+    }).hover(function () {
+        if ($("#inputId").is(":focus")) {
+            showPrompt();
+        }
+    });
+
+    function move(isUp) {
+        if (currentItemIndex == 0 && isUp) {
+            return;
+        }
+        if (currentItemIndex == allItem.length - 1 && !isUp) {
+            return;
+        }
+
+        cancelHighlight(allItem[currentItemIndex]);
+
+        if (isUp) {
+            currentItemIndex--;
+        } else {
+            currentItemIndex++;
+        }
+
+        highlight(allItem[currentItemIndex]);
+
+        $("#inputId").val($(allItem[currentItemIndex]).text());
+    }
+
+    $(".prompt-item").hover(function () {
+        highlight(this);
+    }, function () {
+        cancelHighlight(this);
+    }).click(function () {
+        $("#inputId").val($(this).text());
+        hidePrompt();
+    });
+
+    $(".prompt-container").hover(function () {
+        isInContainer = true;
+    }, function () {
+        isInContainer = false;
+        hidePrompt();
+    });
+
+    function highlight(context) {
+        $(context).addClass("prompt-item-suspend");
+    }
+
+    function cancelHighlight(context) {
+        $(context).removeClass("prompt-item-suspend");
+    }
+
+    function hidePrompt() {
+        $("#prompt-container").css("display", "none");
+    }
+
+    function showPrompt() {
+        highlight(allItem[currentItemIndex]);
+        $("#prompt-container").css("display", "block");
+    }
+</script>

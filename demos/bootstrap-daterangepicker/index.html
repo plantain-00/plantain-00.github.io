@@ -1,0 +1,26 @@
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script type="application/javascript" src="moment.js"></script>
+<script type="application/javascript" src="daterangepicker.js"></script>
+<link href="daterangepicker-bs3.css" rel="stylesheet"/>
+
+<input id="daterange" type="text" style="width: 180px;" value="2013-01-01 - 2015-12-31">
+<input id="datetimerange" type="text" style="width: 300px;" value="2013-01-01 00:00:00 - 2015-12-31 23:59:59">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#daterange').daterangepicker({
+            format: 'YYYY-MM-DD'
+        });
+
+        $('#datetimerange').daterangepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            timePicker: true,
+            timePickerIncrement: 1,
+            timePicker12Hour: false,
+            timePickerSeconds: true
+        });
+    });
+</script>

@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+
+<style>
+    .cover {
+        background: #808080;
+        bottom: 0;
+        display: none;
+        filter: alpha(opacity: 50);
+        left: 0;
+        opacity: 0.5;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+</style>
+
+<button onclick="showCover();">Click</button>
+<br/>
+<button style="margin-top: 1000px;">sdadsad</button>
+<button style="position: fixed;left: 20px;top:120px;">vvfvvfv</button>
+
+<div id="cover" class="cover"></div>
+
+<script type="text/javascript">
+    function showCover() {
+        $("#cover").css("display", "block");
+
+        setTimeout(function () {
+            $("#cover").css("display", "none");
+        }, 2000);
+    }
+</script>

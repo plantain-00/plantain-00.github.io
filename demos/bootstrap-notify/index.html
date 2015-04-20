@@ -1,0 +1,19 @@
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="bootstrap-notify.js"></script>
+<link href="bootstrap-notify.css" rel="stylesheet" />
+
+<button id="button">Click</button>
+<div class='notifications top-right' id="notify"></div>
+
+<a target="_blank" href="http://goodybag.github.io/bootstrap-notify/">More</a>
+
+<script type="text/javascript">
+    $("#button").click(function(){
+	  $('#notify').notify({
+		message: { text: 'Aw yeah, It works!' }
+	  }).show(); 
+	});
+</script>

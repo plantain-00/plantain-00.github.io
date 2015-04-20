@@ -1,0 +1,21 @@
+<script src="../../javascripts/jquery.min.js"></script>
+
+<script src="jquery.nouislider.all.min.js"></script>
+<link href="jquery.nouislider.min.css" rel="stylesheet" />
+<link href="jquery.nouislider.pips.min.css" rel="stylesheet" />
+
+<div id="slider" style="width:400px;margin:100px;">
+</div>
+
+<a target="_blank" href="http://refreshless.com/nouislider/">More</a>
+
+<script type="text/javascript">
+    $("#slider").noUiSlider({
+		start: [20, 80],
+		connect: true,
+		range: {
+			'min': 0,
+			'max': 100
+		}
+	});
+</script>

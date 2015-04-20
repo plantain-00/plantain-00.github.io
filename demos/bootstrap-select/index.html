@@ -1,0 +1,47 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="bootstrap-select.min.js"></script>
+<script src="defaults-zh_CN.min.js"></script>
+<link href="bootstrap-select.min.css" rel="stylesheet"/>
+
+<select class="selectpicker show-tick" id="demo1">
+    <optgroup label="Picnic">
+        <option>Mustard</option>
+        <option disabled="disabled">Ketchup</option>
+        <option>Relish</option>
+    </optgroup>
+    <optgroup label="Camping">
+        <option>Tent</option>
+        <option>Flashlight</option>
+        <option>Toilet Paper</option>
+    </optgroup>
+</select>
+
+<br/>
+
+<select class="selectpicker show-tick" multiple="multiple" id="demo2" data-max-options="2" title='Choose'>
+    <option>Mustard</option>
+    <option>Ketchup</option>
+    <option>Relish</option>
+</select>
+
+<br/>
+
+<select class="selectpicker show-tick" data-live-search=" true" id="demo3">
+    <option>Mustard</option>
+    <option>Ketchup</option>
+    <option data-divider="true"></option>
+    <option>Relish</option>
+</select>
+<br/>
+
+<a target="_blank" href="http://silviomoreto.github.io/bootstrap-select/">More</a>
+
+<script type="text/javascript">
+    $('#demo1').selectpicker();
+    $('#demo2').selectpicker();
+    $('#demo3').selectpicker();
+</script>

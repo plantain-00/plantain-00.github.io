@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .button-0 {
+            border: #d44137 1px solid;
+            border-radius: 5px;
+
+            width: 112px;
+            height: 32px;
+
+            background-color: white;
+            color: #d44137;
+        }
+
+        .button-0:hover {
+            background-color: #d44137;
+            color: white;
+        }
+
+        .test-0 {
+            border-bottom: 2px solid #eaeaea;
+            color: #51aded;
+
+            font-size: 18px;
+        }
+
+        .test-0:hover {
+            border-bottom: 2px solid #51aded;
+        }
+
+        .test-1 span {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<button class="button-0">Submit</button>
+
+<div style="margin: 30px;">
+    <a class="test-0">Test</a>
+</div>
+
+<div>
+    <div class="test-1">
+        AAA
+        <span>CCC</span>
+    </div>
+    <div class="test-1">
+        BBB
+        <span>DDD</span>
+    </div>
+</div>
+
+<script src="../../javascripts/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(".test-1").hover(function () {
+        $(this).children("span").show();
+    }, function () {
+        $(this).children("span").hide();
+    })
+</script>
+</body>
+</html>

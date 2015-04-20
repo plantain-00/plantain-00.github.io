@@ -1,0 +1,78 @@
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../javascripts/jquery.min.js"></script>
+
+<style>
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .target {
+        margin-top: 200px;
+        margin-left: 100px;
+        display: block;
+    }
+
+    #popout-content {
+        width: 200px;
+        height: 150px;
+        border: 1px #fafafa solid;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 150px;
+        background-color: #fafafa;
+    }
+
+    .arrow {
+        width: 13px;
+        height: 13px;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+        border-top: 13px solid #fafafa;
+
+        margin-left: 100px;
+    }
+
+    #popout {
+        position: absolute;
+        top: -165px;
+        display: none;
+    }
+</style>
+
+<div style="position: relative;">
+    <a href="#" class="target">test</a>
+
+    <div id="popout">
+        <div id="popout-content">blablabla</div>
+        <div class="arrow"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var timeoutId;
+    var popout = $("#popout");
+
+    function cancelTimeout() {
+        if (timeoutId != undefined) {
+            clearTimeout(timeoutId);
+            timeoutId = undefined;
+        }
+    }
+
+    function onMouseOver(e) {
+        cancelTimeout();
+        console.log($(this));
+        timeoutId = setTimeout('popout.css("display", "block"); timeoutId = undefined;', 200);
+    }
+
+    function onMouseLeave(e) {
+        cancelTimeout();
+        timeoutId = setTimeout('popout.css("display", "none"); timeoutId = undefined;', 200);
+    }
+
+    $(".target").mouseover(onMouseOver).mouseleave(onMouseLeave);
+
+    popout.mouseover(onMouseOver).mouseleave(onMouseLeave);
+</script>

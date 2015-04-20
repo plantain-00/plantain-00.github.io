@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>best practice of asp.net MVC</title>
+</head>
+<body>
+<h2>1. Razor template engine</h2>
+The code with razor engine looks much cleaner than with webform's engine, for example:
+<pre>
+// webform's template engine
+<% if(i == 1)
+   { %>
+       &lt;div><%= i %>&lt;/div>
+<% }
+   else
+   { %>
+       &lt;span><%= i %>&lt;/span>
+<% } %>
+
+// razor template engine
+@if(i == 1)
+{
+    &lt;div>@i&lt;/div>
+}
+else
+{
+    &lt;span>@i&lt;/span>
+}
+</pre>
+<h2>2. Partial View</h2>
+The same html from different views can be extracted to a common partial view, which can be used like this:
+<pre>
+@Html.Partial("Pagination")
+</pre>
+<h2>3. Use fluent validation rather than model validation</h2>
+You can find details at <a href="http://fluentvalidation.codeplex.com/">codeplex</a>.
+<h2>4. Convention over configuration</h2>
+Convention over configuration (also known as coding by convention) is a software design paradigm which seeks to decrease
+the number of decisions that developers need to make, gaining simplicity, but not necessarily losing flexibility.
+Asp.net MVC use the paradigm.
+<h3>4.1 Controller's name must end with Controller, and controller must extend "Controller" class</h3>
+For example, <samp>XyzController</samp> is fine.
+<h3>4.2 In a controller, action's return value must be <samp>ActionResult</samp>, or its derived class's object</h3>
+
+<h3>4.3 In a action, <samp>return View();</samp> means return a View</h3>
+For example, in "Abc" action from "XyzController", it will return the view from "~/Views/Xyz/Abc.cshtml" or
+"~/Views/Shared/Abc.cshtml". The views from "~/Views/Shared/" can be accessed by all controllers.
+And "return View("Def")" means return the view from "~/Views/Xyz/Def.cshtml" or "~/Views/Shared/Def.cshtml".
+<h2>5. Various return type</h2>
+Here is ActionResult class and its derived class from
+<a href="http://msdn.microsoft.com/zh-cn/library/system.web.mvc.actionresult(v=vs.118).aspx">msdn</a>.
+<h2>6. Work with webform and static html</h2>
+In RouteConfig class, add some codes to do that:
+<pre>
+routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+routes.IgnoreRoute("{resource}.html/{*pathInfo}");
+routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
+routes.IgnoreRoute("{resource}.ashx/{*pathInfo}");
+
+routes.MapRoute(
+    name: "Default",
+    url: "{controller}/{action}/{id}",
+    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
+</pre>
+<h2>7. Cache</h2>
+In an action, add an OutPutCache attribute, for example, I want the cache time of "Abc" action from "XyzController" is
+20 seconds:
+<pre>
+[OutputCache(Duration = 20)]
+public ActionResult Abc()
+{
+    return View();
+}
+</pre>
+<h2>8.Authorization and Form authentication</h2>
+In "Web.config" file, the configuration is the same as in webform:
+<pre>
+&lt;system.web>
+    &lt;authentication mode="Forms">
+        &lt;forms loginUrl="~/Account/Login" defaultUrl="~/Home/Index" protection="All" />
+    &lt;/authentication>
+&lt;/system.web>
+</pre>
+And for an action, add an Authorize attribute :
+<pre>
+[Authorize]
+public ActionResult Abc()
+{
+    return View();
+}
+</pre>
+After that, if "Abc" action is visited without authentication, it will redirect to "~/Account/Login" with return url of
+"Abc"'s url, and if "~/Account/Login" is visited directly, the return url will be "~/Home/Index".
+</body>
+</html>

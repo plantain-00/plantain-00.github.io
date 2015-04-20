@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+
+<div id="container">
+    <button id="button">Click</button>
+</div>
+
+<script type="text/javascript">
+    function show1() {
+        alert(1);
+    }
+
+    function show2(e) {
+        alert(2);
+        e.stopPropagation();
+    }
+
+    var button = document.getElementById("button");
+    var container = document.getElementById("container");
+
+    //dom0
+    //button.onclick = show1;
+    //button.onclick = null;
+
+    //dom2 except IE
+    button.addEventListener("click", show1, false);
+    button.addEventListener("click", show2, false);
+    button.removeEventListener("click", show1, false);
+
+    container.addEventListener("click", show1, false);
+
+    //dom2 IE
+    //button.attachEvent("onclick", show1);
+    //button.attachEvent("onclick", show2);
+    //button.detachEvent("onclick", show1);
+
+    //container.cancelBubble = true;
+</script>

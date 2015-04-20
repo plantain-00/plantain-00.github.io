@@ -1,0 +1,37 @@
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="ekko-lightbox.min.js"></script>
+<link href="ekko-lightbox.min.css" rel="stylesheet" />
+
+<div class="row">
+	<a href="large.png" data-toggle="lightbox" data-gallery="multiimages" data-title="People walking down stairs" class="col-sm-2">
+		<img src="small.png" class="img-responsive">
+	</a>
+	<a href="next.jpg" data-toggle="lightbox" data-gallery="multiimages" data-title="Man getting wet" class="col-sm-2">
+		<img src="next.jpg" style="width:160px;height:106px;" class="img-responsive">
+	</a>
+</div>
+
+<a target="_blank" href="http://ashleydw.github.io/lightbox/">More</a>
+
+<script type="text/javascript">
+	$(document).ready(function ($) {
+		$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+			event.preventDefault();
+			return $(this).ekkoLightbox({
+				onShown: function() {
+					if (window.console) {
+						return console.log('Checking our the events huh?');
+					}
+				},
+				onNavigate: function(direction, itemIndex) {
+					if (window.console) {
+						return console.log('Navigating '+direction+'. Current item: '+itemIndex);
+					}
+				}
+			});
+		});
+	});
+</script>

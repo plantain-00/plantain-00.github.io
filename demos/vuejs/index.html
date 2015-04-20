@@ -1,0 +1,91 @@
+<meta charset="UTF-8">
+<script src="vue.min.js"></script>
+
+<div id="demo">
+    v-text demo:
+    <p v-text="message"></p>
+
+    v-html demo and get method:
+    <p v-html="doubleMessage"></p>
+
+    v-model set method demo:
+    <p>
+        <input v-model="message" readonly>
+    </p>
+
+    v-style demo:
+    <p>
+        <input v-model="rawMessage" v-style="messageBorderColor">
+    </p>
+
+    v-model select demo:
+    <p>
+        <select v-model="selected">
+            <option value="1">name 1</option>
+            <option value="2">name 2</option>
+        </select>
+    </p>
+
+    v-on click event and v-show demo:
+    <p>
+        <button v-on="click:showMessage();" v-show="showButton">Show Message</button>
+    </p>
+
+    v-attr disabled demo:
+    <p>
+        <button v-attr="disabled:enableButton">Show Message</button>
+    </p>
+</div>
+
+<a target="_blank" href="http://vuejs.org/">More</a>
+
+<script type="text/javascript">
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            message: 'TEST',
+            selected: 2
+        },
+        methods: {
+            showMessage: function () {
+                alert("this message is:" + this.message + ", and the selected is: " + this.selected);
+            }
+        },
+        computed: {
+            doubleMessage: {
+                get: function () {
+                    return "<i>" + this.message + this.message + "</i>";
+                }
+            },
+            rawMessage: {
+                get: function () {
+                    return this.message.toLowerCase();
+                },
+                set: function (value) {
+                    this.message = value.toUpperCase();
+                }
+            },
+            showButton: function () {
+                return this.message.trim() != "";
+            },
+            messageBorderColor: function () {
+                if (this.message.trim() != "") {
+                    return {
+                        'border-color': 'green'
+                    };
+                } else {
+                    return {
+                        'border-color': 'red'
+                    };
+                }
+            },
+            enableButton: function () {
+                if (this.message.trim() != "") {
+                    return "";
+                } else {
+                    return 'disabled';
+                }
+            }
+        }
+    });
+</script>

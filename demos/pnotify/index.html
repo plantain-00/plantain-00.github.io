@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="pnotify.custom.min.js"></script>
+<link href="css/font-awesome.css" rel="stylesheet"/>
+<link href="pnotify.custom.min.css" rel="stylesheet"/>
+
+<a target="_blank" href="http://sciactive.com/pnotify/">More</a>
+
+<script type="text/javascript">
+    PNotify.prototype.options.styling = "fontawesome";
+
+    $(function () {
+        new PNotify({
+            title: 'Non-Blocking Notice',
+            text: 'I\'m a special kind of notice called "non-blocking". When you hover over me I\'ll fade to show the elements underneath. Feel free to click any of them just like I wasn\'t even here.\n\nNote: HTML links don\'t trigger in some browsers, due to security settings.',
+            nonblock: {
+                nonblock: true,
+                nonblock_opacity: .2
+            }
+        });
+    });
+</script>

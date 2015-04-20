@@ -1,0 +1,22 @@
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="bootstrap-tags.min.js"></script>
+<link href="bootstrap-tags.css" rel="stylesheet" />
+
+<div id="my-tag-list" class="tag-list"></div>
+
+<a target="_blank" href="http://maxwells.github.io/bootstrap-tags.html">More</a>
+
+<script type="text/javascript">
+    $(function() {
+        // If using Bootstrap 2, be sure to include:
+        // Tags.bootstrapVersion = "2";
+        $('#my-tag-list').tags({
+            tagData:["boilerplate", "tags"],
+            suggestions:["basic", "suggestions"],
+            excludeList:["not", "these", "words"]
+        });
+    });
+</script>

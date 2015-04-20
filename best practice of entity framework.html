@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>best practice of entity framework</title>
+</head>
+<body>
+<h2>1. Model first and database first</h2>
+Model first can be used in projects without existed database, and database first can be used in projects with existed
+database.
+<h2>2. Avoid SQL injection attacks</h2>
+Entity framework is born to avoid SQL injection attacks.
+<h2>3. Rename model's name</h2>
+If a table or column's name is not expressive, and I don't want to change them, with help of entity framework, I can
+rename the model or property's name to a more expressive name.
+<img src="./images/best practice of entity framework/rename.png">
+
+<h2>4. Excute common sql</h2>
+Define result's model firstly:
+<pre>
+public class TempModel
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+</pre>
+Then excute any common sql:
+<pre>
+using (var entities = new Model1Container())
+{
+    TempModel[] result = entities.Database.SqlQuery&lt;TempModel>("select Id,Name from Entity1").ToArray();
+}
+</pre>
+<h2>5. Linq to Entities</h2>
+
+<h3>5.1 Query</h3>
+Here is an example:
+<pre>
+using (var entities = new Model1Container())
+{
+    TempModel[] result = entities.Entity1Set.Select(e => new TempModel
+                                                         {
+                                                             Id = e.Id,
+                                                             Name = e.Name
+                                                         }).ToArray();
+}
+</pre>
+<h2>5.2 Add</h2>
+Here is an example:
+<pre>
+using (var entities = new Model1Container())
+{
+    entities.Entity1Set.Add(new Entity1
+                            {
+                                Id = 123,
+                                Name = "abc",
+                                Age = 45
+                            });
+    entities.SaveChanges();
+}
+</pre>
+<h3>5.3 Delete</h3>
+Here is an example:
+<pre>
+using (var entities = new Model1Container())
+{
+    var models = entities.Entity1Set.Where(e => e.Name == "abc");
+    foreach (var model in models)
+    {
+        entities.Entity1Set.Remove(model);
+    }
+    entities.SaveChanges();
+}
+</pre>
+<h2>5.4 Update</h2>
+Here is an example:
+<pre>
+using (var entities = new Model1Container())
+{
+    var models = entities.Entity1Set.Where(e => e.Name == "abc");
+    foreach (var model in models)
+    {
+        model.Age = 23;
+    }
+    entities.SaveChanges();
+}
+</pre>
+<h2>6. Use AsNoTracking() method</h2>
+Where querying entities, add "AsNoTracking()" method to cancel the cache of the entities, to speed up. Here is an
+example:
+<pre>
+//var models = entities.Entity1Set.ToArray();
+var models = entities.Entity1Set.AsNoTracking().ToArray();
+</pre>
+<h2>7. Lambda expression and multi-condition query</h2>
+Here is an example:
+<pre>
+Func&lt;IQueryable&lt;User>, IQueryable&lt;User>> nameCondition = set =>
+{
+    if (string.IsNullOrEmpty(name))
+    {
+        return set;
+    }
+    return set.Where(s => s.Name.Contains(name));
+};
+Func&lt;IQueryable&lt;User>, IQueryable&lt;User>> realNameCondition = set =>
+{
+    if (string.IsNullOrEmpty(realName))
+    {
+        return set;
+    }
+    return set.Where(s => s.RealName.Contains(realName));
+};
+entities.Users.Choose(nameCondition).Choose(realNameCondition);
+
+// Choose()'s definition
+public static IQueryable&lt;T> Choose&lt;T>(this IQueryable&lt;T> set, Func&lt;IQueryable&lt;T>, IQueryable&lt;T>> condition)
+{
+    return condition(set);
+}
+</pre>
+<h2>8. Map to DTO model by AutoMapper library</h2>
+Entity framework's model can not be converted to json or xml in most cases, because there may be circular reference.
+Using DTO model and automapper library to map entity framework's model and DTO model is a good solution.
+
+The document of AutoMapper library is in <a href="https://github.com/AutoMapper/AutoMapper">github</a>.
+</body>
+</html>

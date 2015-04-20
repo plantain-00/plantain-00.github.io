@@ -1,0 +1,58 @@
+<meta charset="UTF-8">
+<script src="../../javascripts/jquery.min.js"></script>
+
+<style>
+
+</style>
+
+<div style="margin-left: 20px;margin-top: 20px;position: relative;">
+    <img src="raw.jpg" style="position: absolute;left: 0;top:0;opacity: 0.5;">
+    <img id="img" src="raw.jpg" style="position: absolute;left: 0;top:0;clip: rect(0px,200px,200px,0px)">
+
+    <div id="drag"
+         style="width: 200px;height: 200px;border:0px #000000 dashed;position: absolute;left: 0;top:0;cursor: hand;">
+    </div>
+</div>
+
+<script type="text/javascript">
+    var isDown = false;
+    var startMouseX;
+    var startMouseY;
+    var startDragX;
+    var startDragY;
+    $(document).mousemove(function (e) {
+        e.preventDefault();
+    });
+    $("#drag").mousemove(function (e) {
+        e.preventDefault();
+
+        if (isDown) {
+            var newX = e.pageX - startMouseX + startDragX;
+            var newY = e.pageY - startMouseY + startDragY;
+
+            if (newX < 0) {
+                newX = 0;
+            } else if (newX > 320 - 200) {
+                newX = 320 - 200;
+            }
+            if (newY < 0) {
+                newY = 0;
+            } else if (newY > 480 - 200) {
+                newY = 480 - 200;
+            }
+
+            $("#drag").css("left", newX + "px")
+                    .css("top", newY + "px");
+            $("#img").css("clip", "rect(" + newY + "px," + (newX + 200) + "px," + (newY + 200) + "px," + newX + "px)");
+        }
+    }).mousedown(function (e) {
+        isDown = true;
+        startMouseX = e.pageX;
+        startMouseY = e.pageY;
+        var position = $("#drag").position();
+        startDragX = position.left;
+        startDragY = position.top;
+    }).mouseup(function (e) {
+        isDown = false;
+    });
+</script>
