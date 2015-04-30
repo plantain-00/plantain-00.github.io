@@ -14,7 +14,7 @@ mysql -u user1 -p
 show databases;
 create database database1;
 show databases;
-grant select,insert,update,delete,create,drop,alter on database1.* to user1@'%' identified by 'password1';
+grant select,insert,update,delete,create,drop,alter,create view,show view on database1.* to user1@'%' identified by 'password1';
 </pre>
 <h2>Layout RenderSection</h2>
 <pre>
