@@ -7,6 +7,15 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>mysql</h2>
+<pre>
+1. Create Database 'database1' and grant it to 'user1/password1'
+mysql -u user1 -p
+show databases;
+create database database1;
+show databases;
+grant select,insert,update,delete,create,drop,alter on database1.* to user1@'%' identified by 'password1';
+</pre>
 <h2>Layout RenderSection</h2>
 <pre>
 1. Layout
