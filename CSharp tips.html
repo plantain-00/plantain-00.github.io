@@ -28,12 +28,23 @@ sbin/nginx -s reload
 </pre>
 <h2>mysql</h2>
 <pre>
-1. Create Database 'database1' and grant it to 'user1/password1'
-mysql -u user1 -p
+1. Create Database 'database1', and grant it to new user 'user1/password1'
+login: 
+mysql -u root -p
+
+create database:
 show databases;
 create database database1;
 show databases;
+
+create user:
+select User,Host,Password from mysql.user;
+CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
+select User,Host,Password from mysql.user;
+
+grant permissions:
 grant select,insert,update,delete,create,drop,alter,create view,show view on database1.* to user1@'%' identified by 'password1';
+SHOW GRANTS FOR 'user1'@'%';
 2. backup
 mysqldump -h 127.0.0.1 -u root -p dbname > /opt/filename.sql
 </pre>
