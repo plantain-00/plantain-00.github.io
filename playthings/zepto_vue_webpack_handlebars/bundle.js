@@ -45,10 +45,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(2);
-	var math = __webpack_require__(8);
-	var userListTemplate = __webpack_require__(5);
+	var math = __webpack_require__(1);
+	var userListTemplate = __webpack_require__(4);
 
-	$("#testImg").attr("src", __webpack_require__(4));
+	$("#testImg").attr("src", __webpack_require__(5));
 
 	document.write(math.add(1, 3));
 
@@ -68,10 +68,10 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// Create a simple path alias to allow browserify to resolve
-	// the runtime on a supported path.
-	module.exports = __webpack_require__(9)['default'];
-
+	function add(a, b) {
+	    return a + b;
+	}
+	exports.add = add;
 
 /***/ },
 /* 2 */
@@ -110,13 +110,7 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAABpCAIAAADDQeSLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARjSURBVHhe7dqtVuwwGIXhSiQO5JFIJBKJRCKRSO4AiUQiuYSRXAaSS0AikZxvNbv5SpumLaedac56HzVN0p+V7GnTzFTfQIM0wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDQt7fX29vLx8eXnRdlHKSIN18Z/a9nv59PS0qqqjoyNtF6WMNIQuLqKXw3UabReljItWB1fV3d2dirZKF0oa1qMOLqGLdaGkYT3qYNKwMtKwMF0oaViPOpg0rOx/SMOmXvF1oaRhPergVBdbCI6Pj60q//IZVizCQVZdtwinMNouSqlp+Pz8fHh4iAMcqC4lrlgEFp3n52fVLUonIA3rUQc3Xbzb7cL9oC2/FKFGP52cnJydnS0bCx2aNKxHHVx3cXw0RDc3N19fX6HlEDWtqsfHR31qsUK1a7SfLEOSTxzVkYbfib9BZL6j6uCqenp60qfa9Me/dqgHyaJze3ur7Vp/ztF5sgzp76gK0vA7lgP1X/1tS2ZC1XXv69PMVWrt83OQLBYq7Q2eSsd0ruHj40MVqTRYduvYb/e3t8OnIXnrNu1kqKhxcXEx+mjo0J7Do67thkpTg5pxf38f9jo/P1dRasKbf/05oMOnwfRv3RnWle/v79pzMu38c3RtnFS6RBrsxhBvXTbPtZKQg7kT3gPaRBqCiZnoz/jypswHjVo3VDqchomH7Zgy4T2gDaWhbSgZv/hWTRmzq6srtW6oYjgNs6JgjTc7V2jbaBrabPagTp1z346G5iXB0DipeviM+cNGpeQgKCAN8WXPbrMqmi8cwWh7jFrPyZ92+FVkN6KAS1cfV9XoE9ee5UM/X+kQ89Ngrwk2PVRplnYgDatSH0/o5fgP1X4gwhGMtse0FzaM3fDzC9j5lYZSFHDpcWDe3t5UNCC2tA8qaoRyo+0xyWlBJhPJlYbiFJAGmy6Ejr6+vlbRgPYQqqih0plf3N1uZ6OrPRvJV9w4uQkrDYUqIA12SwgdbUan6GrXG/XOnT+YMuG3BtZMO9T6Nx6jupIfE6aMq++sPdjwJL+gRi16oxLv5B1haOcuJYVjtqmCNOxBcjEqOY1QXW9U8stZs6KQXAFTHWnYm87MLjmNUN3MUUnOGaNZ/5/QdpnKu/r2NMK+pp3FAFXsfVR0VtKwf1N+3FLTfdFZScP+2X3bHhPq/gFqui86K2k4lORiQLD/PxDoxGNpyKydb0HZWd4OZWEsDXHtXNsbQxqWEaJgtD1Ajbb6QCENy9Agj/2NW41Iw/8tufKdod02hjQsI79+1fEvf9tZFWlYzMRAbPmPsqQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY0vr//AoXtPS69m2jbAAAAAElFTkSuQmCC"
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Handlebars = __webpack_require__(1);
+	var Handlebars = __webpack_require__(8);
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(depth0,helpers,partials,data) {
 	    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
@@ -138,6 +132,12 @@
 	    + ((stack1 = helpers.each.call(depth0,depth0,{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
 	    + "    </tbody>\r\n</table>";
 	},"useData":true});
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAABpCAIAAADDQeSLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARjSURBVHhe7dqtVuwwGIXhSiQO5JFIJBKJRCKRSO4AiUQiuYSRXAaSS0AikZxvNbv5SpumLaedac56HzVN0p+V7GnTzFTfQIM0wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDQt7fX29vLx8eXnRdlHKSIN18Z/a9nv59PS0qqqjoyNtF6WMNIQuLqKXw3UabReljItWB1fV3d2dirZKF0oa1qMOLqGLdaGkYT3qYNKwMtKwMF0oaViPOpg0rOx/SMOmXvF1oaRhPergVBdbCI6Pj60q//IZVizCQVZdtwinMNouSqlp+Pz8fHh4iAMcqC4lrlgEFp3n52fVLUonIA3rUQc3Xbzb7cL9oC2/FKFGP52cnJydnS0bCx2aNKxHHVx3cXw0RDc3N19fX6HlEDWtqsfHR31qsUK1a7SfLEOSTxzVkYbfib9BZL6j6uCqenp60qfa9Me/dqgHyaJze3ur7Vp/ztF5sgzp76gK0vA7lgP1X/1tS2ZC1XXv69PMVWrt83OQLBYq7Q2eSsd0ruHj40MVqTRYduvYb/e3t8OnIXnrNu1kqKhxcXEx+mjo0J7Do67thkpTg5pxf38f9jo/P1dRasKbf/05oMOnwfRv3RnWle/v79pzMu38c3RtnFS6RBrsxhBvXTbPtZKQg7kT3gPaRBqCiZnoz/jypswHjVo3VDqchomH7Zgy4T2gDaWhbSgZv/hWTRmzq6srtW6oYjgNs6JgjTc7V2jbaBrabPagTp1z346G5iXB0DipeviM+cNGpeQgKCAN8WXPbrMqmi8cwWh7jFrPyZ92+FVkN6KAS1cfV9XoE9ee5UM/X+kQ89Ngrwk2PVRplnYgDatSH0/o5fgP1X4gwhGMtse0FzaM3fDzC9j5lYZSFHDpcWDe3t5UNCC2tA8qaoRyo+0xyWlBJhPJlYbiFJAGmy6Ejr6+vlbRgPYQqqih0plf3N1uZ6OrPRvJV9w4uQkrDYUqIA12SwgdbUan6GrXG/XOnT+YMuG3BtZMO9T6Nx6jupIfE6aMq++sPdjwJL+gRi16oxLv5B1haOcuJYVjtqmCNOxBcjEqOY1QXW9U8stZs6KQXAFTHWnYm87MLjmNUN3MUUnOGaNZ/5/QdpnKu/r2NMK+pp3FAFXsfVR0VtKwf1N+3FLTfdFZScP+2X3bHhPq/gFqui86K2k4lORiQLD/PxDoxGNpyKydb0HZWd4OZWEsDXHtXNsbQxqWEaJgtD1Ajbb6QCENy9Agj/2NW41Iw/8tufKdod02hjQsI79+1fEvf9tZFWlYzMRAbPmPsqQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY0vr//AoXtPS69m2jbAAAAAElFTkSuQmCC"
 
 /***/ },
 /* 6 */
@@ -424,10 +424,10 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	function add(a, b) {
-	    return a + b;
-	}
-	exports.add = add;
+	// Create a simple path alias to allow browserify to resolve
+	// the runtime on a supported path.
+	module.exports = __webpack_require__(9)['default'];
+
 
 /***/ },
 /* 9 */
@@ -439,22 +439,22 @@
 
 	exports.__esModule = true;
 
-	var _import = __webpack_require__(11);
+	var _import = __webpack_require__(10);
 
 	var base = _interopRequireWildcard(_import);
 
 	// Each of these augment the Handlebars object. No need to setup here.
 	// (This is done to easily share code between commonjs and browse envs)
 
-	var _SafeString = __webpack_require__(12);
+	var _SafeString = __webpack_require__(11);
 
 	var _SafeString2 = _interopRequireWildcard(_SafeString);
 
-	var _Exception = __webpack_require__(13);
+	var _Exception = __webpack_require__(12);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
-	var _import2 = __webpack_require__(10);
+	var _import2 = __webpack_require__(13);
 
 	var Utils = _interopRequireWildcard(_import2);
 
@@ -500,136 +500,17 @@
 
 	'use strict';
 
-	exports.__esModule = true;
-	exports.extend = extend;
-
-	// Older IE versions do not directly support indexOf so we must implement our own, sadly.
-	exports.indexOf = indexOf;
-	exports.escapeExpression = escapeExpression;
-	exports.isEmpty = isEmpty;
-	exports.blockParams = blockParams;
-	exports.appendContextPath = appendContextPath;
-	var escape = {
-	  '&': '&amp;',
-	  '<': '&lt;',
-	  '>': '&gt;',
-	  '"': '&quot;',
-	  '\'': '&#x27;',
-	  '`': '&#x60;'
-	};
-
-	var badChars = /[&<>"'`]/g,
-	    possible = /[&<>"'`]/;
-
-	function escapeChar(chr) {
-	  return escape[chr];
-	}
-
-	function extend(obj /* , ...source */) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    for (var key in arguments[i]) {
-	      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
-	        obj[key] = arguments[i][key];
-	      }
-	    }
-	  }
-
-	  return obj;
-	}
-
-	var toString = Object.prototype.toString;
-
-	exports.toString = toString;
-	// Sourced from lodash
-	// https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
-	/*eslint-disable func-style, no-var */
-	var isFunction = function isFunction(value) {
-	  return typeof value === 'function';
-	};
-	// fallback for older versions of Chrome and Safari
-	/* istanbul ignore next */
-	if (isFunction(/x/)) {
-	  exports.isFunction = isFunction = function (value) {
-	    return typeof value === 'function' && toString.call(value) === '[object Function]';
-	  };
-	}
-	var isFunction;
-	exports.isFunction = isFunction;
-	/*eslint-enable func-style, no-var */
-
-	/* istanbul ignore next */
-	var isArray = Array.isArray || function (value) {
-	  return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
-	};exports.isArray = isArray;
-
-	function indexOf(array, value) {
-	  for (var i = 0, len = array.length; i < len; i++) {
-	    if (array[i] === value) {
-	      return i;
-	    }
-	  }
-	  return -1;
-	}
-
-	function escapeExpression(string) {
-	  if (typeof string !== 'string') {
-	    // don't escape SafeStrings, since they're already safe
-	    if (string && string.toHTML) {
-	      return string.toHTML();
-	    } else if (string == null) {
-	      return '';
-	    } else if (!string) {
-	      return string + '';
-	    }
-
-	    // Force a string conversion as this will be done by the append regardless and
-	    // the regex test will do this transparently behind the scenes, causing issues if
-	    // an object's to string has escaped characters in it.
-	    string = '' + string;
-	  }
-
-	  if (!possible.test(string)) {
-	    return string;
-	  }
-	  return string.replace(badChars, escapeChar);
-	}
-
-	function isEmpty(value) {
-	  if (!value && value !== 0) {
-	    return true;
-	  } else if (isArray(value) && value.length === 0) {
-	    return true;
-	  } else {
-	    return false;
-	  }
-	}
-
-	function blockParams(params, ids) {
-	  params.path = ids;
-	  return params;
-	}
-
-	function appendContextPath(contextPath, id) {
-	  return (contextPath ? contextPath + '.' : '') + id;
-	}
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
 	exports.__esModule = true;
 	exports.HandlebarsEnvironment = HandlebarsEnvironment;
 	exports.createFrame = createFrame;
 
-	var _import = __webpack_require__(10);
+	var _import = __webpack_require__(13);
 
 	var Utils = _interopRequireWildcard(_import);
 
-	var _Exception = __webpack_require__(13);
+	var _Exception = __webpack_require__(12);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
@@ -892,7 +773,7 @@
 	/* [args, ]options */
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -911,7 +792,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -954,6 +835,125 @@
 	module.exports = exports['default'];
 
 /***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.extend = extend;
+
+	// Older IE versions do not directly support indexOf so we must implement our own, sadly.
+	exports.indexOf = indexOf;
+	exports.escapeExpression = escapeExpression;
+	exports.isEmpty = isEmpty;
+	exports.blockParams = blockParams;
+	exports.appendContextPath = appendContextPath;
+	var escape = {
+	  '&': '&amp;',
+	  '<': '&lt;',
+	  '>': '&gt;',
+	  '"': '&quot;',
+	  '\'': '&#x27;',
+	  '`': '&#x60;'
+	};
+
+	var badChars = /[&<>"'`]/g,
+	    possible = /[&<>"'`]/;
+
+	function escapeChar(chr) {
+	  return escape[chr];
+	}
+
+	function extend(obj /* , ...source */) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    for (var key in arguments[i]) {
+	      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+	        obj[key] = arguments[i][key];
+	      }
+	    }
+	  }
+
+	  return obj;
+	}
+
+	var toString = Object.prototype.toString;
+
+	exports.toString = toString;
+	// Sourced from lodash
+	// https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
+	/*eslint-disable func-style, no-var */
+	var isFunction = function isFunction(value) {
+	  return typeof value === 'function';
+	};
+	// fallback for older versions of Chrome and Safari
+	/* istanbul ignore next */
+	if (isFunction(/x/)) {
+	  exports.isFunction = isFunction = function (value) {
+	    return typeof value === 'function' && toString.call(value) === '[object Function]';
+	  };
+	}
+	var isFunction;
+	exports.isFunction = isFunction;
+	/*eslint-enable func-style, no-var */
+
+	/* istanbul ignore next */
+	var isArray = Array.isArray || function (value) {
+	  return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
+	};exports.isArray = isArray;
+
+	function indexOf(array, value) {
+	  for (var i = 0, len = array.length; i < len; i++) {
+	    if (array[i] === value) {
+	      return i;
+	    }
+	  }
+	  return -1;
+	}
+
+	function escapeExpression(string) {
+	  if (typeof string !== 'string') {
+	    // don't escape SafeStrings, since they're already safe
+	    if (string && string.toHTML) {
+	      return string.toHTML();
+	    } else if (string == null) {
+	      return '';
+	    } else if (!string) {
+	      return string + '';
+	    }
+
+	    // Force a string conversion as this will be done by the append regardless and
+	    // the regex test will do this transparently behind the scenes, causing issues if
+	    // an object's to string has escaped characters in it.
+	    string = '' + string;
+	  }
+
+	  if (!possible.test(string)) {
+	    return string;
+	  }
+	  return string.replace(badChars, escapeChar);
+	}
+
+	function isEmpty(value) {
+	  if (!value && value !== 0) {
+	    return true;
+	  } else if (isArray(value) && value.length === 0) {
+	    return true;
+	  } else {
+	    return false;
+	  }
+	}
+
+	function blockParams(params, ids) {
+	  params.path = ids;
+	  return params;
+	}
+
+	function appendContextPath(contextPath, id) {
+	  return (contextPath ? contextPath + '.' : '') + id;
+	}
+
+/***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -972,15 +972,15 @@
 	exports.invokePartial = invokePartial;
 	exports.noop = noop;
 
-	var _import = __webpack_require__(10);
+	var _import = __webpack_require__(13);
 
 	var Utils = _interopRequireWildcard(_import);
 
-	var _Exception = __webpack_require__(13);
+	var _Exception = __webpack_require__(12);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
-	var _COMPILER_REVISION$REVISION_CHANGES$createFrame = __webpack_require__(11);
+	var _COMPILER_REVISION$REVISION_CHANGES$createFrame = __webpack_require__(10);
 
 	function checkRevision(compilerInfo) {
 	  var compilerRevision = compilerInfo && compilerInfo[0] || 1,
