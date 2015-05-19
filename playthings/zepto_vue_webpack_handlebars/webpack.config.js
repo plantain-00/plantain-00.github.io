@@ -3,5 +3,10 @@ module.exports = {
     output: {
         path: "./scripts/",
         filename: "bundle.js"
+    },
+    module: {
+        loaders: [
+            {test: /\.handlebars$/, loader: "handlebars-loader"}
+        ]
     }
 };
