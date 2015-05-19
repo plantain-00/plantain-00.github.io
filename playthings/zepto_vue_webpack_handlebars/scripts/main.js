@@ -1,3 +1,4 @@
+require("../styles/main.css");
 var math = require("./math");
 var userListTemplate = require("../templates/users.handlebars");
 
