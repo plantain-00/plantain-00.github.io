@@ -44,8 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(5);
+	var math = __webpack_require__(6);
 	var userListTemplate = __webpack_require__(2);
+
+	$("#testImg").attr("src", __webpack_require__(3));
 
 	document.write(math.add(1, 3));
 
@@ -184,7 +186,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Handlebars = __webpack_require__(3);
+	var Handlebars = __webpack_require__(4);
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(depth0,helpers,partials,data) {
 	    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
@@ -211,13 +213,19 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// Create a simple path alias to allow browserify to resolve
-	// the runtime on a supported path.
-	module.exports = __webpack_require__(4)['default'];
-
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAABpCAIAAADDQeSLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARjSURBVHhe7dqtVuwwGIXhSiQO5JFIJBKJRCKRSO4AiUQiuYSRXAaSS0AikZxvNbv5SpumLaedac56HzVN0p+V7GnTzFTfQIM0wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDXCkAY40wJEGONIARxrgSAMcaYAjDQt7fX29vLx8eXnRdlHKSIN18Z/a9nv59PS0qqqjoyNtF6WMNIQuLqKXw3UabReljItWB1fV3d2dirZKF0oa1qMOLqGLdaGkYT3qYNKwMtKwMF0oaViPOpg0rOx/SMOmXvF1oaRhPergVBdbCI6Pj60q//IZVizCQVZdtwinMNouSqlp+Pz8fHh4iAMcqC4lrlgEFp3n52fVLUonIA3rUQc3Xbzb7cL9oC2/FKFGP52cnJydnS0bCx2aNKxHHVx3cXw0RDc3N19fX6HlEDWtqsfHR31qsUK1a7SfLEOSTxzVkYbfib9BZL6j6uCqenp60qfa9Me/dqgHyaJze3ur7Vp/ztF5sgzp76gK0vA7lgP1X/1tS2ZC1XXv69PMVWrt83OQLBYq7Q2eSsd0ruHj40MVqTRYduvYb/e3t8OnIXnrNu1kqKhxcXEx+mjo0J7Do67thkpTg5pxf38f9jo/P1dRasKbf/05oMOnwfRv3RnWle/v79pzMu38c3RtnFS6RBrsxhBvXTbPtZKQg7kT3gPaRBqCiZnoz/jypswHjVo3VDqchomH7Zgy4T2gDaWhbSgZv/hWTRmzq6srtW6oYjgNs6JgjTc7V2jbaBrabPagTp1z346G5iXB0DipeviM+cNGpeQgKCAN8WXPbrMqmi8cwWh7jFrPyZ92+FVkN6KAS1cfV9XoE9ee5UM/X+kQ89Ngrwk2PVRplnYgDatSH0/o5fgP1X4gwhGMtse0FzaM3fDzC9j5lYZSFHDpcWDe3t5UNCC2tA8qaoRyo+0xyWlBJhPJlYbiFJAGmy6Ejr6+vlbRgPYQqqih0plf3N1uZ6OrPRvJV9w4uQkrDYUqIA12SwgdbUan6GrXG/XOnT+YMuG3BtZMO9T6Nx6jupIfE6aMq++sPdjwJL+gRi16oxLv5B1haOcuJYVjtqmCNOxBcjEqOY1QXW9U8stZs6KQXAFTHWnYm87MLjmNUN3MUUnOGaNZ/5/QdpnKu/r2NMK+pp3FAFXsfVR0VtKwf1N+3FLTfdFZScP+2X3bHhPq/gFqui86K2k4lORiQLD/PxDoxGNpyKydb0HZWd4OZWEsDXHtXNsbQxqWEaJgtD1Ajbb6QCENy9Agj/2NW41Iw/8tufKdod02hjQsI79+1fEvf9tZFWlYzMRAbPmPsqQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY40gBHGuBIAxxpgCMNcKQBjjTAkQY0vr//AoXtPS69m2jbAAAAAElFTkSuQmCC"
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Create a simple path alias to allow browserify to resolve
+	// the runtime on a supported path.
+	module.exports = __webpack_require__(5)['default'];
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -226,18 +234,18 @@
 
 	exports.__esModule = true;
 
-	var _import = __webpack_require__(6);
+	var _import = __webpack_require__(7);
 
 	var base = _interopRequireWildcard(_import);
 
 	// Each of these augment the Handlebars object. No need to setup here.
 	// (This is done to easily share code between commonjs and browse envs)
 
-	var _SafeString = __webpack_require__(7);
+	var _SafeString = __webpack_require__(8);
 
 	var _SafeString2 = _interopRequireWildcard(_SafeString);
 
-	var _Exception = __webpack_require__(8);
+	var _Exception = __webpack_require__(9);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
@@ -245,11 +253,11 @@
 
 	var Utils = _interopRequireWildcard(_import2);
 
-	var _import3 = __webpack_require__(9);
+	var _import3 = __webpack_require__(10);
 
 	var runtime = _interopRequireWildcard(_import3);
 
-	var _noConflict = __webpack_require__(10);
+	var _noConflict = __webpack_require__(11);
 
 	var _noConflict2 = _interopRequireWildcard(_noConflict);
 
@@ -282,7 +290,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	function add(a, b) {
@@ -291,7 +299,7 @@
 	exports.add = add;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -306,7 +314,7 @@
 
 	var Utils = _interopRequireWildcard(_import);
 
-	var _Exception = __webpack_require__(8);
+	var _Exception = __webpack_require__(9);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
@@ -569,7 +577,7 @@
 	/* [args, ]options */
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -588,7 +596,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -631,7 +639,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -653,11 +661,11 @@
 
 	var Utils = _interopRequireWildcard(_import);
 
-	var _Exception = __webpack_require__(8);
+	var _Exception = __webpack_require__(9);
 
 	var _Exception2 = _interopRequireWildcard(_Exception);
 
-	var _COMPILER_REVISION$REVISION_CHANGES$createFrame = __webpack_require__(6);
+	var _COMPILER_REVISION$REVISION_CHANGES$createFrame = __webpack_require__(7);
 
 	function checkRevision(compilerInfo) {
 	  var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -868,7 +876,7 @@
 	}
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';

@@ -1,6 +1,8 @@
 var math = require("./math");
 var userListTemplate = require("../templates/users.handlebars");
 
+$("#testImg").attr("src", require('../images/test.png'));
+
 document.write(math.add(1, 3));
 
 var userList = [{

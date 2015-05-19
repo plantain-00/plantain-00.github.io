@@ -6,7 +6,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.handlebars$/, loader: "handlebars-loader"}
+            {test: /\.handlebars$/, loader: "handlebars-loader"},
+            {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
         ]
     }
 };
