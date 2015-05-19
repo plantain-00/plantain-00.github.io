@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each this}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.age}}</td>
+            {{#if this.gender}}
+                <td>Male</td>
+            {{else}}
+                <td>Female</td>
+            {{/if}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

@@ -44,7 +44,33 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	document.write("It works.");
+	var math = __webpack_require__(1);
+	document.write(math.add(1, 3));
+
+	$.get("./templates/users.handlebars", {}, function (template) {
+	    var userListTemplate = Handlebars.compile(template);
+
+	    var userList = [{
+	        name: "John",
+	        age: 12,
+	        gender: true
+	    }, {
+	        name: "Tom",
+	        age: 23,
+	        gender: false
+	    }];
+
+	    $("#userList").html(userListTemplate(userList));
+	});
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	function add(a, b) {
+	    return a + b;
+	}
+	exports.add = add;
 
 /***/ }
 /******/ ]);
