@@ -45,11 +45,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var math = __webpack_require__(5);
-	var template = __webpack_require__(2);
+	var userListTemplate = __webpack_require__(2);
 
 	document.write(math.add(1, 3));
-
-	var userListTemplate = Handlebars.compile(template);
 
 	var userList = [{
 	    name: "John",
@@ -190,23 +188,23 @@
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(depth0,helpers,partials,data) {
 	    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
-	  return "        <tr>\n            <td>"
+	  return "        <tr>\r\n            <td>"
 	    + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
-	    + "</td>\n            <td>"
+	    + "</td>\r\n            <td>"
 	    + alias2(alias1((depth0 != null ? depth0.age : depth0), depth0))
-	    + "</td>\n"
+	    + "</td>\r\n"
 	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.gender : depth0),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.program(4, data, 0),"data":data})) != null ? stack1 : "")
-	    + "        </tr>\n";
+	    + "        </tr>\r\n";
 	},"2":function(depth0,helpers,partials,data) {
-	    return "                <td>Male</td>\n";
+	    return "                <td>Male</td>\r\n";
 	},"4":function(depth0,helpers,partials,data) {
-	    return "                <td>Female</td>\n";
+	    return "                <td>Female</td>\r\n";
 	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<table>\n    <thead>\n    <tr>\n        <th>Name</th>\n        <th>Age</th>\n        <th>Gender</th>\n    </tr>\n    </thead>\n    <tbody>\n"
+	  return "<table>\r\n    <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Age</th>\r\n        <th>Gender</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n"
 	    + ((stack1 = helpers.each.call(depth0,depth0,{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-	    + "    </tbody>\n</table>";
+	    + "    </tbody>\r\n</table>";
 	},"useData":true});
 
 /***/ },
