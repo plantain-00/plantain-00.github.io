@@ -1,0 +1,21 @@
+<script type="text/javascript" src="underscore-min.js"></script>
+<script type="text/javascript">
+    _.each([1, 2, 3], function(a){
+        console.log(a);
+    });
+    var result = _.map([1,2,3], function(a){
+        return a*a;
+    });
+    console.log(result);
+</script>
+<pre>
+    1. foreach:
+    _.each([1, 2, 3], function(a){
+        console.log(a);
+    });
+    2. select:
+    var result = _.map([1,2,3], function(a){
+        return a*a;
+    });
+    console.log(result);
+</pre>
