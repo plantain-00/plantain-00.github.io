@@ -1,15 +1,159 @@
 <script type="text/javascript" src="underscore-min.js"></script>
 
-<h3>Aggregate</h3>
+<h3>Sum</h3>
 <pre>
-    var result = _.reduce([1, 2, 3], function(a, b){
-        return a + b;
+    var result = _.reduce([1, 2, 3], function(s, a){
+        return s + a;
     }, 0);
     document.writeln(result);
 </pre>
 <script type="text/javascript">
-    var result = _.reduce([1, 2, 3], function(a, b){
-        return a + b;
+    var result = _.reduce([1, 2, 3], function(s, a){
+        return s + a;
+    }, 0);
+    document.writeln(result);
+</script>
+
+<h3>first / rest</h3>
+<pre>
+    document.writeln(_.first([1,2,3]));
+    document.writeln(_.rest([1,2,3]));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.first([1,2,3]));
+    document.writeln(_.rest([1,2,3]));
+</script>
+
+<h3>Remove</h3>
+<pre>
+    result = _.without([1,2,3], 2);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    result = _.without([1,2,3], 2);
+    document.writeln(result);
+</script>
+
+<h3>LastOrDefault</h3>
+<pre>
+    result = _.find([1,2,3].reverse(), function(a){
+        return a % 2 == 0;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    result = _.find([1,2,3].reverse(), function(a){
+        return a % 2 == 0;
+    });
+    document.writeln(result);
+</script>
+
+<h3>Distinct</h3>
+<pre>
+    var result = _.uniq([4, 2, 3, 2, 1]);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.uniq([4, 2, 3, 2, 1]);
+    document.writeln(result);
+</script>
+
+<h3>Count</h3>
+<pre>
+    var result = _.reduce([1, 2, 3], function(s, a){
+        if(a % 2 == 1){
+            return s + 1;
+        }else{
+            return s;
+        }
+    }, 0);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.reduce([1, 2, 3], function(s, a){
+        if(a % 2 == 1){
+            return s + 1;
+        }else{
+            return s;
+        }
+    }, 0);
+    document.writeln(result);
+</script>
+
+<h3>Concat</h3>
+<pre>
+    var result = [1, 2, 3].concat([4, 5, 6]);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 2, 3].concat([4, 5, 6]);
+    document.writeln(result);
+</script>
+
+<h3>Average</h3>
+<pre>
+    var array = [1, 2, 3];
+    var result = _.reduce(array, function(s, a){
+        return s + a;
+    }, 0) / array.length;
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var array = [1, 2, 3];
+    var result = _.reduce(array, function(s, a){
+        return s + a;
+    }, 0) / array.length;
+    document.writeln(result);
+</script>
+
+<h3>Reverse</h3>
+<pre>
+    var result = [1, 4, 3].reverse();
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 4, 3].reverse();
+    document.writeln(result);
+</script>
+
+<h3>OrderByDescending</h3>
+<pre>
+    var result = _.sortBy([1, 4, 3], function(a){
+        return a;
+    }).reverse();
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.sortBy([1, 4, 3], function(a){
+        return a;
+    }).reverse();
+    document.writeln(result);
+</script>
+
+<h3>OrderBy</h3>
+<pre>
+    var result = _.sortBy([1, 4, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.sortBy([1, 4, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</script>
+
+<h3>Aggregate</h3>
+<pre>
+    var result = _.reduce([1, 2, 3], function(s, a){
+        return s + a * a;
+    }, 0);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.reduce([1, 2, 3], function(s, a){
+        return s + a * a;
     }, 0);
     document.writeln(result);
 </script>
