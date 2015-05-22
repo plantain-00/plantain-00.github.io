@@ -1,21 +1,135 @@
 <script type="text/javascript" src="underscore-min.js"></script>
+
+<h3>Aggregate</h3>
+<pre>
+    var result = _.reduce([1, 2, 3], function(a, b){
+        return a + b;
+    }, 0);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.reduce([1, 2, 3], function(a, b){
+        return a + b;
+    }, 0);
+    document.writeln(result);
+</script>
+
+<h3>Contains</h3>
+<pre>
+    var result = _.contains([1, 2, 3], 3);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.contains([1, 2, 3], 3);
+    document.writeln(result);
+</script>
+
+<h3>Min</h3>
+<pre>
+    var result = _.min([1, 2, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.min([1, 2, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</script>
+
+<h3>Max</h3>
+<pre>
+    var result = _.max([1, 2, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.max([1, 2, 3], function(a){
+        return a;
+    });
+    document.writeln(result);
+</script>
+
+<h3>foreach</h3>
+<pre>
+    _.each([1, 2, 3], function(a){
+        document.writeln(a);
+    });
+</pre>
 <script type="text/javascript">
     _.each([1, 2, 3], function(a){
-        console.log(a);
+        document.writeln(a);
     });
-    var result = _.map([1,2,3], function(a){
-        return a*a;
-    });
-    console.log(result);
 </script>
+
+<h3>Select</h3>
 <pre>
-    1. foreach:
-    _.each([1, 2, 3], function(a){
-        console.log(a);
-    });
-    2. select:
     var result = _.map([1,2,3], function(a){
-        return a*a;
+        return a * a;
     });
-    console.log(result);
+    document.writeln(result);
 </pre>
+<script type="text/javascript">
+    var result = _.map([1,2,3], function(a){
+        return a * a;
+    });
+    document.writeln(result);
+</script>
+
+<h3>Where</h3>
+<pre>
+    var result = _.filter([1,2,3], function(a){
+        return a % 2 == 1;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.filter([1,2,3], function(a){
+        return a % 2 == 1;
+    });
+    document.writeln(result);
+</script>
+
+<h3>FirstOrDefault</h3>
+<pre>
+    result = _.find([1,2,3], function(a){
+        return a % 2 == 0;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    result = _.find([1,2,3], function(a){
+        return a % 2 == 0;
+    });
+    document.writeln(result);
+</script>
+
+<h3>All</h3>
+<pre>
+    result = _.every([1,2,3], function(a){
+        return a > 0;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    result = _.every([1,2,3], function(a){
+        return a > 0;
+    });
+    document.writeln(result);
+</script>
+
+<h3>Any</h3>
+<pre>
+    result = _.some([1,2,3], function(a){
+        return a  == 2;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    result = _.some([1,2,3], function(a){
+        return a  == 2;
+    });
+    document.writeln(result);
+</script>
