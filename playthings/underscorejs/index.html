@@ -1,5 +1,139 @@
 <script type="text/javascript" src="underscore-min.js"></script>
 
+<h3>sub string</h3>
+<pre>
+    document.writeln("abcdef".slice(1, 3));
+</pre>
+<script type="text/javascript">
+    document.writeln("abcdef".slice(1, 3));
+</script>
+<pre>
+    document.writeln("abcdef".substring(1, 3));
+</pre>
+<script type="text/javascript">
+    document.writeln("abcdef".substring(1, 3));
+</script>
+<pre>
+    document.writeln("a-b-c".split("-"));
+</pre>
+<script type="text/javascript">
+    document.writeln("a-b-c".split("-"));
+</script>
+
+<h3>index of</h3>
+<pre>
+    document.writeln("abcdef".indexOf("cd"));
+</pre>
+<script type="text/javascript">
+    document.writeln("abcdef".indexOf("cd"));
+</script>
+<pre>
+    document.writeln("abcdefcd".lastIndexOf("cd"));
+</pre>
+<script type="text/javascript">
+    document.writeln("abcdefcd".lastIndexOf("cd"));
+</script>
+<pre>
+    document.writeln(_.indexOf([1, 2, 3, 2], 2));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.indexOf([1, 2, 3, 2], 2));
+</script>
+<pre>
+    document.writeln(_.lastIndexOf([1, 2, 3, 2], 2));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.lastIndexOf([1, 2, 3, 2], 2));
+</script>
+<pre>
+    document.writeln(_.findIndex([1, 2, 3, 2], function(a){
+        return a % 2 == 1;
+    }));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.findIndex([1, 2, 3, 2], function(a){
+        return a % 2 == 1;
+    }));
+</script>
+<pre>
+    document.writeln(_.findLastIndex([1, 2, 3, 2], function(a){
+        return a % 2 == 1;
+    }));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.findLastIndex([1, 2, 3, 2], function(a){
+        return a % 2 == 1;
+    }));
+</script>
+
+<h3>sub array</h3>
+<pre>
+    document.writeln([0, 1, 2, 3, 4].slice(1, 3));
+</pre>
+<script type="text/javascript">
+    document.writeln([0, 1, 2, 3, 4].slice(1, 3));
+</script>
+
+<h3>array push / unshift</h3>
+<pre>
+    var result = [1, 2, 3];
+    document.writeln(result.push(4, 5));
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 2, 3];
+    document.writeln(result.push(4, 5));
+    document.writeln(result);
+</script>
+<pre>
+    var result = [1, 2, 3];
+    document.writeln(result.unshift(4, 5));
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 2, 3];
+    document.writeln(result.unshift(4, 5));
+    document.writeln(result);
+</script>
+
+<h3>Union</h3>
+<pre>
+    var result = _.union([1, 2, 3], [2, 3], [2, 3, 4]);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.union([1, 2, 3], [2, 3], [2, 3, 4]);
+    document.writeln(result);
+</script>
+
+<h3>Intersect</h3>
+<pre>
+    var result = _.intersection([1, 2, 3], [2, 3], [2, 3, 4]);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.intersection([1, 2, 3], [2, 3], [2, 3, 4]);
+    document.writeln(result);
+</script>
+
+<h3>Except</h3>
+<pre>
+    var result = _.difference([1, 2, 3], [2, 3]);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.difference([1, 2, 3], [2, 3]);
+    document.writeln(result);
+</script>
+<pre>
+    var result = _.without([1, 2, 3], 2, 3);
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = _.without([1, 2, 3], 2, 3);
+    document.writeln(result);
+</script>
+
 <h3>Sum</h3>
 <pre>
     var result = _.reduce([1, 2, 3], function(s, a){
@@ -14,7 +148,27 @@
     document.writeln(result);
 </script>
 
-<h3>first / rest</h3>
+<h3>first + rest</h3>
+<pre>
+    var result = [1,2,3];
+    document.writeln(result.shift());
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1,2,3];
+    document.writeln(result.shift());
+    document.writeln(result);
+</script>
+<pre>
+    var result = [];
+    document.writeln(result.shift());
+    document.writeln(result.length);
+</pre>
+<script type="text/javascript">
+    var result = [];
+    document.writeln(result.shift());
+    document.writeln(result.length);
+</script>
 <pre>
     document.writeln(_.first([1,2,3]));
     document.writeln(_.rest([1,2,3]));
@@ -22,6 +176,36 @@
 <script type="text/javascript">
     document.writeln(_.first([1,2,3]));
     document.writeln(_.rest([1,2,3]));
+</script>
+
+<h3>last + initial</h3>
+<pre>
+    var result = [1,2,3];
+    document.writeln(result.pop());
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1,2,3];
+    document.writeln(result.pop());
+    document.writeln(result);
+</script>
+<pre>
+    var result = [];
+    document.writeln(result.pop());
+    document.writeln(result.length);
+</pre>
+<script type="text/javascript">
+    var result = [];
+    document.writeln(result.pop());
+    document.writeln(result.length);
+</script>
+<pre>
+    document.writeln(_.last([1,2,3]));
+    document.writeln(_.initial([1,2,3]));
+</pre>
+<script type="text/javascript">
+    document.writeln(_.last([1,2,3]));
+    document.writeln(_.initial([1,2,3]));
 </script>
 
 <h3>Remove</h3>
@@ -129,6 +313,20 @@
     }).reverse();
     document.writeln(result);
 </script>
+<pre>
+    var result = [1, 4, 3];
+    result.sort(function(a, b){
+        return a - b;
+    });
+    document.writeln(result.reverse());
+</pre>
+<script type="text/javascript">
+    var result = [1, 4, 3];
+    result.sort(function(a, b){
+        return a - b;
+    });
+    document.writeln(result.reverse());
+</script>
 
 <h3>OrderBy</h3>
 <pre>
@@ -143,8 +341,30 @@
     });
     document.writeln(result);
 </script>
+<pre>
+    var result = [1, 4, 3];
+    result.sort(function(a, b){
+        return a - b;
+    });
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 4, 3];
+    result.sort(function(a, b){
+        return a - b;
+    });
+    document.writeln(result);
+</script>
 
 <h3>Aggregate</h3>
+<pre>
+    var result = [1, 2, 3].join('-');
+    document.writeln(result);
+</pre>
+<script type="text/javascript">
+    var result = [1, 2, 3].join('-');
+    document.writeln(result);
+</script>
 <pre>
     var result = _.reduce([1, 2, 3], function(s, a){
         return s + a * a;
