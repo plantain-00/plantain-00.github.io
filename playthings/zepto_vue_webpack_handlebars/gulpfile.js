@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var webpack = require('gulp-webpack');
 var rename = require('gulp-rename');
+var ejs = require("gulp-ejs");
 
 gulp.task('default', function () {
-    return gulp.src('./scripts/main.js')
+    gulp.src('./scripts/main.js')
         .pipe(webpack({
             module: {
                 loaders: [
@@ -15,4 +16,11 @@ gulp.task('default', function () {
         }))
         .pipe(rename('bundle.js'))
         .pipe(gulp.dest('./'));
+
+    gulp.src("./index.ejs")
+        .pipe(ejs({
+            version: Math.round(Math.random() * 1000000)
+        }))
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest("./"));
 });
