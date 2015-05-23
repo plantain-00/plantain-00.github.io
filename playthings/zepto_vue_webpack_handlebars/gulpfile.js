@@ -19,7 +19,7 @@ gulp.task('default', function () {
 
     gulp.src("./index.ejs")
         .pipe(ejs({
-            version: Math.round(Math.random() * 1000000)
+            version: Math.round(Math.random() * 2176782336).toString(36)
         }))
         .pipe(rename('index.html'))
         .pipe(gulp.dest("./"));
