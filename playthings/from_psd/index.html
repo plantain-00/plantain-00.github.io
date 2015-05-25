@@ -13,21 +13,15 @@
                 font-family: "Segoe UI Webfont", "Microsoft YaHei", Arial, sans-serif;
             }
             
-            body{
-                margin: auto;
-                width: 640px;
-            }
-            
             .header{
                 background-color: #E8342B;
                 
-                width: 640px; 
                 height: 78px;
             }
             
             .title{
                 color: #ffffff;
-                font-size: 32px;
+                font-size: 2em;
                 
                 text-align: center;
                 line-height: 78px;
@@ -40,12 +34,20 @@
                 height: 85px;
                 
                 line-height: 85px;
+                
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                right: 0;
             }
             
             .footer span{
-                font-size: 20px;
+                font-size: 16px;
                 
-                vertical-align: middle;
+                display: inline-block;
+                height: 20px;
+                width: 80px;
+                line-height: 20px;
             }
             
             .footer img{
@@ -70,8 +72,16 @@
                 padding-left: 14px;
             }
             
+            .expand-img{
+                padding-left: 11px;
+            }
+            
             .user-img{
-                
+                padding-left: 59px;
+            }
+            
+            .user-word{
+                padding-left: 10px;
             }
         </style>
     </head>
@@ -86,8 +96,10 @@
             <span class="bus-word">订制线路</span>
             <img class="pointer-img" src="images/pointer.png">
             <span class="pointer-word">预订班车</span>
+            <img class="expand-img" src="images/expand.png">
             <img class="user-img" src="images/user.png">
             <span class="user-word">个人中心</span>
+            <img class="expand-img" src="images/expand.png">
         </footer>
     </body>
 </html>
