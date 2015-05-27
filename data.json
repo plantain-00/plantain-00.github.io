@@ -1,5 +1,406 @@
 [
   {
-    "name": "playthings"
+    "name": "playthings",
+    "content": [
+      {
+        "name": "underscore.js",
+        "href": "./playthings/underscorejs/index.html"
+      },
+      {
+        "name": "zepto + vue + webpack + handlebars",
+        "href": "./playthings/zepto_vue_webpack_handlebars/index.html"
+      },
+      {
+        "name": "requirejs",
+        "href": "./playthings/requirejs/index.html"
+      },
+      {
+        "name": "checkbox and radio",
+        "href": "./playthings/checkbox-and-radio/index.html"
+      },
+      {
+        "name": "buttons",
+        "href": "./playthings/buttons/index.html"
+      },
+      {
+        "name": "css-test",
+        "href": "./playthings/css-test/index.html"
+      },
+      {
+        "name": "cancellable",
+        "href": "./playthings/cancellable/index.html"
+      },
+      {
+        "name": "dom-event",
+        "href": "./playthings/dom-event/index.html"
+      },
+      {
+        "name": "media-query",
+        "href": "./playthings/media-query/index.html"
+      },
+      {
+        "name": "animate-anchor",
+        "href": "./playthings/animate-anchor/index.html"
+      },
+      {
+        "name": "pop-out",
+        "href": "./playthings/pop-out/index.html"
+      },
+      {
+        "name": "animation",
+        "href": "./playthings/animation/index.html"
+      },
+      {
+        "name": "svg",
+        "href": "./playthings/svg/index.html"
+      },
+      {
+        "name": "gradient",
+        "href": "./playthings/gradient/index.html"
+      },
+      {
+        "name": "box-shadow",
+        "href": "./playthings/box-shadow/index.html"
+      },
+      {
+        "name": "clip image",
+        "href": "./playthings/clip-image/index.html"
+      },
+      {
+        "name": "hover",
+        "href": "./playthings/hover/index.html"
+      },
+      {
+        "name": "prompt",
+        "href": "./playthings/prompt/index.html"
+      },
+      {
+        "name": "float-navbar",
+        "href": "./playthings/float-navbar/index.html"
+      },
+      {
+        "name": "cover",
+        "href": "./playthings/cover/index.html"
+      },
+      {
+        "name": "2048",
+        "href": "./playthings/2048/index.html"
+      }
+    ]
+  },
+  {
+    "name": "old demos",
+    "href": "oldDemos",
+    "children": [
+      {
+        "name": "date",
+        "content": [
+          {
+            "name": "bootstrap-datepicker demo",
+            "href": "./demos/bootstrap-datepicker/index.html"
+          },
+          {
+            "name": "bootstrap-datetimepicker demo",
+            "href": "./demos/bootstrap-datetimepicker/index.html"
+          },
+          {
+            "name": "bootstrap-daterangepicker demo",
+            "href": "./demos/bootstrap-daterangepicker/index.html"
+          },
+          {
+            "name": "clockpicker demo",
+            "href": "./demos/clockpicker/index.html"
+          }
+        ]
+      },
+      {
+        "name": "tags",
+        "content": [
+          {
+            "name": "bootstrap-tags demo",
+            "href": "./demos/bootstrap-tags/index.html"
+          },
+          {
+            "name": "bootstrap-tagsinput demo",
+            "href": "./demos/bootstrap-tagsinput/index.html"
+          },
+          {
+            "name": "bootstrap-tagmanager demo",
+            "href": "./demos/bootstrap-tagmanager/index.html"
+          }
+        ]
+      },
+      {
+        "name": "autocomplete",
+        "content": [
+          {
+            "name": "jquery-autocomplete demo",
+            "href": "./demos/jquery-autocomplete/index.html"
+          },
+          {
+            "name": "magicsuggest demo",
+            "href": "./demos/magicsuggest/index.htm"
+          }
+        ]
+      },
+      {
+        "name": "file",
+        "content": [
+          {
+            "name": "jasny-bootstrap demo",
+            "href": "./demos/jasny-bootstrap/index.html"
+          },
+          {
+            "name": "bootstrap-fileinput demo",
+            "href": "./demos/bootstrap-fileinput/index.html"
+          }
+        ]
+      },
+      {
+        "name": "editor",
+        "content": [
+          {
+            "name": "bootstrap3-wysiwyg demo",
+            "href": "./demos/bootstrap3-wysiwyg/index.html"
+          },
+          {
+            "name": "summernote demo",
+            "href": "./demos/summernote/index.html"
+          }
+        ]
+      },
+      {
+        "name": "select",
+        "content": [
+          {
+            "name": "bootstrap-select demo",
+            "href": "./demos/bootstrap-select/index.html"
+          },
+          {
+            "name": "bootstrap-multiselect demo",
+            "href": "./demos/bootstrap-multiselect/index.html"
+          },
+          {
+            "name": "bootstrap-combobox demo",
+            "href": "./demos/bootstrap-combobox/index.html"
+          }
+        ]
+      },
+      {
+        "name": "icons",
+        "content": [
+          {
+            "name": "font-awesome demo",
+            "href": "./demos/font-awesome/index.html"
+          },
+          {
+            "name": "weather-icons demo",
+            "href": "./demos/weather-icons/index.html"
+          }
+        ]
+      },
+      {
+        "name": "notice",
+        "content": [
+          {
+            "name": "bootstrap-notify demo",
+            "href": "./demos/bootstrap-notify/index.html"
+          },
+          {
+            "name": "bootstrap-growl demo",
+            "href": "./demos/bootstrap-growl/index.html"
+          },
+          {
+            "name": "pnotify demo",
+            "href": "./demos/pnotify/index.html"
+          },
+          {
+            "name": "bootstrap3-dialog demo",
+            "href": "./demos/bootstrap3-dialog/index.html"
+          }
+        ]
+      },
+      {
+        "name": "slider",
+        "content": [
+          {
+            "name": "noUiSlider demo",
+            "href": "./demos/noUiSlider/index.html"
+          },
+          {
+            "name": "bootstrap-slider demo",
+            "href": "./demos/bootstrap-slider/index.html"
+          }
+        ]
+      },
+      {
+        "name": "menu",
+        "content": [
+          {
+            "name": "bootstrap-hover-dropdown demo",
+            "href": "./demos/bootstrap-hover-dropdown/index.html"
+          },
+          {
+            "name": "bootstrap-contextmenu demo",
+            "href": "./demos/bootstrap-contextmenu/index.html"
+          },
+          {
+            "name": "metisMenu demo",
+            "href": "./demos/metisMenu/index.html"
+          }
+        ]
+      },
+      {
+        "name": "tree",
+        "content": [
+          {
+            "name": "jstree demo",
+            "href": "./demos/jstree/index.html"
+          },
+          {
+            "name": "bootstrap-treeview demo",
+            "href": "./demos/bootstrap-treeview/index.html"
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "content": [
+          {
+            "name": "bootstrap-rating-input demo",
+            "href": "./demos/bootstrap-rating-input/index.html"
+          },
+          {
+            "name": "bootstrap-star-rating demo",
+            "href": "./demos/bootstrap-star-rating/index.html"
+          }
+        ]
+      },
+      {
+        "name": "others",
+        "content": [
+          {
+            "name": "bootstrap demo",
+            "href": "./demos/bootstrap/index.html"
+          },
+          {
+            "name": "chart.js demo",
+            "href": "./demos/chart.js/index.html"
+          },
+          {
+            "name": "html5 canvas demo",
+            "href": "./demos/html5 canvas/index.html"
+          },
+          {
+            "name": "js md5 demo",
+            "href": "./demos/js md5/index.html"
+          },
+          {
+            "name": "typing.js demo",
+            "href": "./demos/typing.js/index.html"
+          },
+          {
+            "name": "lightbox demo",
+            "href": "./demos/lightbox/index.html"
+          },
+          {
+            "name": "ladda-bootstrap demo",
+            "href": "./demos/ladda-bootstrap/index.html"
+          },
+          {
+            "name": "sortable demo",
+            "href": "./demos/sortable/index.html"
+          },
+          {
+            "name": "bootstrap-switch demo",
+            "href": "./demos/bootstrap-switch/index.html"
+          },
+          {
+            "name": "bootstrap-maxlength demo",
+            "href": "./demos/bootstrap-maxlength/index.html"
+          },
+          {
+            "name": "pick-a-color demo",
+            "href": "./demos/pick-a-color/index.html"
+          },
+          {
+            "name": "bootstrap-editable demo",
+            "href": "./demos/bootstrap-editable/index.html"
+          },
+          {
+            "name": "handlebars demo",
+            "href": "./demos/handlebars/index.html"
+          },
+          {
+            "name": "zepto.js demo",
+            "href": "./demos/zeptojs/index.html"
+          },
+          {
+            "name": "vue.js demo",
+            "href": "./demos/vuejs/index.html"
+          },
+          {
+            "name": "d3 demo",
+            "href": "./demos/d3/index.html"
+          },
+          {
+            "name": "timesheet demo",
+            "href": "./demos/timesheet/index.html"
+          },
+          {
+            "name": "primer demo",
+            "href": "./demos/primer/index.html"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "old tips",
+    "href": "oldTips",
+    "content": [
+      {
+        "name": "C# tips",
+        "href": "./CSharp tips.html"
+      },
+      {
+        "name": "javascript tips",
+        "href": "./javascript tips.html"
+      },
+      {
+        "name": "my technical preferences",
+        "href": "./my technical preferences.html"
+      }
+    ]
+  },
+  {
+    "name": "old blogs",
+    "href": "oldBlogs",
+    "content": [
+      {
+        "name": "best practice of writing js and css with typescript and LESS",
+        "href": "./best practice of writing js and css with typescript and LESS.html"
+      },
+      {
+        "name": "best practice of .net's multi-thread and multi-core programming",
+        "href": "./best practice of .net's multi-thread and multi-core programming.html"
+      },
+      {
+        "name": "ideas of considering a function as an object",
+        "href": "./ideas of considering a function as an object.html"
+      },
+      {
+        "name": "best practice of asp.net MVC",
+        "href": "./best practice of asp.net MVC.html"
+      },
+      {
+        "name": "best practice of entity framework",
+        "href": "./best practice of entity framework.html"
+      },
+      {
+        "name": "best practice of supporting as much browsers as possible at least price",
+        "href": "./best practice of supporting as much browsers as possible at least price.html"
+      }
+    ]
   }
 ]

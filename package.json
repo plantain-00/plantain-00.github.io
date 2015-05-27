@@ -2,13 +2,14 @@
   "name": "my-blogs",
   "version": "0.0.1",
   "devDependencies": {
-    "gulp": "^3.8.11",
     "css-loader": "^0.12.1",
+    "gulp": "^3.8.11",
     "gulp-ejs": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-webpack": "^1.4.0",
     "handlebars": "^3.0.3",
     "handlebars-loader": "^1.0.2",
+    "json-loader": "^0.5.2",
     "style-loader": "^0.12.2",
     "url-loader": "^0.5.5"
   }
