@@ -1,6 +1,4 @@
-/**
- * Created by yaoyao on 15/3/5.
- */
+require("../css/index.css");
 
 var body = $("html,body");
 
@@ -83,7 +81,6 @@ $(function () {
         var isTopRightCorner = ratio * (e.pageX - $(this).offset().left) + $(this).offset().top > e.pageY;
         var isTopLeftCorner = $(this).offset().top - ratio * (e.pageX - $(this).offset().left - width) > e.pageY;
 
-        console.log(isTopLeftCorner);
         var cover = $(this).children("div");
 
         if (isTopRightCorner && isTopLeftCorner) {//from top
@@ -92,7 +89,6 @@ $(function () {
                 "height": "0"
             }, 200);
         } else if (isTopLeftCorner) {//from left
-            console.log("a");
             cover.stop(true).animate({
                 "left": "0",
                 "width": "0"
@@ -114,5 +110,4 @@ $(function () {
             "padding-right": "15px"
         }, 200);
     });
-})
-;
+});
