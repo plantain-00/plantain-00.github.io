@@ -13,7 +13,10 @@ gulp.task('default', function () {
                     {test: /\.css$/, loader: 'style-loader!css-loader'},
                     {test: /\.json$/, loader: 'json-loader'}
                 ]
-            }
+            },
+            plugins: [
+                new webpack.webpack.optimize.UglifyJsPlugin({minimize: true})
+            ]
         }))
         .pipe(rename('bundle.js'))
         .pipe(gulp.dest('./'));

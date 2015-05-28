@@ -2,7 +2,7 @@ require("../css/index.css");
 var template = require("../templates/index.handlebars");
 var data = require("../data.json");
 
-$("#container").html(template(data));
+$("body").prepend(template(data));
 
 var body = $("html,body");
 
