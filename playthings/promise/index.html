@@ -5,7 +5,7 @@
         document.writeln("task B");
     }).then(function () {
         document.writeln("task C");
-        throw new Error("unexpected error!");
+        return Promise.reject(new Error("unexpected error!"));
     }).catch(function (error) {
         document.writeln(error);
     })
@@ -18,7 +18,7 @@
         document.writeln("task B");
     }).then(function () {
         document.writeln("task C");
-        throw new Error("unexpected error!");
+        return Promise.reject(new Error("unexpected error!"));
     }).catch(function (error) {
         document.writeln(error);
     })
