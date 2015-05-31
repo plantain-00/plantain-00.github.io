@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "promise",
+        "href": "./playthings/promise/index.html"
+      },
+      {
         "name": "underscore.js",
         "href": "./playthings/underscorejs/index.html"
       },

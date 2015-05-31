@@ -1,0 +1,25 @@
+<pre>
+    Promise.resolve().then(function () {
+        document.writeln("task A");
+    }).then(function () {
+        document.writeln("task B");
+    }).then(function () {
+        document.writeln("task C");
+        throw new Error("unexpected error!");
+    }).catch(function (error) {
+        document.writeln(error);
+    })
+</pre>
+
+<script type="text/javascript">
+    Promise.resolve().then(function () {
+        document.writeln("task A");
+    }).then(function () {
+        document.writeln("task B");
+    }).then(function () {
+        document.writeln("task C");
+        throw new Error("unexpected error!");
+    }).catch(function (error) {
+        document.writeln(error);
+    })
+</script>
