@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "editor",
+        "href": "./playthings/editor/index.html"
+      },
+      {
         "name": "promise",
         "href": "./playthings/promise/index.html"
       },
