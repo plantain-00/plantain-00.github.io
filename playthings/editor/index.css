@@ -4,11 +4,12 @@
     height: 200px;
     overflow: scroll;
     margin: 5px;
-    padding: 5px;
+    padding: 5px;;
 }
 
 #content {
     border: 1px solid black;
     width: 800px;
     height: 200px;
+    font-family: "Courier New";
 }
