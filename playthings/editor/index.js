@@ -1,37 +1,89 @@
 require("./index.css");
 
+var Keys = require("./Keys");
+var operator = require("./operator");
+
 $(function () {
     hljs.initHighlightingOnLoad();
+
+    var context;
 
     $("#content").keydown(function (e) {
         var keyCode = e.keyCode || e.which;
 
         if (keyCode == 9) {
             e.preventDefault();
-            var start = this.selectionStart;
-            var end = this.selectionEnd;
-            var val = this.value;
-            var selected = val.substring(start, end);
-            var re, count;
+
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
 
             if (e.shiftKey) {
-                re = /^\t/gm;
-                count = -selected.match(re).length;
-                this.value = val.substring(0, start) + selected.replace(re, '') + val.substring(end);
-                // todo: add support for shift-tabbing without a selection
+                operator.operate(context, Keys.ShiftTab);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
             } else {
-                re = /^/gm;
-                count = selected.match(re).length;
-                this.value = val.substring(0, start) + selected.replace(re, '\t') + val.substring(end);
+                operator.operate(context, Keys.Tab);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
             }
+        } else if (keyCode == 219) {
+            e.preventDefault();
 
-            if (start === end) {
-                this.selectionStart = end + count;
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            if (e.shiftKey) {
+                operator.operate(context, Keys.OpenBrace);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
             } else {
-                this.selectionStart = start;
+                operator.operate(context, Keys.OpenBracket);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
             }
+        } else if (keyCode == 57 && e.shiftKey) {
+            e.preventDefault();
 
-            this.selectionEnd = end + count;
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.OpenBrace);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
+        } else if (keyCode == 222) {
+            e.preventDefault();
+
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            if (e.shiftKey) {
+                operator.operate(context, Keys.DoubleQuotation);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
+            } else {
+                operator.operate(context, Keys.SingleQuotation);
+                this.value = context.text;
+                this.selectionStart = context.start;
+                this.selectionEnd = context.end;
+            }
         }
     });
 
