@@ -84,6 +84,17 @@ $(function () {
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
             }
+        } else if (keyCode == 88 && e.ctrlKey) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Cut);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         }
     });
 

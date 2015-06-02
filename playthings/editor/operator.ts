@@ -168,20 +168,15 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             if (context.start == context.end) {
                 var startIndex = findLineHead(context);
                 var endIndex = findLineEnd(context);
-                console.log(startIndex);
-                console.log(endIndex);
                 if (context.text[endIndex] == "\n" || context.text[endIndex] == "\r") {
                     endIndex++;
                 } else if (context.text[startIndex - 1] == "\n" || context.text[startIndex - 1] == "\r") {
-
+                    startIndex--;
                 }
-                context.text = context.text.substring(0, startIndex) + context.text.substring(endIndex);
                 context.start = startIndex;
-                context.end = startIndex;
+                context.end = endIndex;
                 return;
             }
-            context.text = getHead(context) + getTail(context);
-            context.end = context.start;
             break;
     }
 }
