@@ -8,6 +8,11 @@ var Keys;
     Keys[Keys["Tab"] = 5] = "Tab";
     Keys[Keys["ShiftTab"] = 6] = "ShiftTab";
     Keys[Keys["Cut"] = 7] = "Cut";
+    Keys[Keys["Backspace"] = 8] = "Backspace";
+    Keys[Keys["Comma"] = 9] = "Comma";
+    Keys[Keys["Space"] = 10] = "Space";
+    Keys[Keys["Enter"] = 11] = "Enter";
+    Keys[Keys["Minus"] = 12] = "Minus";
 })(Keys || (Keys = {}));
 module.exports = Keys;
 //# sourceMappingURL=Keys.js.map

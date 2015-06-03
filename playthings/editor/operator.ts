@@ -44,7 +44,7 @@ function findLineHead(context:context):number {
 }
 
 function findLineEnd(context:context):number {
-    for (var i = context.end + 1; i < context.text.length; i++) {
+    for (var i = context.end; i < context.text.length; i++) {
         if (context.text[i] == '\r' || context.text[i] == '\n') {
             return i;
         }
@@ -199,7 +199,9 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             }
             break;
         case Keys.Comma:
-            context.text = context.text.substring(0, context.start) + " " + context.text.substring(context.end);
+            context.text = context.text.substring(0, context.start) + ", " + context.text.substring(context.end);
+            context.start += 2;
+            context.end = context.start;
             break;
         case Keys.Space:
             if (context.text[context.start - 1] == '{'
@@ -209,43 +211,42 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             break;
         case Keys.Enter:
             if (context.start != context.end) {
-                context.text = context.text.substring(0, context.start) + "\n" + context.text.substring(context.end);
-                context.end = start;
+                context.text = context.text.substring(0, context.start) + context.text.substring(context.end);
+                context.end = context.start;
             }
-            if (context.text[context.start - 1] == '{') {
-                var startIndex = findLineHead(context);
-                var endIndex = findLineEnd(context);
-                var blanks = "";
-                for (var i = startIndex; i < endIndex; i++) {
-                    if (context.text[i] != ' ' && context.text[i] != '\t') {
-                        blanks += " ";
-                        break;
-                    }
-                }
 
-                if (context.text[context.start] == '}') {
-                    if (endIndex - startIndex == blanks.length + "{}".length) {
-                        context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
-                        context.start += "\n    ".length + blanks.length;
-                        context.end = start;
-                    }
-                    else {
-                        context.text = context.text.substring(0, context.start) + "\n" + blanks + context.text.substring(context.end);
-                        context.start += "\n".length + blanks.length;
-                        context.end = start;
-                    }
+            var startIndex = findLineHead(context);
+            var endIndex = findLineEnd(context);
+            var blanks = "";
+            for (var i = startIndex; i < endIndex; i++) {
+                if (context.text[i] == ' ' || context.text[i] == '\t') {
+                    blanks += " ";
                 } else {
-                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + context.text.substring(context.end);
-                    context.start += "\n    ".length + blanks.length;
-                    context.end = start;
+                    break;
                 }
+            }
+
+            if (context.text[context.start - 1] == '{') {
+                if (context.text[context.start] == '}') {
+                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
+                    context.start += "\n    ".length + blanks.length;
+                    context.end = context.start;
+                } else {
+                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + "}" + context.text.substring(context.end);
+                    context.start += "\n    ".length + blanks.length;
+                    context.end = context.start;
+                }
+            } else if (context.text[context.start - 1] == '>' && context.text[context.start] == '<') {
+                context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
+                context.start += "\n    ".length + blanks.length;
+                context.end = context.start;
             } else {
-                context.text = context.text.substring(0, context.start) + "\n" + context.text.substring(context.end);
-                context.start++;
-                context.end = start;
+                context.text = context.text.substring(0, context.start) + "\n" + blanks + context.text.substring(context.end);
+                context.start += 1 + blanks.length;
+                context.end = context.start;
             }
             break;
-        case Keys.Comma:
+        case Keys.Minus:
             if (context.text[context.start - 3] == '<'
                 && context.text[context.start - 2] == '!'
                 && context.text[context.start - 1] == '-') {

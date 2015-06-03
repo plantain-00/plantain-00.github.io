@@ -60,7 +60,7 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.OpenBrace);
+            operator.operate(context, Keys.OpenParenthese);
             this.value = context.text;
             this.selectionStart = context.start;
             this.selectionEnd = context.end;
@@ -106,7 +106,9 @@ $(function () {
 			this.value = context.text;
 			this.selectionStart = context.start;
 			this.selectionEnd = context.end;
-        } else if (keyCode == 188 && e.shiftKey) {
+        } else if (keyCode == 188 && !e.shiftKey) {
+            e.preventDefault();
+
             context = {
                 text: this.value,
                 start: this.selectionStart,
@@ -141,7 +143,7 @@ $(function () {
 			this.value = context.text;
 			this.selectionStart = context.start;
 			this.selectionEnd = context.end;
-        } else if (keyCode == 109) {
+        } else if (keyCode == 189 && !e.shiftKey) {
             context = {
                 text: this.value,
                 start: this.selectionStart,

@@ -38,7 +38,7 @@ function findLineHead(context) {
     return 0;
 }
 function findLineEnd(context) {
-    for (var i = context.end + 1; i < context.text.length; i++) {
+    for (var i = context.end; i < context.text.length; i++) {
         if (context.text[i] == '\r' || context.text[i] == '\n') {
             return i;
         }
@@ -158,6 +158,75 @@ function operate(context, key, tabType) {
                 context.start = startIndex;
                 context.end = endIndex;
                 return;
+            }
+            break;
+        case 8 /* Backspace */:
+            if (context.start == context.end) {
+                var left1 = context.text[context.start - 1];
+                var left2 = context.text[context.start - 2];
+                var right1 = context.text[context.start];
+                if (left1 == '{' && right1 == '}' || left1 == '[' && right1 == ']' || left1 == '(' && right1 == ')' || left1 == '"' && right1 == '"' && left2 != '"' || left1 == "'" && right1 == "'" && left2 != "'") {
+                    context.text = context.text.substring(0, context.start) + context.text.substring(context.end + 1);
+                }
+                else if (left1 == ' ' && left2 == ' ' && context.text[context.start - 3] == ' ' && context.text[context.start - 4] == ' ') {
+                    context.text = context.text.substring(0, context.start - 3) + context.text.substring(context.end);
+                    context.start = context.start - 3;
+                    context.end = context.start;
+                }
+            }
+            break;
+        case 9 /* Comma */:
+            context.text = context.text.substring(0, context.start) + ", " + context.text.substring(context.end);
+            context.start += 2;
+            context.end = context.start;
+            break;
+        case 10 /* Space */:
+            if (context.text[context.start - 1] == '{' && context.text[context.start] == '}') {
+                context.text = context.text.substring(0, context.start) + " " + context.text.substring(context.end);
+            }
+            break;
+        case 11 /* Enter */:
+            if (context.start != context.end) {
+                context.text = context.text.substring(0, context.start) + context.text.substring(context.end);
+                context.end = context.start;
+            }
+            var startIndex = findLineHead(context);
+            var endIndex = findLineEnd(context);
+            var blanks = "";
+            for (var i = startIndex; i < endIndex; i++) {
+                if (context.text[i] == ' ' || context.text[i] == '\t') {
+                    blanks += " ";
+                }
+                else {
+                    break;
+                }
+            }
+            if (context.text[context.start - 1] == '{') {
+                if (context.text[context.start] == '}') {
+                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
+                    context.start += "\n    ".length + blanks.length;
+                    context.end = context.start;
+                }
+                else {
+                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + "}" + context.text.substring(context.end);
+                    context.start += "\n    ".length + blanks.length;
+                    context.end = context.start;
+                }
+            }
+            else if (context.text[context.start - 1] == '>' && context.text[context.start] == '<') {
+                context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
+                context.start += "\n    ".length + blanks.length;
+                context.end = context.start;
+            }
+            else {
+                context.text = context.text.substring(0, context.start) + "\n" + blanks + context.text.substring(context.end);
+                context.start += 1 + blanks.length;
+                context.end = context.start;
+            }
+            break;
+        case 12 /* Minus */:
+            if (context.text[context.start - 3] == '<' && context.text[context.start - 2] == '!' && context.text[context.start - 1] == '-') {
+                context.text = context.text.substring(0, context.start) + "-->" + context.text.substring(context.end);
             }
             break;
     }
