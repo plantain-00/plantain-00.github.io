@@ -1,4 +1,5 @@
 require("./index.css");
+require("./default.css");
 
 var Keys = require("./Keys");
 var operator = require("./operator");
