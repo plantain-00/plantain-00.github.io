@@ -95,6 +95,63 @@ $(function () {
             this.value = context.text;
             this.selectionStart = context.start;
             this.selectionEnd = context.end;
+        } else if (keyCode == 8) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Backspace);
+			this.value = context.text;
+			this.selectionStart = context.start;
+			this.selectionEnd = context.end;
+        } else if (keyCode == 188 && e.shiftKey) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Comma);
+			this.value = context.text;
+			this.selectionStart = context.start;
+			this.selectionEnd = context.end;
+        } else if (keyCode == 32) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Space);
+			this.value = context.text;
+			this.selectionStart = context.start;
+			this.selectionEnd = context.end;
+        } else if (keyCode == 13) {
+            e.preventDefault();
+
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Enter);
+			this.value = context.text;
+			this.selectionStart = context.start;
+			this.selectionEnd = context.end;
+        } else if (keyCode == 109) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Minus);
+			this.value = context.text;
+			this.selectionStart = context.start;
+			this.selectionEnd = context.end;
         }
     });
 

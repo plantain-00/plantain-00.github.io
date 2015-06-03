@@ -6,7 +6,12 @@ enum Keys{
     DoubleQuotation,
     Tab,
     ShiftTab,
-    Cut
+    Cut,
+    Backspace,
+    Comma,
+    Space,
+    Enter,
+    Minus
 }
 
 export = Keys;

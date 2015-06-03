@@ -178,5 +178,79 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
                 return;
             }
             break;
+        case Keys.Backspace:
+            if (context.start == context.end) {
+                var left1 = context.text[context.start - 1];
+                var left2 = context.text[context.start - 2];
+                var right1 = context.text[context.start];
+                if (left1 == '{' && right1 == '}'
+                    || left1 == '[' && right1 == ']'
+                    || left1 == '(' && right1 == ')'
+                    || left1 == '"' && right1 == '"' && left2 != '"'
+                    || left1 == "'" && right1 == "'" && left2 != "'") {
+                    context.text = context.text.substring(0, context.start) + context.text.substring(context.end + 1);
+                } else if (left1 == ' ' && left2 == ' '
+                    && context.text[context.start - 3] == ' '
+                    && context.text[context.start - 4] == ' ') {
+                    context.text = context.text.substring(0, context.start - 3) + context.text.substring(context.end);
+                    context.start = context.start - 3;
+                    context.end = context.start;
+                }
+            }
+            break;
+        case Keys.Comma:
+            context.text = context.text.substring(0, context.start) + " " + context.text.substring(context.end);
+            break;
+        case Keys.Space:
+            if (context.text[context.start - 1] == '{'
+                && context.text[context.start] == '}') {
+                context.text = context.text.substring(0, context.start) + " " + context.text.substring(context.end);
+            }
+            break;
+        case Keys.Enter:
+            if (context.start != context.end) {
+                context.text = context.text.substring(0, context.start) + "\n" + context.text.substring(context.end);
+                context.end = start;
+            }
+            if (context.text[context.start - 1] == '{') {
+                var startIndex = findLineHead(context);
+                var endIndex = findLineEnd(context);
+                var blanks = "";
+                for (var i = startIndex; i < endIndex; i++) {
+                    if (context.text[i] != ' ' && context.text[i] != '\t') {
+                        blanks += " ";
+                        break;
+                    }
+                }
+
+                if (context.text[context.start] == '}') {
+                    if (endIndex - startIndex == blanks.length + "{}".length) {
+                        context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
+                        context.start += "\n    ".length + blanks.length;
+                        context.end = start;
+                    }
+                    else {
+                        context.text = context.text.substring(0, context.start) + "\n" + blanks + context.text.substring(context.end);
+                        context.start += "\n".length + blanks.length;
+                        context.end = start;
+                    }
+                } else {
+                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + context.text.substring(context.end);
+                    context.start += "\n    ".length + blanks.length;
+                    context.end = start;
+                }
+            } else {
+                context.text = context.text.substring(0, context.start) + "\n" + context.text.substring(context.end);
+                context.start++;
+                context.end = start;
+            }
+            break;
+        case Keys.Comma:
+            if (context.text[context.start - 3] == '<'
+                && context.text[context.start - 2] == '!'
+                && context.text[context.start - 1] == '-') {
+                context.text = context.text.substring(0, context.start) + "-->" + context.text.substring(context.end);
+            }
+            break;
     }
 }
