@@ -12,6 +12,8 @@ $(function () {
     $("#content").keydown(function (e) {
         var keyCode = e.keyCode || e.which;
 
+        var tabType = $("input[name=tabType]:checked").val();
+
         if (keyCode == 9) {
             e.preventDefault();
 
@@ -22,12 +24,12 @@ $(function () {
             };
 
             if (e.shiftKey) {
-                operator.operate(context, Keys.ShiftTab);
+                operator.operate(context, Keys.ShiftTab, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
             } else {
-                operator.operate(context, Keys.Tab);
+                operator.operate(context, Keys.Tab, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
@@ -42,12 +44,12 @@ $(function () {
             };
 
             if (e.shiftKey) {
-                operator.operate(context, Keys.OpenBrace);
+                operator.operate(context, Keys.OpenBrace, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
             } else {
-                operator.operate(context, Keys.OpenBracket);
+                operator.operate(context, Keys.OpenBracket, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
@@ -61,7 +63,7 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.OpenParenthese);
+            operator.operate(context, Keys.OpenParenthese, tabType);
             this.value = context.text;
             this.selectionStart = context.start;
             this.selectionEnd = context.end;
@@ -75,12 +77,12 @@ $(function () {
             };
 
             if (e.shiftKey) {
-                operator.operate(context, Keys.DoubleQuotation);
+                operator.operate(context, Keys.DoubleQuotation, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
             } else {
-                operator.operate(context, Keys.SingleQuotation);
+                operator.operate(context, Keys.SingleQuotation, tabType);
                 this.value = context.text;
                 this.selectionStart = context.start;
                 this.selectionEnd = context.end;
@@ -92,7 +94,7 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Cut);
+            operator.operate(context, Keys.Cut, tabType);
             this.value = context.text;
             this.selectionStart = context.start;
             this.selectionEnd = context.end;
@@ -103,10 +105,10 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Backspace);
-			this.value = context.text;
-			this.selectionStart = context.start;
-			this.selectionEnd = context.end;
+            operator.operate(context, Keys.Backspace, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         } else if (keyCode == 188 && !e.shiftKey) {
             e.preventDefault();
 
@@ -116,10 +118,10 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Comma);
-			this.value = context.text;
-			this.selectionStart = context.start;
-			this.selectionEnd = context.end;
+            operator.operate(context, Keys.Comma, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         } else if (keyCode == 32) {
             context = {
                 text: this.value,
@@ -127,10 +129,10 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Space);
-			this.value = context.text;
-			this.selectionStart = context.start;
-			this.selectionEnd = context.end;
+            operator.operate(context, Keys.Space, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         } else if (keyCode == 13) {
             e.preventDefault();
 
@@ -140,10 +142,10 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Enter);
-			this.value = context.text;
-			this.selectionStart = context.start;
-			this.selectionEnd = context.end;
+            operator.operate(context, Keys.Enter, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         } else if (keyCode == 189 && !e.shiftKey) {
             context = {
                 text: this.value,
@@ -151,10 +153,21 @@ $(function () {
                 end: this.selectionEnd
             };
 
-            operator.operate(context, Keys.Minus);
-			this.value = context.text;
-			this.selectionStart = context.start;
-			this.selectionEnd = context.end;
+            operator.operate(context, Keys.Minus, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
+        } else if (keyCode == 191 && !e.shiftKey) {
+            context = {
+                text: this.value,
+                start: this.selectionStart,
+                end: this.selectionEnd
+            };
+
+            operator.operate(context, Keys.Slash, tabType);
+            this.value = context.text;
+            this.selectionStart = context.start;
+            this.selectionEnd = context.end;
         }
     });
 

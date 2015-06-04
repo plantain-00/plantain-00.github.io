@@ -60,6 +60,7 @@ function getTabString(tabType:TabType):string {
 }
 
 export function operate(context:context, key:Keys, tabType:TabType = TabType.FourSpaces) {
+    var tabString = getTabString(tabType);
     switch (key) {
         case Keys.OpenBrace:
             context.text = getHead(context) + '{}' + getTail(context);
@@ -87,7 +88,6 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             context.end++;
             break;
         case Keys.Tab:
-            var tabString = getTabString(tabType);
             if (context.start == context.end) {
                 context.text = getHead(context) + tabString + getTail(context);
                 context.start += tabString.length;
@@ -124,7 +124,7 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
 
             if (isInOneLine(context)) {
                 var text = context.text.substring(0, startIndex);
-                var length = getSpaceNumberIn(context, startIndex);
+                var length = getSpaceNumberIn(context, startIndex, tabString.length);
 
                 context.text = text + context.text.substring(startIndex + length);
                 context.start -= length;
@@ -140,7 +140,7 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
 
             var text = context.text.substring(0, startIndex);
             var endIndex = context.end;
-            var length = getSpaceNumberIn(context, startIndex);
+            var length = getSpaceNumberIn(context, startIndex, tabString.length);
 
             context.text = text + context.text.substring(startIndex + length);
             context.start -= length;
@@ -149,7 +149,7 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             for (var i = startIndex; i < endIndex; i++) {
                 text += context.text[i];
                 if (context.text[i] == "\r" || context.text[i] == "\n") {
-                    var length = getSpaceNumberIn(context, i + 1);
+                    var length = getSpaceNumberIn(context, i + 1, tabString.length);
 
                     i += length;
                     context.end -= length;
@@ -189,12 +189,17 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
                     || left1 == '"' && right1 == '"' && left2 != '"'
                     || left1 == "'" && right1 == "'" && left2 != "'") {
                     context.text = context.text.substring(0, context.start) + context.text.substring(context.end + 1);
-                } else if (left1 == ' ' && left2 == ' '
-                    && context.text[context.start - 3] == ' '
-                    && context.text[context.start - 4] == ' ') {
-                    context.text = context.text.substring(0, context.start - 3) + context.text.substring(context.end);
-                    context.start = context.start - 3;
-                    context.end = context.start;
+                } else if (left1 == ' ' && left2 == ' ') {
+                    if (tabType == TabType.TwoSpaces) {
+                        context.text = context.text.substring(0, context.start - 1) + context.text.substring(context.end);
+                        context.start = context.start - 1;
+                        context.end = context.start;
+                    } else if (context.text[context.start - 3] == ' '
+                        && context.text[context.start - 4] == ' ') {
+                        context.text = context.text.substring(0, context.start - 3) + context.text.substring(context.end);
+                        context.start = context.start - 3;
+                        context.end = context.start;
+                    }
                 }
             }
             break;
@@ -220,7 +225,7 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
             var blanks = "";
             for (var i = startIndex; i < endIndex; i++) {
                 if (context.text[i] == ' ' || context.text[i] == '\t') {
-                    blanks += " ";
+                    blanks += context.text[i];
                 } else {
                     break;
                 }
@@ -228,17 +233,17 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
 
             if (context.text[context.start - 1] == '{') {
                 if (context.text[context.start] == '}') {
-                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
-                    context.start += "\n    ".length + blanks.length;
+                    context.text = context.text.substring(0, context.start) + "\n" + tabString + blanks + "\n" + blanks + context.text.substring(context.end);
+                    context.start += "\n".length + tabString.length + blanks.length;
                     context.end = context.start;
                 } else {
-                    context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + "}" + context.text.substring(context.end);
-                    context.start += "\n    ".length + blanks.length;
+                    context.text = context.text.substring(0, context.start) + "\n" + tabString + blanks + "\n" + blanks + "}" + context.text.substring(context.end);
+                    context.start += "\n".length + tabString.length + blanks.length;
                     context.end = context.start;
                 }
             } else if (context.text[context.start - 1] == '>' && context.text[context.start] == '<') {
-                context.text = context.text.substring(0, context.start) + "\n    " + blanks + "\n" + blanks + context.text.substring(context.end);
-                context.start += "\n    ".length + blanks.length;
+                context.text = context.text.substring(0, context.start) + "\n" + tabString.length + blanks + "\n" + blanks + context.text.substring(context.end);
+                context.start += "\n".length + tabString.length + blanks.length;
                 context.end = context.start;
             } else {
                 context.text = context.text.substring(0, context.start) + "\n" + blanks + context.text.substring(context.end);
@@ -252,6 +257,8 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
                 && context.text[context.start - 1] == '-') {
                 context.text = context.text.substring(0, context.start) + "-->" + context.text.substring(context.end);
             }
+            break;
+        case Keys.Slash:
             break;
     }
 }

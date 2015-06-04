@@ -13,6 +13,7 @@ var Keys;
     Keys[Keys["Space"] = 10] = "Space";
     Keys[Keys["Enter"] = 11] = "Enter";
     Keys[Keys["Minus"] = 12] = "Minus";
+    Keys[Keys["Slash"] = 13] = "Slash";
 })(Keys || (Keys = {}));
 module.exports = Keys;
 //# sourceMappingURL=Keys.js.map
