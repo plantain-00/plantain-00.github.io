@@ -258,7 +258,5 @@ export function operate(context:context, key:Keys, tabType:TabType = TabType.Fou
                 context.text = context.text.substring(0, context.start) + "-->" + context.text.substring(context.end);
             }
             break;
-        case Keys.Slash:
-            break;
     }
 }

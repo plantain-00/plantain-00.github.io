@@ -11,8 +11,7 @@ enum Keys{
     Comma,
     Space,
     Enter,
-    Minus,
-    Slash
+    Minus
 }
 
 export = Keys;

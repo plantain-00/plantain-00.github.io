@@ -236,8 +236,6 @@ function operate(context, key, tabType) {
                 context.text = context.text.substring(0, context.start) + "-->" + context.text.substring(context.end);
             }
             break;
-        case 13 /* Slash */:
-            break;
     }
 }
 exports.operate = operate;
