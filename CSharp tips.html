@@ -57,6 +57,9 @@ grant select,insert,update,delete,create,drop,alter,create view,show view on dat
 SHOW GRANTS FOR 'user1'@'%';
 2. backup
 mysqldump -h 127.0.0.1 -u root -p dbname > /opt/filename.sql
+3. query database size
+use information_schema;
+SELECT concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data FROM TABLES WHERE table_schema='table name';
 </pre>
 <h2>Layout RenderSection</h2>
 <pre>
