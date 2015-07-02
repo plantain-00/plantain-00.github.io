@@ -12,9 +12,11 @@
 git clone XXX .
 npm install --global gulp
 
+cd XXX
 git pull
 gulp XXX
-FOREVER_ROOT=XXX forever start XXX
+rsync -a XXX XXX
+FOREVER_ROOT=XXX forever restart -l XXX.log XXX.js
 </pre>
 <h2>npm</h2>
 <pre>
