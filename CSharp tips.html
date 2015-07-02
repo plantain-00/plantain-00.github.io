@@ -7,6 +7,15 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>nodejs auto deploy</h2>
+<pre>
+git clone XXX .
+npm install --global gulp
+
+git pull
+gulp XXX
+FOREVER_ROOT=XXX forever start XXX
+</pre>
 <h2>npm</h2>
 <pre>
 npm --registry https://registry.npm.taobao.org install socket.io
