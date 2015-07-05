@@ -3,8 +3,8 @@
     "name": "playthings",
     "content": [
       {
-        "name": "gallery",
-        "href": "./playthings/gallery/index.html"
+        "name": "web-mobile-template",
+        "href": "./playthings/web-mobile-template/index.html"
       },
       {
         "name": "editor",
