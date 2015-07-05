@@ -1,0 +1,59 @@
+body {
+    font-family: Helvetica;
+}
+
+html {
+    font-size: 10px
+}
+
+@media screen and (min-width: 480px) and (max-width: 639px) {
+    html {
+        font-size: 15px
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 719px) {
+    html {
+        font-size: 20px
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 749px) {
+    html {
+        font-size: 22.5px
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 799px) {
+    html {
+        font-size: 23.5px
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 959px) {
+    html {
+        font-size: 25px
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1079px) {
+    html {
+        font-size: 30px
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    html {
+        font-size: 32px
+    }
+}
+
+a, button, input, textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul, img {
+    margin: 0;
+    padding: 0;
+}

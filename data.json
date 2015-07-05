@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "gallery",
+        "href": "./playthings/gallery/index.html"
+      },
+      {
         "name": "editor",
         "href": "./playthings/editor/index.html"
       },
