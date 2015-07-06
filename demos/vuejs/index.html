@@ -35,6 +35,15 @@
     <p>
         <button v-attr="disabled:enableButton">Show Message</button>
     </p>
+
+    v-repeat demo:
+    <p>
+        <ul>
+            <li v-repeat='users'>
+                <button v-on='click:deleteUser(this)'>delete {{name}}</button>
+            </li> 
+        </ul>
+    </p>
 </div>
 
 <a target="_blank" href="http://vuejs.org/">More</a>
@@ -44,11 +53,21 @@
         el: '#demo',
         data: {
             message: 'TEST',
-            selected: 2
+            selected: 2,
+            users: [{
+                id: 1,
+                name: "name1"
+            },{
+                id: 2,
+                name: "name2"
+            }]
         },
         methods: {
             showMessage: function () {
                 alert("this message is:" + this.message + ", and the selected is: " + this.selected);
+            },
+            deleteUser: function(item){
+                this.users.$remove(item.$data); 
             }
         },
         computed: {
