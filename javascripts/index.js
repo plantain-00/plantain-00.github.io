@@ -1,3 +1,4 @@
+require("../css/normalize.css");
 require("../css/index.css");
 var template = require("../templates/index.handlebars");
 var data = require("../data.json");
