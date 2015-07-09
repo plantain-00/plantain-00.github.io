@@ -9,6 +9,11 @@ var postcss = require('gulp-postcss');
 var minifyCSS = require('gulp-minify-css');
 var gulpSequence = require('gulp-sequence');
 
+var minifyHTMLConfig = {
+    conditionals: true,
+    spare: true
+};
+
 gulp.task("css", function () {
     gulp.src("./css/normalize.css")
         .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
@@ -42,12 +47,14 @@ gulp.task("js", function () {
         .pipe(gulp.dest('./javascripts/'));
 });
 
-gulp.task("html", function () {
-    var minifyHTMLConfig = {
-        conditionals: true,
-        spare: true
-    };
+gulp.task("template", function () {
+    gulp.src("./templates/index.handlebars")
+        .pipe(minifyHTML(minifyHTMLConfig))
+        .pipe(rename('index.min.handlebars'))
+        .pipe(gulp.dest("./templates/"));
+});
 
+gulp.task("html", function () {
     gulp.src("./index.ejs")
         .pipe(ejs({}))
         .pipe(rev())
@@ -57,5 +64,5 @@ gulp.task("html", function () {
 });
 
 gulp.task('default', function (next) {
-    gulpSequence(["css", "js"], 'html', next);
+    gulpSequence("template", ["css", "js"], 'html', next);
 });

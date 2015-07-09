@@ -1,4 +1,4 @@
-var template = require("../templates/index.handlebars");
+var template = require("../templates/index.min.handlebars");
 var data = require("../data.json");
 
 $("body").prepend(template(data));
