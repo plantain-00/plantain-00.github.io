@@ -373,15 +373,15 @@
     "content": [
       {
         "name": "C# tips",
-        "href": "./CSharp tips.html"
+        "href": "./CSharp_tips.html"
       },
       {
         "name": "javascript tips",
-        "href": "./javascript tips.html"
+        "href": "./javascript_tips.html"
       },
       {
         "name": "my technical preferences",
-        "href": "./my technical preferences.html"
+        "href": "./my_technical_preferences.html"
       }
     ]
   },
@@ -391,27 +391,27 @@
     "content": [
       {
         "name": "best practice of writing js and css with typescript and LESS",
-        "href": "./best practice of writing js and css with typescript and LESS.html"
+        "href": "./best_practice_of_writing_js_and_css_with_typescript_and_LESS.html"
       },
       {
         "name": "best practice of .net's multi-thread and multi-core programming",
-        "href": "./best practice of .net's multi-thread and multi-core programming.html"
+        "href": "./best_practice_of_.net's_multi-thread_and_multi-core_programming.html"
       },
       {
         "name": "ideas of considering a function as an object",
-        "href": "./ideas of considering a function as an object.html"
+        "href": "./ideas_of_considering_a_function_as_an_object.html"
       },
       {
         "name": "best practice of asp.net MVC",
-        "href": "./best practice of asp.net MVC.html"
+        "href": "./best_practice_of_asp.net_MVC.html"
       },
       {
         "name": "best practice of entity framework",
-        "href": "./best practice of entity framework.html"
+        "href": "./best_practice_of_entity_framework.html"
       },
       {
         "name": "best practice of supporting as much browsers as possible at least price",
-        "href": "./best practice of supporting as much browsers as possible at least price.html"
+        "href": "./best_practice_of_supporting_as_much_browsers_as_possible_at_least_price.html"
       }
     ]
   }
