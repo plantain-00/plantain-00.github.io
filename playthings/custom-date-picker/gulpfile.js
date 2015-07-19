@@ -14,9 +14,9 @@ var minifyHTMLConfig = {
 };
 
 gulp.task("template", function () {
-    gulp.src("./templates/calendar-body.handlebars")
+    gulp.src("./templates/calendar.handlebars")
         .pipe(minifyHTML(minifyHTMLConfig))
-        .pipe(rename('calendar-body.min.handlebars'))
+        .pipe(rename('calendar.min.handlebars'))
         .pipe(gulp.dest("./templates/"));
 });
 

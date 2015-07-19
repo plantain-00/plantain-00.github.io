@@ -8,32 +8,13 @@
     <link rel="stylesheet" href="./index.min.css">
     <!-- end -->
 </head>
-<body>
-<table class="calendar" id="vue-id">
-    <thead>
-    <tr>
-        <th class="switch-view-button" v-on="click:showPreviousMonth()">&lt;</th>
-        <th colspan="5"><span v-text="year"></span>年<span v-text="getMonth"></span>月</th>
-        <th class="switch-view-button" v-on="click:showNextMonth()">&gt;</th>
-    </tr>
-    <tr>
-        <th>日</th>
-        <th>一</th>
-        <th>二</th>
-        <th>三</th>
-        <th>四</th>
-        <th>五</th>
-        <th>六</th>
-    </tr>
-    </thead>
-    <tbody id="calendar-body">
-
-    </tbody>
-    <script src="./vendors/vue.min.js"></script>
-    <script src="./vendors/zepto.min.js"></script>
-    <!-- rev-hash -->
-    <script src="./index.min.js"></script>
-    <!-- end -->
+<body id="vue-id">
+<table id="calendar" class="calendar">
 </table>
+<script src="./vendors/vue.min.js"></script>
+<script src="./vendors/zepto.min.js"></script>
+<!-- rev-hash -->
+<script src="./index.min.js"></script>
+<!-- end -->
 </body>
 </html>
