@@ -9,12 +9,12 @@
     <!-- end -->
 </head>
 <body>
-<table>
+<table class="calendar" id="vue-id">
     <thead>
     <tr>
-        <th>&lt;</th>
-        <th colspan="5">2015年7月</th>
-        <th>&gt;</th>
+        <th class="switch-view-button" v-on="click:showPreviousMonth()">&lt;</th>
+        <th colspan="5"><span v-text="year"></span>年<span v-text="getMonth"></span>月</th>
+        <th class="switch-view-button" v-on="click:showNextMonth()">&gt;</th>
     </tr>
     <tr>
         <th>日</th>

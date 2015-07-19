@@ -1,10 +1,27 @@
-.day {
+.weekday {
     cursor: pointer;
 
     user-select: none;
 }
 
-.day input {
+.weekday > input {
     position: absolute;
     clip: rect(0, 0, 0, 0);
+}
+
+.weekend {
+    user-select: none;
+
+    color: grey;
+}
+
+.calendar > th, td {
+    text-align: center;
+    padding: 5px;
+}
+
+.switch-view-button {
+    cursor: pointer;
+
+    user-select: none;
 }

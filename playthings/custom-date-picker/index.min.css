@@ -1,1 +1,1 @@
-.day{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.day input{position:absolute;clip:rect(0,0,0,0)}
+.weekday{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.weekday>input{position:absolute;clip:rect(0,0,0,0)}.weekend{user-select:none;color:grey}.switch-view-button,.weekend{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}.calendar>th,td{text-align:center;padding:5px}.switch-view-button{cursor:pointer;user-select:none}

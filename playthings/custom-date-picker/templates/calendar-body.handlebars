@@ -1,14 +1,20 @@
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-        <label class="day">
-            <input type="checkbox">
-            1
-        </label>
-    </td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-</tr>
+{{#each this.dates}}
+    <tr>
+        {{#each this}}
+            {{#if this.isVisible}}
+                {{#if this.isWeekend}}
+                    <td class="weekend">
+                        {{this.text}}
+                    </td>
+                {{else}}
+                    <td class="weekday">
+                        <input type="checkbox">
+                        {{this.text}}
+                    </td>
+                {{/if}}
+            {{else}}
+                <td></td>
+            {{/if}}
+        {{/each}}
+    </tr>
+{{/each}}
