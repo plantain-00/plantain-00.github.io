@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "custom-date-picker",
+        "href": "./playthings/custom-date-picker/index.html"
+      },
+      {
         "name": "web-mobile-template",
         "href": "./playthings/web-mobile-template/index.html"
       },

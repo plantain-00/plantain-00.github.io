@@ -8,7 +8,10 @@ var vueModel = {
         year: new Date().getFullYear(),
         month: new Date().getMonth(),
         minDay: new Date(2015, 5, 6).getTime(),
-        maxDay: new Date(2015, 7, 8).getTime()
+        maxDay: new Date(2015, 7, 8).getTime(),
+        selectedDates: {
+            "2015-7": [15]
+        }
     },
     computed: {
         getMonth: {
@@ -21,6 +24,8 @@ var vueModel = {
         getDates: function () {
             var maxDayOfMonth = new Date(this.year, this.month + 1, 0).getDate();
             var firstDayOfMonth = new Date(this.year, this.month, 1).getDay();
+
+            var selectedDaysOfMonth = this.selectedDates[this.year + "-" + this.getMonth];
 
             var result = [];
 
@@ -45,22 +50,23 @@ var vueModel = {
                         isWeekend: true
                     });
                 } else {
+                    var status = {
+                        isVisible: true,
+                        text: j,
+                        isWeekend: false
+                    };
+
                     var theDay = new Date(this.year, this.month, j).getTime();
+
                     if (theDay < this.minDay || theDay > this.maxDay) {
-                        tmp.push({
-                            isVisible: true,
-                            text: j,
-                            isWeekend: false,
-                            isOutOfRange: true
-                        });
+                        status.isOutOfRange = true;
                     } else {
-                        tmp.push({
-                            isVisible: true,
-                            text: j,
-                            isWeekend: false,
-                            isOutOfRange: false
-                        });
+                        status.isOutOfRange = false;
+
+                        status.isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1;
                     }
+
+                    tmp.push(status);
                 }
             }
 
@@ -82,7 +88,7 @@ var vueModel = {
                 }
             ));
 
-            vue = new Vue(vueModel);
+            rebind();
         },
         showPreviousMonth: function () {
             var nextMonth = new Date(this.year, this.month - 1, 1);
@@ -100,6 +106,22 @@ var vueModel = {
         }
     }
 };
+
+function rebind() {
+    var tmp = vueModel;
+    vue.$destroy();
+    vueModel = tmp;
+    vue = new Vue(vueModel);
+
+    $(".the-label > input[type=checkbox]").change(function () {
+        var label = $(this).parent();
+        if (this.checked) {
+            label.addClass("checked");
+        } else {
+            label.removeClass("checked");
+        }
+    });
+}
 
 $(document).ready(function () {
     vue = new Vue(vueModel);

@@ -38,8 +38,17 @@
                         </td>
                     {{else}}
                         <td class="weekday">
-                            <input type="checkbox">
-                            {{this.text}}
+                            {{#if this.isChecked}}
+                                <label class="the-label checked">
+                                    <input name="dates" type="checkbox" checked>
+                                    {{this.text}}
+                                </label>
+                            {{else}}
+                                <label class="the-label">
+                                    <input name="dates" type="checkbox">
+                                    {{this.text}}
+                                </label>
+                            {{/if}}
                         </td>
                     {{/if}}
                 {{/if}}
