@@ -40,12 +40,12 @@
                         <td class="weekday">
                             {{#if this.isChecked}}
                                 <label class="the-label checked">
-                                    <input name="dates" type="checkbox" checked>
+                                    <input name="dates" type="checkbox" value="{{this.text}}" checked>
                                     {{this.text}}
                                 </label>
                             {{else}}
                                 <label class="the-label">
-                                    <input name="dates" type="checkbox">
+                                    <input name="dates" type="checkbox" value="{{this.text}}">
                                     {{this.text}}
                                 </label>
                             {{/if}}

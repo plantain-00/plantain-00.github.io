@@ -41,11 +41,6 @@ var vueModel = {
 
                 return result;
             }
-        },
-        showSelectedDates: {
-            get: function () {
-                return this.getSelectedDates.join();
-            }
         }
     },
     methods: {
@@ -143,12 +138,25 @@ function rebind() {
 
     $(".the-label > input[type=checkbox]").change(function () {
         var label = $(this).parent();
+
+        if (!vue.$data.selectedDates[vue.getYearMonth]) {
+            vue.$data.selectedDates[vue.getYearMonth] = [];
+        }
+        var selectedDaysOfMonth = vue.$data.selectedDates[vue.getYearMonth];
+
+        var theDay = parseInt($(this).val());
         if (this.checked) {
             label.addClass("checked");
+            selectedDaysOfMonth.push(theDay);
         } else {
             label.removeClass("checked");
+            var index = $.inArray(theDay, selectedDaysOfMonth);
+            selectedDaysOfMonth.splice(index, 1);
         }
+        console.log(vue.getSelectedDates);
     });
+
+    console.log(vue.getSelectedDates);
 }
 
 $(document).ready(function () {
