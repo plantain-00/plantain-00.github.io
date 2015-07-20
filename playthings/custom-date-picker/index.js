@@ -7,16 +7,44 @@ var vueModel = {
     data: {
         year: new Date().getFullYear(),
         month: new Date().getMonth(),
-        minDay: new Date(2015, 5, 6).getTime(),
-        maxDay: new Date(2015, 7, 8).getTime(),
+        minDay: new Date(2015, 5, 10).getTime(),
+        maxDay: new Date(2015, 7, 12).getTime(),
         selectedDates: {
-            "2015-7": [15]
+            "2015-07": [15, 16]
         }
     },
     computed: {
         getMonth: {
             get: function () {
                 return this.month + 1;
+            }
+        },
+        getYearMonth: {
+            get: function () {
+                var tmp = this.getMonth;
+                return this.year + "-" + (tmp < 10 ? "0" : "") + tmp;
+            }
+        },
+        getSelectedDates: {
+            get: function () {
+                var result = [];
+
+                for (var yearMonth in this.selectedDates) {
+                    if (this.selectedDates.hasOwnProperty(yearMonth)
+                        && this.selectedDates[yearMonth].length > 0) {
+                        for (var i = 0; i < this.selectedDates[yearMonth].length; i++) {
+                            var theDay = this.selectedDates[yearMonth][i];
+                            result.push(yearMonth + "-" + (theDay < 10 ? "0" : "") + theDay);
+                        }
+                    }
+                }
+
+                return result;
+            }
+        },
+        showSelectedDates: {
+            get: function () {
+                return this.getSelectedDates.join();
             }
         }
     },
@@ -25,7 +53,7 @@ var vueModel = {
             var maxDayOfMonth = new Date(this.year, this.month + 1, 0).getDate();
             var firstDayOfMonth = new Date(this.year, this.month, 1).getDay();
 
-            var selectedDaysOfMonth = this.selectedDates[this.year + "-" + this.getMonth];
+            var selectedDaysOfMonth = this.selectedDates[this.getYearMonth];
 
             var result = [];
 
