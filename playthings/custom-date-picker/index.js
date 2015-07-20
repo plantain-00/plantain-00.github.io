@@ -11,6 +11,11 @@ var vueModel = {
         maxDay: new Date(2015, 7, 12).getTime(),
         selectedDates: {
             "2015-07": [15, 16]
+        },
+        holidays: {
+            "2015-06": [6, 7, 13, 14, 20, 21, 22, 27, 28],
+            "2015-07": [4, 5, 11, 12, 18, 19, 25, 26],
+            "2015-08": [1, 2, 8, 9, 15, 16, 22, 23, 29, 30]
         }
     },
     computed: {
@@ -49,6 +54,7 @@ var vueModel = {
             var firstDayOfMonth = new Date(this.year, this.month, 1).getDay();
 
             var selectedDaysOfMonth = this.selectedDates[this.getYearMonth];
+            var holidaysOfMonth = this.holidays[this.getYearMonth];
 
             var result = [];
 
@@ -65,18 +71,17 @@ var vueModel = {
                     tmp = [];
                 }
 
-                var dayOfWeek = (firstDayOfMonth + j - 1) % 7;
-                if (dayOfWeek == 0 || dayOfWeek == 6) {
+                if ($.inArray(j, holidaysOfMonth) >= 0) {
                     tmp.push({
                         isVisible: true,
                         text: j,
-                        isWeekend: true
+                        isHoliday: true
                     });
                 } else {
                     var status = {
                         isVisible: true,
                         text: j,
-                        isWeekend: false
+                        isHoliday: false
                     };
 
                     var theDay = new Date(this.year, this.month, j).getTime();

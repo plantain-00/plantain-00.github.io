@@ -27,8 +27,8 @@
     <tr>
         {{#each this}}
             {{#if this.isVisible}}
-                {{#if this.isWeekend}}
-                    <td class="weekend">
+                {{#if this.isHoliday}}
+                    <td class="holiday">
                         {{this.text}}
                     </td>
                 {{else}}
