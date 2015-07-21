@@ -17,7 +17,8 @@
   clip: rect(0, 0, 0, 0);
 }
 .holiday,
-.out-of-range {
+.out-of-range,
+.full {
   user-select: none;
   color: grey;
 }
@@ -29,4 +30,23 @@ td {
 .switch-view-button {
   cursor: pointer;
   user-select: none;
+}
+.full-image {
+  width: 17px;
+  height: 19px;
+  position: absolute;
+  left: 3px;
+  top: -6px;
+}
+.full,
+.weekday,
+.out-of-range {
+  position: relative;
+}
+.ordered-image {
+  width: 17px;
+  height: 19px;
+  position: absolute;
+  left: 20px;
+  top: -6px;
 }

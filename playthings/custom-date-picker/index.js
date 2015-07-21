@@ -1,4 +1,6 @@
 var calendarBodyTemplate = require("./templates/calendar.min.handlebars");
+var fullImageUrl = require("./images/full.png");
+var orderedImageUrl = require("./images/ordered.png");
 
 var vue;
 
@@ -16,6 +18,13 @@ var vueModel = {
             "2015-06": [6, 7, 13, 14, 20, 21, 22, 27, 28],
             "2015-07": [4, 5, 11, 12, 18, 19, 25, 26],
             "2015-08": [1, 2, 8, 9, 15, 16, 22, 23, 29, 30]
+        },
+        fullDates: {
+            "2015-07": [17, 20]
+        },
+        orderedDates: {
+            "2015-06": [9],
+            "2015-07": [17, 21]
         }
     },
     computed: {
@@ -55,6 +64,8 @@ var vueModel = {
 
             var selectedDaysOfMonth = this.selectedDates[this.getYearMonth];
             var holidaysOfMonth = this.holidays[this.getYearMonth];
+            var fullDaysOfMonth = this.fullDates[this.getYearMonth];
+            var orderedDaysOfMonth = this.orderedDates[this.getYearMonth];
 
             var result = [];
 
@@ -86,13 +97,10 @@ var vueModel = {
 
                     var theDay = new Date(this.year, this.month, j).getTime();
 
-                    if (theDay < this.minDay || theDay > this.maxDay) {
-                        status.isOutOfRange = true;
-                    } else {
-                        status.isOutOfRange = false;
-
-                        status.isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1;
-                    }
+                    status.isOutOfRange = theDay < this.minDay || theDay > this.maxDay;
+                    status.isFull = fullDaysOfMonth && fullDaysOfMonth.length > 0 && $.inArray(j, fullDaysOfMonth) > -1;
+                    status.isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1;
+                    status.isOrdered = orderedDaysOfMonth && orderedDaysOfMonth.length > 0 && $.inArray(j, orderedDaysOfMonth) > -1;
 
                     tmp.push(status);
                 }
@@ -115,6 +123,9 @@ var vueModel = {
                     canShowNextMonth: new Date(this.year, this.month + 1, 0) < this.maxDay
                 }
             ));
+
+            $(".full-image").attr("src", fullImageUrl);
+            $(".ordered-image").attr("src", orderedImageUrl);
 
             rebind();
         },

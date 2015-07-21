@@ -1,12 +1,12 @@
 <thead>
 <tr>
-    {{#if this.canShowPreviousMonth}}
+    {{#if canShowPreviousMonth}}
         <th class="switch-view-button" v-on="click:showPreviousMonth()">&lt;</th>
     {{else}}
         <th></th>
     {{/if}}
     <th colspan="5"><span v-text="year"></span>年<span v-text="getMonth"></span>月</th>
-    {{#if this.canShowNextMonth}}
+    {{#if canShowNextMonth}}
         <th class="switch-view-button" v-on="click:showNextMonth()">&gt;</th>
     {{else}}
         <th></th>
@@ -23,33 +23,49 @@
 </tr>
 </thead>
 <tbody>
-{{#each this.dates}}
+{{#each dates}}
     <tr>
         {{#each this}}
-            {{#if this.isVisible}}
-                {{#if this.isHoliday}}
+            {{#if isVisible}}
+                {{#if isHoliday}}
                     <td class="holiday">
-                        {{this.text}}
+                        {{text}}
                     </td>
                 {{else}}
-                    {{#if this.isOutOfRange}}
+                    {{#if isOutOfRange}}
                         <td class="out-of-range">
-                            {{this.text}}
-                        </td>
-                    {{else}}
-                        <td class="weekday">
-                            {{#if this.isChecked}}
-                                <label class="the-label checked">
-                                    <input name="dates" type="checkbox" value="{{this.text}}" checked>
-                                    {{this.text}}
-                                </label>
-                            {{else}}
-                                <label class="the-label">
-                                    <input name="dates" type="checkbox" value="{{this.text}}">
-                                    {{this.text}}
-                                </label>
+                            {{text}}
+                            {{#if isOrdered}}
+                                <img class="ordered-image">
                             {{/if}}
                         </td>
+                    {{else}}
+                        {{#if isFull}}
+                            <td class="full">
+                                {{text}}
+                                <img class="full-image">
+                                {{#if isOrdered}}
+                                    <img class="ordered-image">
+                                {{/if}}
+                            </td>
+                        {{else}}
+                            <td class="weekday">
+                                {{#if isChecked}}
+                                    <label class="the-label checked">
+                                        <input name="dates" type="checkbox" value="{{text}}" checked>
+                                        {{text}}
+                                    </label>
+                                {{else}}
+                                    <label class="the-label">
+                                        <input name="dates" type="checkbox" value="{{text}}">
+                                        {{text}}
+                                    </label>
+                                {{/if}}
+                                {{#if isOrdered}}
+                                    <img class="ordered-image">
+                                {{/if}}
+                            </td>
+                        {{/if}}
                     {{/if}}
                 {{/if}}
             {{else}}
