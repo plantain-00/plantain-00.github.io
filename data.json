@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "html5-qrcode",
+        "href": "./playthings/html5-qrcode/index.html"
+      },
+      {
         "name": "custom-date-picker",
         "href": "./playthings/custom-date-picker/index.html"
       },

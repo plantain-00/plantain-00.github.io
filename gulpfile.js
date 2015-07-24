@@ -7,7 +7,6 @@ var minifyHTML = require('gulp-minify-html');
 var autoprefixer = require('autoprefixer-core');
 var postcss = require('gulp-postcss');
 var minifyCSS = require('gulp-minify-css');
-var gulpSequence = require('gulp-sequence');
 
 var minifyHTMLConfig = {
     conditionals: true,
@@ -63,6 +62,4 @@ gulp.task("html", function () {
         .pipe(gulp.dest("./"));
 });
 
-gulp.task('default', function (next) {
-    gulpSequence("template", ["css", "js"], 'html', next);
-});
+gulp.task('default', ["template", "css", "js", 'html']);
