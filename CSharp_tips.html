@@ -54,9 +54,11 @@ ssh -p 22 root@1.1.1.1
 sbin/nginx -s reload
 5. disk free in MB
 df -m
-6. query cpu
+6. query cpu status
 top
 q
+7. query cpu
+cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c 
 </pre>
 <h2>mysql</h2>
 <pre>
