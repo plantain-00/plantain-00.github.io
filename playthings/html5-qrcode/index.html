@@ -14,7 +14,8 @@
 <script>
     $(function () {
         $('#reader').html5_qrcode(function (data) {
-            $('#reader').html5_qrcode_stop().html(data);
+            alert(data);
+            $('#reader').html5_qrcode_stop();
         }, function (error) {
         }, function (videoError) {
         });
