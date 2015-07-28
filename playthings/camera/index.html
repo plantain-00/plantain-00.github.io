@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+<script type="application/javascript">
+    (function () {
+        'use strict';
+        var snap = document.getElementById("snap");
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var video = document.getElementById("video");
+        window.addEventListener("DOMContentLoaded", function () {
+            if (navigator.getUserMedia) {
+                navigator.getUserMedia({
+                    "video": true
+                }, function (stream) {
+                    video.src = stream;
+                    video.play();
+                }, function (error) {
+                    console.log("Video capature error: ", error.code);
+                });
+            }
+            else if (navigator.webkitGetUserMedia) {
+                navigator.webkitGetUserMedia({
+                    "video": true
+                }, function (stream) {
+                    video.src = window.webkitURL.createObjectURL(stream);
+                    video.play();
+                }, function (error) {
+                    console.log("Video capature error: ", error.code);
+                });
+            }
+            snap.addEventListener("click", function () {
+                context.drawImage(video, 0, 0, 640, 480);
+            });
+        }, false);
+    }());
+</script>
+</body>
+</html>
