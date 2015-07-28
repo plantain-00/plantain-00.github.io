@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "geolocation",
+        "href": "./playthings/geolocation/index.html"
+      },
+      {
         "name": "html5-qrcode",
         "href": "./playthings/html5-qrcode/index.html"
       },
