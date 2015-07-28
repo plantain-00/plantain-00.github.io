@@ -25,6 +25,10 @@
                         alert("An unknown error occurred.");
                         break;
                 }
+            }, {
+                enableHighAcuracy: true,
+                timeout: 5000,
+                maximumAge: 3000
             });
         }
         else {
