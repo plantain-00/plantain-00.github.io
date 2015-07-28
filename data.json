@@ -3,6 +3,14 @@
     "name": "playthings",
     "content": [
       {
+        "name": "battery",
+        "href": "./playthings/battery/index.html"
+      },
+      {
+        "name": "fullscreen",
+        "href": "./playthings/fullscreen/index.html"
+      },
+      {
         "name": "camera",
         "href": "./playthings/camera/index.html"
       },
