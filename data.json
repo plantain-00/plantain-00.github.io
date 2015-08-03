@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "css3 flex",
+        "href": "./playthings/css3-flex/index.html"
+      },
+      {
         "name": "custom-date-picker",
         "href": "./playthings/custom-date-picker/index.html"
       },
@@ -416,6 +420,16 @@
       {
         "name": "best practice of supporting as much browsers as possible at least price",
         "href": "./best_practice_of_supporting_as_much_browsers_as_possible_at_least_price.html"
+      }
+    ]
+  },
+  {
+    "name": "source code",
+    "href": "sourceCode",
+    "content": [
+      {
+        "name": "source code of this page",
+        "href": "https://github.com/plantain-00/plantain-00.github.io"
       }
     ]
   }
