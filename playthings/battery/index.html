@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+see console
+<script>
+    var battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
+
+    if (battery) {
+        console.warn("Battery charging: ", battery.charging); // true
+        console.warn("Battery level: ", battery.level); // 0.58
+        console.warn("Battery discharging time: ", battery.dischargingTime);
+
+        battery.addEventListener("chargingchange", function (e) {
+            console.warn("Battery charge change: ", battery.charging);
+        }, false);
+    } else {
+        console.warn("浏览器不支持");
+    }
+</script>
+</body>
+</html>

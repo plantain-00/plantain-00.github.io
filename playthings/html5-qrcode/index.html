@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title></title>
+</head>
+<body>
+<div id="reader" style="width:300px;height:250px">
+</div>
+<script src="./jquery-2.1.4.min.js"></script>
+<script src="./html5-qrcode.min.js"></script>
+<script>
+    $(function () {
+        $('#reader').html5_qrcode(function (data) {
+            alert(data);
+            $('#reader').html5_qrcode_stop();
+        }, function (error) {
+        }, function (videoError) {
+        });
+    });
+</script>
+</body>
+</html>

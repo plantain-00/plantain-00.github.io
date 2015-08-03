@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                alert("(" + position.coords.latitude + "," + position.coords.longitude + ")")
+            }, function (error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("User denied the request for Geolocation.");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Location information is unavailable.");
+                        break;
+                    case error.TIMEOUT:
+                        alert("The request to get user location timed out.");
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        alert("An unknown error occurred.");
+                        break;
+                }
+            }, {
+                enableHighAcuracy: true,
+                timeout: 5000,
+                maximumAge: 3000
+            });
+        }
+        else {
+            alert("Geolocation is not supported by this browser.")
+        }
+    }
+
+    getLocation();
+</script>
+</body>
+</html>
