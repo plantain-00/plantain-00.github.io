@@ -28,28 +28,22 @@ var vueModel = {
         }
     },
     computed: {
-        getMonth: {
-            get: function () {
-                return this.month + 1;
-            }
+        getMonth: function () {
+            return this.month + 1;
         },
-        getYearMonth: {
-            get: function () {
-                var tmp = this.getMonth;
-                return this.year + "-" + (tmp < 10 ? "0" : "") + tmp;
-            }
+        getYearMonth: function () {
+            var tmp = this.getMonth;
+            return this.year + "-" + (tmp < 10 ? "0" : "") + tmp;
         },
-        getSelectedDates: {
-            get: function () {
-                var result = [];
+        getSelectedDates: function () {
+            var result = [];
 
-                for (var yearMonth in this.selectedDates) {
-                    if (this.selectedDates.hasOwnProperty(yearMonth)
-                        && this.selectedDates[yearMonth].length > 0) {
-                        for (var i = 0; i < this.selectedDates[yearMonth].length; i++) {
-                            var theDay = this.selectedDates[yearMonth][i];
-                            result.push(yearMonth + "-" + (theDay < 10 ? "0" : "") + theDay);
-                        }
+            for (var yearMonth in this.selectedDates) {
+                if (this.selectedDates.hasOwnProperty(yearMonth)
+                    && this.selectedDates[yearMonth].length > 0) {
+                    for (var i = 0; i < this.selectedDates[yearMonth].length; i++) {
+                        var theDay = this.selectedDates[yearMonth][i];
+                        result.push(yearMonth + "-" + (theDay < 10 ? "0" : "") + theDay);
                     }
                 }
 
@@ -62,10 +56,12 @@ var vueModel = {
             var maxDayOfMonth = new Date(this.year, this.month + 1, 0).getDate();
             var firstDayOfMonth = new Date(this.year, this.month, 1).getDay();
 
-            var selectedDaysOfMonth = this.selectedDates[this.getYearMonth];
-            var holidaysOfMonth = this.holidays[this.getYearMonth];
-            var fullDaysOfMonth = this.fullDates[this.getYearMonth];
-            var orderedDaysOfMonth = this.orderedDates[this.getYearMonth];
+            var yearMonth = this.getYearMonth;
+
+            var selectedDaysOfMonth = this.selectedDates[yearMonth];
+            var holidaysOfMonth = this.holidays[yearMonth];
+            var fullDaysOfMonth = this.fullDates[yearMonth];
+            var orderedDaysOfMonth = this.orderedDates[yearMonth];
 
             if (!holidaysOfMonth) {
                 holidaysOfMonth = [];
@@ -159,10 +155,12 @@ function rebind() {
     $(".the-label > input[type=checkbox]").change(function () {
         var label = $(this).parent();
 
-        if (!vue.$data.selectedDates[vue.getYearMonth]) {
-            vue.$data.selectedDates[vue.getYearMonth] = [];
+        var yearMonth = vue.getYearMonth;
+
+        if (!vue.$data.selectedDates[yearMonth]) {
+            vue.$data.selectedDates[yearMonth] = [];
         }
-        var selectedDaysOfMonth = vue.$data.selectedDates[vue.getYearMonth];
+        var selectedDaysOfMonth = vue.$data.selectedDates[yearMonth];
 
         var theDay = parseInt($(this).val());
         if (this.checked) {
