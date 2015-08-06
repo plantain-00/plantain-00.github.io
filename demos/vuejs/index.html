@@ -1,6 +1,12 @@
 <meta charset="UTF-8">
 <script src="vue.min.js"></script>
 
+<style>
+    .option-checked {
+        background: grey;
+    }
+</style>
+
 <div id="demo">
     v-text demo:
     <p v-text="message"></p>
@@ -38,11 +44,21 @@
 
     v-repeat demo:
     <p>
-        <ul>
-            <li v-repeat='users'>
-                <button v-on='click:deleteUser(this)'>delete {{name}}</button>
-            </li> 
-        </ul>
+    <ul>
+        <li v-repeat='users'>
+            <button v-on='click:deleteUser(this)'>delete {{name}}</button>
+        </li>
+    </ul>
+    </p>
+
+    <p>
+    <ul>
+        <li v-repeat="selectedOptions">
+            <div style="width: 50px;display: inline-block;" v-on="click:switchOptions(this);"
+                 class="{{isChecked?'option-checked':''}}">{{text}}
+            </div>
+        </li>
+    </ul>
     </p>
 </div>
 
@@ -57,17 +73,33 @@
             users: [{
                 id: 1,
                 name: "name1"
-            },{
+            }, {
                 id: 2,
                 name: "name2"
+            }],
+            selectedOptions: [{
+                value: 1,
+                text: "a",
+                isChecked: false
+            }, {
+                value: 2,
+                text: "b",
+                isChecked: true
+            }, {
+                value: 3,
+                text: "c",
+                isChecked: true
             }]
         },
         methods: {
             showMessage: function () {
                 alert("this message is:" + this.message + ", and the selected is: " + this.selected);
             },
-            deleteUser: function(item){
-                this.users.$remove(item.$data); 
+            deleteUser: function (item) {
+                this.users.$remove(item.$data);
+            },
+            switchOptions: function (item) {
+                item.$data.isChecked = !item.$data.isChecked;
             }
         },
         computed: {
