@@ -10,7 +10,7 @@ var vueModel = {
         year: new Date().getFullYear(),
         month: new Date().getMonth(),
         minDay: new Date(2015, 5, 10).getTime(),
-        maxDay: new Date(2015, 7, 12).getTime(),
+        maxDay: new Date(2016, 7, 12).getTime(),
         selectedDates: {
             "2015-07": [15, 16]
         },
@@ -66,6 +66,10 @@ var vueModel = {
             var holidaysOfMonth = this.holidays[this.getYearMonth];
             var fullDaysOfMonth = this.fullDates[this.getYearMonth];
             var orderedDaysOfMonth = this.orderedDates[this.getYearMonth];
+
+            if (!holidaysOfMonth) {
+                holidaysOfMonth = [];
+            }
 
             var result = [];
 
