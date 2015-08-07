@@ -9,7 +9,34 @@
     <!-- end -->
 </head>
 <body id="vue-id">
-<table id="calendar" class="calendar">
+<table class="calendar">
+    <thead>
+    <tr>
+        <th class="switch-view-button" v-on="click:showPreviousMonth()" v-if="canShowPreviousMonth">&lt;</th>
+        <th v-if="!canShowPreviousMonth"></th>
+        <th colspan="5"><span v-text="year"></span>年<span v-text="getMonth"></span>月</th>
+        <th class="switch-view-button" v-on="click:showNextMonth()" v-if="canShowPreviousMonth">&gt;</th>
+        <th v-if="!canShowPreviousMonth"></th>
+    </tr>
+    <tr>
+        <th>日</th>
+        <th>一</th>
+        <th>二</th>
+        <th>三</th>
+        <th>四</th>
+        <th>五</th>
+        <th>六</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-repeat="weeks">
+        <td v-repeat="days" v-class="tdClass">
+            <label v-class="labelClass">{{text}}</label>
+            <img class="full-image" v-if="isFull">
+            <img class="ordered-image" v-if="isOrdered">
+        </td>
+    </tr>
+    </tbody>
 </table>
 <script src="./vendors/vue.min.js"></script>
 <script src="./vendors/zepto.min.js"></script>
