@@ -102,13 +102,40 @@ var vueModel = {
                 } else {
                     var theDay = new Date(this.year, this.month, j).getTime();
 
-                    tmp.push({
-                        tdClass: theDay < this.minDay || theDay > this.maxDay ? "out-of-range" : "",
-                        text: j,
-                        isFull: fullDaysOfMonth && fullDaysOfMonth.length > 0 && $.inArray(j, fullDaysOfMonth) > -1,
-                        isOrdered: orderedDaysOfMonth && orderedDaysOfMonth.length > 0 && $.inArray(j, orderedDaysOfMonth) > -1,
-                        labelClass: selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1 ? "the-label option-checked" : "the-label"
-                    });
+                    var isOutOfRange = theDay < this.minDay || theDay > this.maxDay;
+                    var isFull = fullDaysOfMonth && fullDaysOfMonth.length > 0 && $.inArray(j, fullDaysOfMonth) > -1;
+                    var isOrdered = orderedDaysOfMonth && orderedDaysOfMonth.length > 0 && $.inArray(j, orderedDaysOfMonth) > -1;
+                    var isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1;
+
+                    if (isOutOfRange) {
+                        tmp.push({
+                            tdClass: "out-of-range",
+                            text: j,
+                            isFull: isFull,
+                            isOrdered: isOrdered,
+                            labelClass: "",
+                            orderedImageUrl: orderedImageUrl
+                        });
+                    } else if (isFull) {
+                        tmp.push({
+                            tdClass: "full",
+                            text: j,
+                            isFull: true,
+                            isOrdered: isOrdered,
+                            labelClass: isChecked ? "the-label checked" : "",
+                            orderedImageUrl: orderedImageUrl,
+                            fullImageUrl: fullImageUrl
+                        });
+                    } else {
+                        tmp.push({
+                            tdClass: "weekday",
+                            text: j,
+                            isFull: false,
+                            isOrdered: isOrdered,
+                            labelClass: isChecked ? "the-label checked" : "the-label",
+                            orderedImageUrl: orderedImageUrl
+                        });
+                    }
                 }
             }
 
@@ -131,9 +158,6 @@ var vueModel = {
     },
     methods: {
         showCalendar: function () {
-            $(".full-image").attr("src", fullImageUrl);
-            $(".ordered-image").attr("src", orderedImageUrl);
-
             $(".the-label > input[type=checkbox]").change(function () {
                 var label = $(this).parent();
 
