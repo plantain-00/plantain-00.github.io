@@ -79,7 +79,7 @@ var vueModel = {
                     text: "",
                     isFull: false,
                     isOrdered: false,
-                    labelClass: ""
+                    canCheck: false
                 });
             }
 
@@ -97,7 +97,7 @@ var vueModel = {
                         text: j,
                         isFull: false,
                         isOrdered: false,
-                        labelClass: ""
+                        canCheck: false
                     });
                 } else {
                     var theDay = new Date(this.year, this.month, j).getTime();
@@ -113,25 +113,39 @@ var vueModel = {
                             text: j,
                             isFull: isFull,
                             isOrdered: isOrdered,
-                            labelClass: "",
+                            canCheck: false,
                             orderedImageUrl: orderedImageUrl
                         });
                     } else if (isFull) {
-                        tmp.push({
-                            tdClass: "full",
-                            text: j,
-                            isFull: true,
-                            isOrdered: isOrdered,
-                            labelClass: isChecked ? "the-label checked" : "",
-                            orderedImageUrl: orderedImageUrl,
-                            fullImageUrl: fullImageUrl
-                        });
+                        if (isChecked) {
+                            tmp.push({
+                                tdClass: "full",
+                                text: j,
+                                isFull: true,
+                                isOrdered: isOrdered,
+                                canCheck: true,
+                                labelClass: "the-label checked",
+                                orderedImageUrl: orderedImageUrl,
+                                fullImageUrl: fullImageUrl
+                            });
+                        } else {
+                            tmp.push({
+                                tdClass: "full",
+                                text: j,
+                                isFull: true,
+                                isOrdered: isOrdered,
+                                canCheck: false,
+                                orderedImageUrl: orderedImageUrl,
+                                fullImageUrl: fullImageUrl
+                            });
+                        }
                     } else {
                         tmp.push({
                             tdClass: "weekday",
                             text: j,
                             isFull: false,
                             isOrdered: isOrdered,
+                            canCheck: true,
                             labelClass: isChecked ? "the-label checked" : "the-label",
                             orderedImageUrl: orderedImageUrl
                         });
@@ -145,7 +159,7 @@ var vueModel = {
                     text: "",
                     isFull: false,
                     isOrdered: false,
-                    labelClass: ""
+                    canCheck: false
                 });
             }
 
