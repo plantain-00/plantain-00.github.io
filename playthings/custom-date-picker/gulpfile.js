@@ -13,13 +13,6 @@ var minifyHTMLConfig = {
     spare: true
 };
 
-gulp.task("template", function () {
-    gulp.src("./templates/calendar.handlebars")
-        .pipe(minifyHTML(minifyHTMLConfig))
-        .pipe(rename('calendar.min.handlebars'))
-        .pipe(gulp.dest("./templates/"));
-});
-
 gulp.task("css", function () {
     gulp.src("./index.css")
         .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
@@ -54,4 +47,4 @@ gulp.task("html", function () {
         .pipe(gulp.dest("./"));
 });
 
-gulp.task('default', ["template", "css", "js", 'html']);
+gulp.task('default', ["css", "js", 'html']);

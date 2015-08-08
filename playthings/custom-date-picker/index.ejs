@@ -32,7 +32,7 @@
     <tr v-repeat="weeks">
         <td v-repeat="days" v-class="tdClass">
             <span v-if="!canCheck">{{text}}</span>
-            <label v-if="canCheck" v-class="labelClass">{{text}}</label>
+            <label v-if="canCheck" v-class="labelClass" v-on="click:check(this);">{{text}}</label>
             <img class="full-image" v-if="isFull" v-attr="src:fullImageUrl">
             <img class="ordered-image" v-if="isOrdered" v-attr="src:orderedImageUrl">
         </td>

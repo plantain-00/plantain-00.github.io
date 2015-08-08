@@ -50,3 +50,6 @@ td {
   left: 20px;
   top: -6px;
 }
+.calendar-head {
+  user-select: none;
+}

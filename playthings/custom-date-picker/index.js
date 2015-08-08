@@ -171,50 +171,39 @@ var vueModel = {
         }
     },
     methods: {
-        showCalendar: function () {
-            $(".the-label > input[type=checkbox]").change(function () {
-                var label = $(this).parent();
+        check: function (item) {
+            var yearMonth = this.getYearMonth;
 
-                var yearMonth = vue.getYearMonth;
+            if (!this.selectedDates[yearMonth]) {
+                this.selectedDates.$add(yearMonth, []);
+            }
 
-                if (!vue.$data.selectedDates[yearMonth]) {
-                    vue.$data.selectedDates[yearMonth] = [];
-                }
-                var selectedDaysOfMonth = vue.$data.selectedDates[yearMonth];
+            var selectedDaysOfMonth = this.selectedDates[yearMonth];
+            var theDay = parseInt(item.$data.text);
 
-                var theDay = parseInt($(this).val());
-                if (this.checked) {
-                    label.addClass("checked");
-                    selectedDaysOfMonth.push(theDay);
-                } else {
-                    label.removeClass("checked");
-                    var index = $.inArray(theDay, selectedDaysOfMonth);
-                    selectedDaysOfMonth.splice(index, 1);
-                }
-                console.log(vue.getSelectedDates);
-            });
+            var index = $.inArray(theDay, selectedDaysOfMonth);
 
-            console.log(vue.getSelectedDates);
+            if (index >= 0) {
+                selectedDaysOfMonth.splice(index, 1);
+            } else {
+                selectedDaysOfMonth.push(theDay);
+            }
+
+            console.log(this.getSelectedDates);
         },
         showPreviousMonth: function () {
             var nextMonth = new Date(this.year, this.month - 1, 1);
             this.year = nextMonth.getFullYear();
             this.month = nextMonth.getMonth();
-
-            this.showCalendar();
         },
         showNextMonth: function () {
             var nextMonth = new Date(this.year, this.month + 1, 1);
             this.year = nextMonth.getFullYear();
             this.month = nextMonth.getMonth();
-
-            this.showCalendar();
         }
     }
 };
 
 $(document).ready(function () {
     vue = new Vue(vueModel);
-
-    vue.showCalendar();
 });
