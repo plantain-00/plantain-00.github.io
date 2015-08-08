@@ -1,8 +1,6 @@
 var fullImageUrl = require("./images/full.png");
 var orderedImageUrl = require("./images/ordered.png");
 
-var vue;
-
 var vueModel = {
     el: "#vue-id",
     data: {
@@ -91,7 +89,7 @@ var vueModel = {
                     tmp = [];
                 }
 
-                if ($.inArray(j, holidaysOfMonth) >= 0) {
+                if (this.findIndexOf(j, holidaysOfMonth) >= 0) {
                     tmp.push({
                         tdClass: "holiday",
                         text: j,
@@ -103,9 +101,9 @@ var vueModel = {
                     var theDay = new Date(this.year, this.month, j).getTime();
 
                     var isOutOfRange = theDay < this.minDay || theDay > this.maxDay;
-                    var isFull = fullDaysOfMonth && fullDaysOfMonth.length > 0 && $.inArray(j, fullDaysOfMonth) > -1;
-                    var isOrdered = orderedDaysOfMonth && orderedDaysOfMonth.length > 0 && $.inArray(j, orderedDaysOfMonth) > -1;
-                    var isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && $.inArray(j, selectedDaysOfMonth) > -1;
+                    var isFull = fullDaysOfMonth && fullDaysOfMonth.length > 0 && this.findIndexOf(j, fullDaysOfMonth) > -1;
+                    var isOrdered = orderedDaysOfMonth && orderedDaysOfMonth.length > 0 && this.findIndexOf(j, orderedDaysOfMonth) > -1;
+                    var isChecked = selectedDaysOfMonth && selectedDaysOfMonth.length > 0 && this.findIndexOf(j, selectedDaysOfMonth) > -1;
 
                     if (isOutOfRange) {
                         tmp.push({
@@ -171,6 +169,15 @@ var vueModel = {
         }
     },
     methods: {
+        findIndexOf: function (a, array) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] == a) {
+                    return i;
+                }
+            }
+
+            return -1;
+        },
         check: function (item) {
             var yearMonth = this.getYearMonth;
 
@@ -181,7 +188,7 @@ var vueModel = {
             var selectedDaysOfMonth = this.selectedDates[yearMonth];
             var theDay = parseInt(item.$data.text);
 
-            var index = $.inArray(theDay, selectedDaysOfMonth);
+            var index = this.findIndexOf(theDay, selectedDaysOfMonth);
 
             if (index >= 0) {
                 selectedDaysOfMonth.splice(index, 1);
@@ -204,6 +211,4 @@ var vueModel = {
     }
 };
 
-$(document).ready(function () {
-    vue = new Vue(vueModel);
-});
+var vue = new Vue(vueModel);
