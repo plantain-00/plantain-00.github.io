@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "react.js",
+        "href": "./playthings/reactjs/index.html"
+      },
+      {
         "name": "css3 flex",
         "href": "./playthings/css3-flex/index.html"
       },
