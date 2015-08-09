@@ -7,6 +7,7 @@ var webpack = require('gulp-webpack');
 var ejs = require("gulp-ejs");
 var rev = require('gulp-rev-hash');
 var minifyHTML = require('gulp-minify-html');
+var react = require('gulp-react');
 
 var minifyHTMLConfig = {
     conditionals: true,
@@ -22,7 +23,8 @@ gulp.task("css", function () {
 });
 
 gulp.task("js", function () {
-    gulp.src('./index.js')
+    gulp.src('./index.jsx')
+        .pipe(react())
         .pipe(webpack({
             module: {
                 loaders: [
