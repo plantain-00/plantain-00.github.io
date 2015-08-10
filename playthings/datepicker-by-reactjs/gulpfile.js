@@ -22,9 +22,15 @@ gulp.task("css", function () {
         .pipe(gulp.dest("./"));
 });
 
-gulp.task("js", function () {
+gulp.task("jsx", function () {
     gulp.src('./index.jsx')
         .pipe(react())
+        .pipe(rename('index.js'))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task("js", function () {
+    gulp.src('./index.js')
         .pipe(webpack({
             module: {
                 loaders: [
@@ -32,15 +38,7 @@ gulp.task("js", function () {
                 ]
             },
             plugins: [
-                new webpack.webpack.DefinePlugin({
-                    'process.env': {
-                        NODE_ENV: '"production"'
-                    }
-                }),
                 new webpack.webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false
-                    },
                     minimize: true
                 })
             ]
@@ -58,4 +56,4 @@ gulp.task("html", function () {
         .pipe(gulp.dest("./"));
 });
 
-gulp.task('default', ["css", "js", 'html']);
+gulp.task('default', ["css", "jsx", 'html']);
