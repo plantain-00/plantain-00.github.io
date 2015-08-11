@@ -4,7 +4,7 @@ React.render(
     React.createElement("div", null, 
         
             names.map(function (name) {
-                return React.createElement("div", null, "Hello, ", name, "!")
+                return React.createElement("div", {style: {color:"red"}, className: "test"}, "Hello, ", name, "!")
             })
         
     ),

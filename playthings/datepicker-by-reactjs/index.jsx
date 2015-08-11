@@ -22,31 +22,51 @@ var DatePicker = React.createClass({
             }
         };
     },
-    handleClick: function (event) {
-        this.setState({liked: !this.state.liked});
+    showPreviousMonth: function () {
+        var nextMonth = new Date(this.state.year, this.state.month - 1, 1);
+        var partialState = {};
+        partialState["year"] = nextMonth.getFullYear();
+        partialState["month"] = nextMonth.getMonth();
+        this.setState(partialState);
+    },
+    showNextMonth: function () {
+        var nextMonth = new Date(this.state.year, this.state.month + 1, 1);
+        var partialState = {};
+        partialState["year"] = nextMonth.getFullYear();
+        partialState["month"] = nextMonth.getMonth();
+        this.setState(partialState);
     },
     render: function () {
+        var canShowPreviousMonth = new Date(this.state.year, this.state.month, 1) > this.state.minDay;
+        var showPreviousMonthHtml = canShowPreviousMonth ? (
+            <th className="switch-view-button" onClick="showPreviousMonth()">&lt;</th>
+        ) : (
+            <th></th>
+        );
+        var canShowNextMonth = new Date(this.state.year, this.state.month + 1, 0) < this.state.maxDay;
+        var showNextMonthHtml = canShowNextMonth ? (
+            <th className="switch-view-button" onClick="showNextMonth()">&gt;</th>
+        ) : (
+            <th></th>
+        );
         return (
-            <table class="calendar">
+            <table className="calendar">
                 <thead>
                 <tr>
-                    <th class="switch-view-button" v-on="click:showPreviousMonth()"
-                        v-if="canShowPreviousMonth">&lt;</th>
-                    <th v-if="!canShowPreviousMonth"></th>
-                    <th colspan="5" class="calendar-head">
+                    {{showPreviousMonthHtml}}
+                    <th colspan="5" className="calendar-head">
                         <span>{this.state.year}</span>年<span>{this.state.month + 1}</span>月
                     </th>
-                    <th class="switch-view-button" v-on="click:showNextMonth()" v-if="canShowNextMonth">&gt;</th>
-                    <th v-if="!canShowNextMonth"></th>
+                    {{showNextMonthHtml}}
                 </tr>
                 <tr>
-                    <th class="calendar-head">日</th>
-                    <th class="calendar-head">一</th>
-                    <th class="calendar-head">二</th>
-                    <th class="calendar-head">三</th>
-                    <th class="calendar-head">四</th>
-                    <th class="calendar-head">五</th>
-                    <th class="calendar-head">六</th>
+                    <th className="calendar-head">日</th>
+                    <th className="calendar-head">一</th>
+                    <th className="calendar-head">二</th>
+                    <th className="calendar-head">三</th>
+                    <th className="calendar-head">四</th>
+                    <th className="calendar-head">五</th>
+                    <th className="calendar-head">六</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,8 +74,8 @@ var DatePicker = React.createClass({
                     <td v-repeat="days" v-class="tdClass">
                         <span v-if="!canCheck">text</span>
                         <label v-if="canCheck" v-class="labelClass" v-on="click:check(this);">text</label>
-                        <img class="full-image" v-if="isFull" v-attr="src:fullImageUrl"/>
-                        <img class="ordered-image" v-if="isOrdered" v-attr="src:orderedImageUrl"/>
+                        <img className="full-image" v-if="isFull" v-attr="src:fullImageUrl"/>
+                        <img className="ordered-image" v-if="isOrdered" v-attr="src:orderedImageUrl"/>
                     </td>
                 </tr>
                 </tbody>

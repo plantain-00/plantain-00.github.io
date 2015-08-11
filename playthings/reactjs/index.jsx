@@ -4,7 +4,7 @@ React.render(
     <div>
         {
             names.map(function (name) {
-                return <div>Hello, {name}!</div>
+                return <div style={{color:"red"}} className="test">Hello, {name}!</div>
             })
         }
     </div>,

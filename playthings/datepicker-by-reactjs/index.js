@@ -22,31 +22,51 @@ var DatePicker = React.createClass({displayName: "DatePicker",
             }
         };
     },
-    handleClick: function (event) {
-        this.setState({liked: !this.state.liked});
+    showPreviousMonth: function () {
+        var nextMonth = new Date(this.state.year, this.state.month - 1, 1);
+        var partialState = {};
+        partialState["year"] = nextMonth.getFullYear();
+        partialState["month"] = nextMonth.getMonth();
+        this.setState(partialState);
+    },
+    showNextMonth: function () {
+        var nextMonth = new Date(this.state.year, this.state.month + 1, 1);
+        var partialState = {};
+        partialState["year"] = nextMonth.getFullYear();
+        partialState["month"] = nextMonth.getMonth();
+        this.setState(partialState);
     },
     render: function () {
+        var canShowPreviousMonth = new Date(this.state.year, this.state.month, 1) > this.state.minDay;
+        var showPreviousMonthHtml = canShowPreviousMonth ? (
+            React.createElement("th", {className: "switch-view-button", onClick: "showPreviousMonth()"}, "<")
+        ) : (
+            React.createElement("th", null)
+        );
+        var canShowNextMonth = new Date(this.state.year, this.state.month + 1, 0) < this.state.maxDay;
+        var showNextMonthHtml = canShowNextMonth ? (
+            React.createElement("th", {className: "switch-view-button", onClick: "showNextMonth()"}, ">")
+        ) : (
+            React.createElement("th", null)
+        );
         return (
-            React.createElement("table", {class: "calendar"}, 
+            React.createElement("table", {className: "calendar"}, 
                 React.createElement("thead", null, 
                 React.createElement("tr", null, 
-                    React.createElement("th", {class: "switch-view-button", "v-on": "click:showPreviousMonth()", 
-                        "v-if": "canShowPreviousMonth"}, "<"), 
-                    React.createElement("th", {"v-if": "!canShowPreviousMonth"}), 
-                    React.createElement("th", {colspan: "5", class: "calendar-head"}, 
-                        React.createElement("span", null, this.state.year + 1), "年", React.createElement("span", null, this.state.month + 1), "月"
+                    {showPreviousMonthHtml}, 
+                    React.createElement("th", {colspan: "5", className: "calendar-head"}, 
+                        React.createElement("span", null, this.state.year), "年", React.createElement("span", null, this.state.month + 1), "月"
                     ), 
-                    React.createElement("th", {class: "switch-view-button", "v-on": "click:showNextMonth()", "v-if": "canShowNextMonth"}, ">"), 
-                    React.createElement("th", {"v-if": "!canShowNextMonth"})
+                    {showNextMonthHtml}
                 ), 
                 React.createElement("tr", null, 
-                    React.createElement("th", {class: "calendar-head"}, "日"), 
-                    React.createElement("th", {class: "calendar-head"}, "一"), 
-                    React.createElement("th", {class: "calendar-head"}, "二"), 
-                    React.createElement("th", {class: "calendar-head"}, "三"), 
-                    React.createElement("th", {class: "calendar-head"}, "四"), 
-                    React.createElement("th", {class: "calendar-head"}, "五"), 
-                    React.createElement("th", {class: "calendar-head"}, "六")
+                    React.createElement("th", {className: "calendar-head"}, "日"), 
+                    React.createElement("th", {className: "calendar-head"}, "一"), 
+                    React.createElement("th", {className: "calendar-head"}, "二"), 
+                    React.createElement("th", {className: "calendar-head"}, "三"), 
+                    React.createElement("th", {className: "calendar-head"}, "四"), 
+                    React.createElement("th", {className: "calendar-head"}, "五"), 
+                    React.createElement("th", {className: "calendar-head"}, "六")
                 )
                 ), 
                 React.createElement("tbody", null, 
@@ -54,8 +74,8 @@ var DatePicker = React.createClass({displayName: "DatePicker",
                     React.createElement("td", {"v-repeat": "days", "v-class": "tdClass"}, 
                         React.createElement("span", {"v-if": "!canCheck"}, "text"), 
                         React.createElement("label", {"v-if": "canCheck", "v-class": "labelClass", "v-on": "click:check(this);"}, "text"), 
-                        React.createElement("img", {class: "full-image", "v-if": "isFull", "v-attr": "src:fullImageUrl"}), 
-                        React.createElement("img", {class: "ordered-image", "v-if": "isOrdered", "v-attr": "src:orderedImageUrl"})
+                        React.createElement("img", {className: "full-image", "v-if": "isFull", "v-attr": "src:fullImageUrl"}), 
+                        React.createElement("img", {className: "ordered-image", "v-if": "isOrdered", "v-attr": "src:orderedImageUrl"})
                     )
                 )
                 )
