@@ -88,6 +88,7 @@ select User,Host,Password from mysql.user;
 
 grant permissions:
 grant select,insert,update,delete,create,drop,alter,create view,show view on database1.* to user1@'%' identified by 'password1';
+flush privileges;
 SHOW GRANTS FOR 'user1'@'%';
 2. backup
 mysqldump -h 127.0.0.1 -u root -p dbname > /opt/filename.sql
