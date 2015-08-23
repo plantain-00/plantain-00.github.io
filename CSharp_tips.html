@@ -10,6 +10,31 @@
 <h2>install mongodb</h2>
 <pre>
 https://www.mongodb.org/downloads
+
+1. add admin user
+mongo
+use admin
+db.createUser(
+  {
+    user: "admin_user",
+    pwd: "admin_password"
+  }
+)
+db.auth('admin_user','admin_password')
+
+2. add a user for a db
+db.createUser(
+    {
+      user: "user",
+      pwd: "password",
+      roles: [
+         { role: "readWrite", db: "db_name" }
+      ]
+    }
+)
+
+3. turn on auth and set ip
+/etc/mongod.conf
 </pre>
 <h2>install redis</h2>
 <pre>
