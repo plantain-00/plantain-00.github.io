@@ -9,8 +9,13 @@
 <body>
 <h2>cron</h2>
 <pre>
+1. config
 /etc/crontab
+2. restart
 service crond restart
+for CentOS 7 +:
+systemctl restart crond.service
+3. status
 service crond status
 </pre>
 <h2>website develop environment</h2>
