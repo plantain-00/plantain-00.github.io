@@ -10,13 +10,14 @@
 <h2>cron</h2>
 <pre>
 1. config
-/etc/crontab
+/var/spool/cron
 2. restart
+for CentOS 5/6:
 service crond restart
-for CentOS 7 +:
+for CentOS 7:
 systemctl restart crond.service
 3. status
-service crond status
+crontab -u root -l
 </pre>
 <h2>website develop environment</h2>
 <pre>
