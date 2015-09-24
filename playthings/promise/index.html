@@ -3,10 +3,10 @@
         document.writeln("task A");
     }).then(function () {
         document.writeln("task B");
+        return Promise.reject(new Error("unexpected error!"));
     }).then(function () {
         document.writeln("task C");
-        return Promise.reject(new Error("unexpected error!"));
-    }).catch(function (error) {
+    }, function (error) {
         document.writeln(error);
     })
 </pre>
@@ -16,10 +16,10 @@
         document.writeln("task A");
     }).then(function () {
         document.writeln("task B");
+        return Promise.reject(new Error("unexpected error!"));
     }).then(function () {
         document.writeln("task C");
-        return Promise.reject(new Error("unexpected error!"));
-    }).catch(function (error) {
+    }, function (error) {
         document.writeln(error);
     })
 </script>
