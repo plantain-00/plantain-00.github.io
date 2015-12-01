@@ -62,6 +62,7 @@ https://www.mongodb.org/downloads
 1. add admin user
 mongo
 use admin
+db.system.users.find()
 db.createUser(
   {
     user: "admin_user",
