@@ -7,6 +7,18 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>SSL</h2>
+<pre>
+1. openssl rsa -in ssl.key -out ssl2.key
+2. nginx
+        listen       80;
+        listen       443 ssl;
+        listen       [::]:80;
+        ssl on;
+        ssl_certificate /opt/ssl.crt;
+        ssl_certificate_key /opt/ssl2.key;
+        server_name wosign.com www.wosign.com;
+</pre>
 <h2>XSS</h2>
 <pre>
 1. http only cookie
