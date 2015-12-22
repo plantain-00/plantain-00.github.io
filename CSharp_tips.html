@@ -7,6 +7,20 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>react with babel</h2>
+<pre>
+for (let file of jsxFiles) {
+    gulp.src(`components/${file}.jsx`)
+        .pipe(babel())
+        .pipe(rename(`${file}.js`))
+        .pipe(gulp.dest("build"));
+}
+
+`.babelrc`
+{
+    "presets": ["es2015", "react"]
+}
+</pre>
 <h2>nginx proxy</h2>
 <pre>
     map $http_upgrade $connection_upgrade {
