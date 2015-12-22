@@ -9,6 +9,7 @@
 <body>
 <h2>react with babel</h2>
 <pre>
+let babel = require("gulp-babel");
 for (let file of jsxFiles) {
     gulp.src(`components/${file}.jsx`)
         .pipe(babel())
