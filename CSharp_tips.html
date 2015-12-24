@@ -178,6 +178,7 @@ for (let file of jsxFiles) {
         }
         location ~*\.html$ {
             root         /opt/frontends/dest/;
+            try_files $uri /index.html;
             access_log off;
         }
         location =/ {
