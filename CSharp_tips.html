@@ -100,7 +100,7 @@ for (let file of jsxFiles) {
         server localhost:9996;
     }
     server {
-        listen       9995 ssl;
+        listen       9995 ssl http2;
         listen       [::]:9995;
         ssl on;
         ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
@@ -116,7 +116,7 @@ for (let file of jsxFiles) {
         server localhost:9999;
     }
     server {
-        listen       443 ssl;
+        listen       443 ssl http2;
         listen       [::]:443;
         ssl on;
         ssl_certificate /opt/1_img.yorkyao.xyz_bundle.crt;
@@ -133,7 +133,7 @@ for (let file of jsxFiles) {
     }
 
     server {
-        listen       443 ssl;
+        listen       443 ssl http2;
         listen       [::]:443;
         ssl on;
         ssl_certificate /opt/1_doc.yorkyao.xyz_bundle.crt;
@@ -161,7 +161,7 @@ for (let file of jsxFiles) {
         '' close;
     }
     server {
-        listen       443 ssl;
+        listen       443 ssl http2;
         listen       [::]:443;
         ssl on;
         ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
