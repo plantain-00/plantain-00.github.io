@@ -14,6 +14,32 @@
 3. wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
 4. pwgen -Bsv1 64
 5. docker-compose up -d
+6. docker-compose.yml
+    - GITLAB_HOST=git.yorkyao.xyz
+    - GITLAB_PORT=443
+    - GITLAB_HTTPS=true
+7. nginx
+    upstream gitlab {
+        server localhost:10080;
+    }
+
+    server {
+        listen       443 ssl http2;
+        ssl on;
+        ssl_certificate /opt/1_git.yorkyao.xyz_bundle.crt;
+        ssl_certificate_key /opt/git_ssl.key;
+        server_name git.yorkyao.xyz;
+
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Frame-Options SAMEORIGIN;
+
+        location / {
+            proxy_pass http://gitlab;
+        }
+    }
 </pre>
 <h2>linux swap</h2>
 <pre>
