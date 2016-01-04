@@ -169,6 +169,19 @@ for (let file of jsxFiles) {
         listen       443 ssl http2;
         listen       [::]:443;
         ssl on;
+        ssl_certificate /opt/1_upload.yorkyao.xyz_bundle.crt;
+        ssl_certificate_key /opt/upload_ssl.key;
+        server_name  upload.yorkyao.xyz;
+
+        location / {
+            proxy_pass http://imageUploader;
+        }
+    }
+
+    server {
+        listen       443 ssl http2;
+        listen       [::]:443;
+        ssl on;
         ssl_certificate /opt/1_img.yorkyao.xyz_bundle.crt;
         ssl_certificate_key /opt/img_ssl.key;
         server_name  img.yorkyao.xyz;
@@ -176,9 +189,6 @@ for (let file of jsxFiles) {
         location ~*\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz)$ {
             root         /opt/backends/images/;
             access_log off;
-        }
-        location / {
-            proxy_pass http://imageUploader;
         }
     }
 
