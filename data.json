@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "js closure",
+        "href": "./playthings/js-closure/index.html"
+      },
+      {
         "name": "js this",
         "href": "./playthings/js-this/index.html"
       },

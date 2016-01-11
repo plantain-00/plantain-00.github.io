@@ -1,0 +1,35 @@
+<pre>
+    <code>
+    var person = (function() {
+        var _name = "wert";
+        return {
+            setName: function(name) {
+                _name = name;
+            },
+            getName: function() {
+                return _name;
+            }
+        };   
+    })();
+    document.writeln(person.getName());
+    person.setName("abc")
+    document.writeln(person.getName());
+    </code>
+</pre>
+<script>
+    var person = (function() {
+        var _name = "wert";
+        return {
+            setName: function(name) {
+                _name = name;
+            },
+            getName: function() {
+                return _name;
+            }
+        };   
+    })();
+    document.writeln(person.getName());
+    person.setName("abc")
+    document.writeln(person.getName());
+
+</script>
