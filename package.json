@@ -1,25 +1,38 @@
 {
   "name": "my-blogs",
   "version": "0.0.1",
-  "repository": "https://github.com/plantain-00/plantain-00.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plantain-00/plantain-00.github.io.git"
+  },
   "description": "my blogs",
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
+    "autoprefixer-core": "^6.0.1",
     "css-loader": "^0.12.1",
-    "gulp": "^3.8.11",
-    "gulp-ejs": "^1.1.0",
-    "gulp-minify-css": "^1.2.0",
-    "gulp-minify-html": "^1.0.3",
-    "gulp-postcss": "^5.1.9",
+    "gulp": "^3.9.0",
+    "gulp-ejs": "^1.2.2",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-minify-html": "^1.0.5",
+    "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev-hash": "0.0.2",
     "gulp-run-sequence": "^0.3.2",
     "gulp-sequence": "^0.3.2",
-    "gulp-webpack": "^1.4.0",
-    "handlebars": "^3.0.3",
-    "handlebars-loader": "^1.0.2",
-    "json-loader": "^0.5.2",
+    "gulp-webpack": "^1.5.0",
+    "handlebars": "^4.0.5",
+    "handlebars-loader": "^1.1.4",
+    "json-loader": "^0.5.4",
     "style-loader": "^0.12.2",
     "url-loader": "^0.5.5"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/plantain-00/plantain-00.github.io/issues"
+  },
+  "homepage": "https://github.com/plantain-00/plantain-00.github.io#readme",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yao",
+  "license": "ISC"
 }

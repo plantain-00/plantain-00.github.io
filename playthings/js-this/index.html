@@ -1,0 +1,115 @@
+<pre>
+    <code>
+    document.writeln(this === window);
+
+    function f1(){
+        return this;
+    }
+    document.writeln(f1() === window);
+
+    function f2(){
+        "use strict";
+        return this;
+    }
+    document.writeln(f2() === undefined);
+
+    var a = {
+        c: "abc"
+    };
+    var f3 = f1.bind(a);
+    var f4 = f2.bind(a);
+    document.writeln(f3() === a);
+    document.writeln(f4() === a);
+    </code>
+</pre>
+<script>
+    document.writeln(this === window);
+
+    function f1(){
+        return this;
+    }
+    document.writeln(f1() === window);
+
+    function f2(){
+        "use strict";
+        return this;
+    }
+    document.writeln(f2() === undefined);
+
+    var a = {
+        c: "abc"
+    };
+    var f3 = f1.bind(a);
+    var f4 = f2.bind(a);
+    document.writeln(f3() === a);
+    document.writeln(f4() === a);
+
+</script>
+
+<pre>
+    <code>
+    var a = {
+        c: function () {
+            return this;
+        },
+    };
+    document.writeln(a.c() === a);
+
+    var d = Object.create(a);
+    document.writeln(d.c() === d);
+    </code>
+</pre>
+<script>
+    var a = {
+        c: function () {
+            return this;
+        },
+    };
+    document.writeln(a.c() === a);
+
+    var d = Object.create(a);
+    document.writeln(d.c() === d);
+
+</script>
+
+<pre>
+    <code>
+    function A() {
+        this.b = 123;
+    }
+    var a = new A();
+    document.writeln(a.b === 123);
+    </code>
+</pre>
+<script>
+    function A() {
+        this.b = 123;
+    }
+    var a = new A();
+    document.writeln(a.b === 123);
+
+</script>
+
+<pre>
+    <code>
+    function f(b){
+        return this;
+    }
+    var a = {
+        c: "abc"
+    };
+    document.writeln(f.call(a, 123) === a);
+    document.writeln(f.apply(a, [123]) === a);
+    </code>
+</pre>
+<script>
+    function f(b){
+        return this;
+    }
+    var a = {
+        c: "abc"
+    };
+    document.writeln(f.call(a, 123) === a);
+    document.writeln(f.apply(a, [123]) === a);
+
+</script>

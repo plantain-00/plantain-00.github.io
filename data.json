@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "js this",
+        "href": "./playthings/js-this/index.html"
+      },
+      {
         "name": "react.js",
         "href": "./playthings/reactjs/index.html"
       },
