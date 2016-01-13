@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "js generator",
+        "href": "./playthings/js-generator/index.html"
+      },
+      {
         "name": "strategies",
         "href": "./playthings/strategies/index.html"
       },

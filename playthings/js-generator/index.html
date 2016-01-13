@@ -1,0 +1,37 @@
+<pre>
+    <code>
+    function* generator1(i){
+        yield i + 1;
+        yield i + 2;
+    }
+    function* generator2(i){
+        yield i;
+        yield* generator1(i)
+        yield i + 3;
+    }
+    var gen = generator2(10);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    </code>
+</pre>
+<script>
+    function* generator1(i){
+        yield i + 1;
+        yield i + 2;
+    }
+    function* generator2(i){
+        yield i;
+        yield* generator1(i)
+        yield i + 3;
+    }
+    var gen = generator2(10);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+    document.writeln(gen.next().value);
+
+</script>
