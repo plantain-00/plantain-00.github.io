@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>文本跨设备转移根据</title>
+</head>
+
+<body>
+    <textarea id="content" type="text" style="width: 600px;height: 100px;" placeholder="输入待复制的文本（支持中文）后点击按钮，再用手机扫描获得文本"></textarea>
+    <button onclick="generate()">generate</button>
+    <div id="qrcode"></div>
+    <script type="text/javascript" src="qrcode.min.js"></script>
+    <script type="text/javascript">
+        var qrcode = document.getElementById("qrcode");
+    var content = document.getElementById("content");
+    function generate(){
+        qrcode.innerHTML = "";
+        new QRCode(qrcode, content.value);
+    }
+    </script>
+</body>
+
+</html>

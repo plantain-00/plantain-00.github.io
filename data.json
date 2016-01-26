@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "qrcode",
+        "href": "./playthings/qrcode/index.html"
+      },
+      {
         "name": "js generator",
         "href": "./playthings/js-generator/index.html"
       },
