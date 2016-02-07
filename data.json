@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "barrage",
+        "href": "./playthings/barrage/index.html"
+      },
+      {
         "name": "qrcode",
         "href": "./playthings/qrcode/index.html"
       },
