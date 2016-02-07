@@ -352,6 +352,10 @@
         "name": "others",
         "content": [
           {
+            "name": "drag and drop",
+            "href": "./demos/drag and drop/index.html"
+          },
+          {
             "name": "bootstrap demo",
             "href": "./demos/bootstrap/index.html"
           },

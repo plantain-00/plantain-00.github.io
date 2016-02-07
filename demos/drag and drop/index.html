@@ -1,0 +1,24 @@
+<link href="https://cdn.bootcss.com/dragula/3.6.3/dragula.min.css" rel="stylesheet">
+<style>
+    .container {
+        width: 400px;
+        height: 200px;
+        border: 1px solid black;
+        display: table-cell;
+    }
+</style>
+<div id="left" class="container">
+    <div>a</div>
+    <div>b</div>
+</div>
+<div id="right" class="container">
+    <div>c</div>
+    <div>d</div>
+</div>
+<script src="https://cdn.bootcss.com/dragula/3.6.3/dragula.min.js"></script>
+<script>
+    dragula([document.querySelector('#left'), document.querySelector('#right')]);
+
+</script>
+
+<a target="_blank" href="https://github.com/bevacqua/dragula">More</a>
