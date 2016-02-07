@@ -15,13 +15,13 @@ var minifyHTMLConfig = {
 
 gulp.task("css", function () {
     gulp.src("./css/normalize.css")
-        .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
+        .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
         .pipe(minifyCSS())
         .pipe(rename('normalize.min.css'))
         .pipe(gulp.dest("./css/"));
 
     gulp.src("./css/index.css")
-        .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
+        .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
         .pipe(minifyCSS())
         .pipe(rename('index.min.css'))
         .pipe(gulp.dest("./css/"));
@@ -32,14 +32,14 @@ gulp.task("js", function () {
         .pipe(webpack({
             module: {
                 loaders: [
-                    {test: /\.handlebars$/, loader: "handlebars-loader"},
-                    {test: /\.(png|jpg)$/, loader: 'url-loader'},
-                    {test: /\.css$/, loader: 'style-loader!css-loader'},
-                    {test: /\.json$/, loader: 'json-loader'}
+                    { test: /\.handlebars$/, loader: "handlebars-loader" },
+                    { test: /\.(png|jpg)$/, loader: 'url-loader' },
+                    { test: /\.css$/, loader: 'style-loader!css-loader' },
+                    { test: /\.json$/, loader: 'json-loader' }
                 ]
             },
             plugins: [
-                new webpack.webpack.optimize.UglifyJsPlugin({minimize: true})
+                new webpack.webpack.optimize.UglifyJsPlugin({ minimize: true })
             ]
         }))
         .pipe(rename('index.min.js'))
@@ -53,7 +53,7 @@ gulp.task("template", function () {
         .pipe(gulp.dest("./templates/"));
 });
 
-gulp.task("html", function () {
+gulp.task("html", ["js"], function () {
     gulp.src("./index.ejs")
         .pipe(ejs({}))
         .pipe(rev())
