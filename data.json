@@ -352,8 +352,8 @@
         "name": "others",
         "content": [
           {
-            "name": "drag and drop",
-            "href": "./demos/drag and drop/index.html"
+            "name": "drag and drop: dragula",
+            "href": "./demos/dragula/index.html"
           },
           {
             "name": "bootstrap demo",
