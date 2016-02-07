@@ -352,6 +352,10 @@
         "name": "others",
         "content": [
           {
+            "name": "hint",
+            "href": "./demos/hint/index.html"
+          },
+          {
             "name": "drag and drop: dragula",
             "href": "./demos/dragula/index.html"
           },
