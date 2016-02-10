@@ -1,5 +1,5 @@
-[![Dependency Status](https://david-dm.org/plantain-00/news-fetcher-client.svg)](https://david-dm.org/plantain-00/news-fetcher-client)
-[![devDependency Status](https://david-dm.org/plantain-00/news-fetcher-client/dev-status.svg)](https://david-dm.org/plantain-00/news-fetcher-client#info=devDependencies)
+[![Dependency Status](https://david-dm.org/plantain-00/plantain-00.github.io.svg)](https://david-dm.org/plantain-00/plantain-00.github.io)
+[![devDependency Status](https://david-dm.org/plantain-00/plantain-00.github.io/dev-status.svg)](https://david-dm.org/plantain-00/plantain-00.github.io#info=devDependencies)
 
 # plantain-00.github.io
 my blogs
