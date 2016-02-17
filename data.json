@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "resume",
+        "href": "./playthings/resume/index.html"
+      },
+      {
         "name": "barrage",
         "href": "./playthings/barrage/index.html"
       },
