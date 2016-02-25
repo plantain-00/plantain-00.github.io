@@ -356,6 +356,10 @@
         "name": "others",
         "content": [
           {
+            "name": "iscroll.js",
+            "href": "./demos/iscroll.js/index.html"
+          },
+          {
             "name": "hint",
             "href": "./demos/hint/index.html"
           },
