@@ -356,6 +356,18 @@
         "name": "others",
         "content": [
           {
+            "name": "hammer",
+            "href": "./demos/hammer/index.html"
+          },
+          {
+            "name": "masonry",
+            "href": "./demos/masonry/index.html"
+          },
+          {
+            "name": "lazysizes",
+            "href": "./demos/lazysizes/index.html"
+          },
+          {
             "name": "iscroll.js",
             "href": "./demos/iscroll.js/index.html"
           },

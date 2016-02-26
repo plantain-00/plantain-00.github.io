@@ -1,0 +1,19 @@
+<script src="https://cdn.bootcss.com/masonry/4.0.0/masonry.pkgd.min.js"></script>
+<style>
+    .grid-item {
+        width: 200px;
+        border: 1px solid black;
+        margin: 5px;
+    }
+</style>
+<div class="grid">
+    <div class="grid-item" style="height:150px">A</div>
+    <div class="grid-item" style="height:150px">B</div>
+    <div class="grid-item" style="height:150px">C</div>
+</div>
+<script>
+    var msnry = new Masonry( '.grid', {
+        itemSelector: '.grid-item'
+    });
+
+</script>

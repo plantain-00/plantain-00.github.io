@@ -1,0 +1,42 @@
+<script src="https://cdn.bootcss.com/hammer.js/2.0.6/hammer.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/1.0.16/vue.min.js"></script>
+<style>
+    #stage {
+        background-color: gray;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        cursor: move;
+        position: fixed;
+    }
+</style>
+<div id="stage" :style="position">Move this</div>
+<script>
+    var lastPosition = {
+        left: 10,
+        top: 10
+    }
+    var vue = new Vue({
+        el: "#stage",
+        data: {
+            position: {
+                left: lastPosition.left,
+                top: lastPosition.top
+            }
+        }
+    });
+
+    var stage = document.getElementById('stage');
+    var mc = new Hammer.Manager(stage);
+    var Pan = new Hammer.Pan();
+    mc.add(Pan);
+    mc.on("panmove", function(e) {
+        vue.position.left = lastPosition.left + e.deltaX;
+        vue.position.top = lastPosition.top + e.deltaY;
+    });
+    mc.on("panend", function(e) {
+        lastPosition.left = vue.position.left;
+        lastPosition.top = vue.position.top;
+    });
+
+</script>
