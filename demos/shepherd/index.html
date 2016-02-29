@@ -1,0 +1,33 @@
+<button class="class_1">1</button>
+<br/>
+<button class="class_2">2</button>
+<link href="https://cdn.bootcss.com/tether/1.2.0/css/tether.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/shepherd/1.7.0/css/shepherd-theme-default.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/shepherd/1.7.0/css/shepherd-theme-arrows.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/tether/1.2.0/js/tether.min.js"></script>
+<script src="https://cdn.bootcss.com/shepherd/1.7.0/js/shepherd.min.js"></script>
+<script>
+    var tour = new Shepherd.Tour({
+        defaults: {
+            classes: 'shepherd-theme-arrows'
+        }
+    });
+
+    tour.addStep('step 1', {
+        title: 'Example 1',
+        text: 'description 1',
+        attachTo: '.class_1 bottom',
+        buttons: [{
+            text: 'Next',
+            action: tour.next
+        }]
+    });
+    tour.addStep('step 2', {
+        title: 'Example 2',
+        text: 'description 1',
+        attachTo: '.class_2 bottom'
+    });
+
+    tour.start();
+
+</script>

@@ -356,6 +356,10 @@
         "name": "others",
         "content": [
           {
+            "name": "shepherd",
+            "href": "./demos/shepherd/index.html"
+          },
+          {
             "name": "hammer",
             "href": "./demos/hammer/index.html"
           },
