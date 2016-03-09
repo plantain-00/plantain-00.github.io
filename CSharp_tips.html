@@ -363,6 +363,19 @@ service crond status
 10. backup
 11. setting
 </pre>
+<h2>install mysql</h2>
+<pre>
+1. install
+sudo apt-get install mysql-server
+sudo apt-get install mysql-client
+sudo apt-get install libmysqlclient-dev
+
+2. check whether is mysql installed successfully
+sudo netstat -tap | grep mysql
+
+3. can access mysql from outside of the server
+remove `bind-address = 127.0.0.1` from `/etc/mysql/my.conf`
+</pre>
 <h2>install mongodb</h2>
 <pre>
 https://www.mongodb.org/downloads
