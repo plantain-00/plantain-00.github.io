@@ -7,6 +7,54 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>check limit of server</h2>
+<pre>
+1. /etc/sysctl.conf
+cat /proc/sys/fs/file-nr
+net.ipv4.tcp_wmem = 4096 87380 4161536
+net.ipv4.tcp_rmem = 4096 87380 4161536
+net.ipv4.tcp_mem = 786432 2097152 3145728
+fs.file-max = 1000000
+fs.nr_open = 1000000
+net.netfilter.nf_conntrack_max = 1048576
+net.nf_conntrack_max = 1048576
+sudo /sbin/sysctl -p
+
+2. /etc/security/limits.conf
+cat /proc/29875/limits
+*         hard    nofile      1000000
+*         soft    nofile      1000000
+root      hard    nofile      1000000
+root      soft    nofile      1000000
+
+3. node
+pm2 start app.js --node-args="--nouse-idle-notification --expose-gc --max-old-space-size=8192 --max-new-space-size=2048"
+
+4. profile
+npm install v8-profiler --save
+
+const profiler = require('v8-profiler')
+const fs = require('fs')
+var profilerRunning = false
+function toggleProfiling () {
+ if (profilerRunning) {
+ const profile = profiler.stopProfiling()
+ console.log('stopped profiling')
+profile.export()
+.pipe(fs.createWriteStream('./myapp-'+Date.now()+'.cpuprofile'))
+ .once('error', profiler.deleteAllProfiles)
+ .once('finish', profiler.deleteAllProfiles)
+ profilerRunning = false
+return
+}
+profiler.startProfiling()
+ profilerRunning = true
+ console.log('started profiling')
+}
+process.on('SIGUSR2', toggleProfiling)
+
+`kill -SIGUSR2 [pid]` to start or stop profiling.
+</pre>
 <h2>install OS from USB</h2>
 <pre>
 1. open .iso file with UltraISO
