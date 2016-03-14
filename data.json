@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "video hover",
+        "href": "./playthings/video hover/index.html"
+      },
+      {
         "name": "resume",
         "href": "./playthings/resume/index.html"
       },
@@ -470,10 +474,6 @@
       {
         "name": "javascript tips",
         "href": "./javascript_tips.html"
-      },
-      {
-        "name": "my technical preferences",
-        "href": "./my_technical_preferences.html"
       }
     ]
   },
