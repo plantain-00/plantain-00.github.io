@@ -7,6 +7,30 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>install svn server at ubuntu server</h2>
+<pre>
+sudo apt-get install subversion
+sudo svnadmin create /home/svn/demo
+sudo chmod -R o+rw /home/svn
+/home/svn/demo/conf/authz
+```
+[/]
+admin = user1
+@admin =rw
+* =
+```
+/home/svn/demo/conf/passwd
+```
+user1 = password1
+```
+/home/svn/demo/conf/svnserve.conf
+```
+anon-access = none
+auth-access = write
+password-db = passwd
+```
+svnserve -d -r /home/svn
+</pre>
 <h2>set network</h2>
 <pre>
 sudo vim /etc/network/interfaces
