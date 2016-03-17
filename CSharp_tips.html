@@ -7,6 +7,19 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>ssh keys</h2>
+<pre>
+1. client
+ssh-keygen -t rsa
+ssh-agent bash
+ssh-add ~/.ssh/id_rsa
+2. server
+/etc/ssh/sshd_config
+chmod 700 .ssh
+cd .ssh
+cat id_rsa.pub >> authorized_keys
+chmod 600 authorized_keys
+</pre>
 <h2>install svn server at ubuntu server</h2>
 <pre>
 sudo apt-get install subversion
