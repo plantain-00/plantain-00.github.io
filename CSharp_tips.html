@@ -7,10 +7,62 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>ws pressure test</h2>
+<pre>
+1. server
+import * as WebSocket  from "ws";
+
+const WebSocketServer = WebSocket.Server;
+const port = 8080;
+const wss = new WebSocketServer({
+    port: port
+});
+
+setInterval(() => {
+    console.log(wss.clients.length);
+}, 10 * 1000);
+console.log(`started at ${port}`);
+
+2. client
+import * as WebSocket  from "ws";
+
+let connectionCount = 0;
+let errorCount = 0;
+let lastError;
+let totalCount = 0;
+const interval = 10 * 1000;
+const frequency = 1000;
+
+setInterval(() => {
+    for (let i = 0; i < frequency; i++) {
+        setTimeout(() => {
+            const ws = new WebSocket("ws://localhost:8080/");
+            ws.on("open", () => {
+                connectionCount++;
+            });
+            ws.on("close", () => {
+                connectionCount--;
+            });
+            ws.on("error", error => {
+                errorCount++;
+                lastError = error;
+            });
+            totalCount++;
+        }, Math.random() * interval);
+    }
+    console.log(`${connectionCount}/${totalCount}  ${errorCount} errors`);
+    if (lastError) {
+        console.log(lastError);
+        lastError = undefined;
+    }
+}, interval);
+</pre>
 <h2>homebrew install specific version</h2>
 <pre>
 brew search xyz
 brew install xyz
+brew unlink xyz
+brew link xyz2 --force
 </pre>
 <h2>ssh keys</h2>
 <pre>
