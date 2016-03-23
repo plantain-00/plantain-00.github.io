@@ -9,7 +9,6 @@
 <body>
 <h2>protobuf with protobufjs</h2>
 <pre>
-<code>
 import * as ProtoBuf from "protobufjs";
 const protoBuilder = libs.ProtoBuf.loadProtoFile("./man.proto");
 const ManBuilder = protoBuilder.build("Man") as any;
@@ -27,7 +26,6 @@ export function encode(man: Man): Buffer {
 export function decode(buffer: Buffer): Man {
     return ManBuilder.decode(buffer);
 }
-</code>
 </pre>
 <h2>ws pressure test</h2>
 <pre>
