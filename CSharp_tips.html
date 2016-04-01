@@ -169,27 +169,33 @@ pm2 start app.js --node-args="--nouse-idle-notification --expose-gc --max-old-sp
 4. profile
 npm install v8-profiler --save
 
-const profiler = require('v8-profiler')
-const fs = require('fs')
-var profilerRunning = false
-function toggleProfiling () {
- if (profilerRunning) {
- const profile = profiler.stopProfiling()
- console.log('stopped profiling')
-profile.export()
-.pipe(fs.createWriteStream('./myapp-'+Date.now()+'.cpuprofile'))
- .once('error', profiler.deleteAllProfiles)
- .once('finish', profiler.deleteAllProfiles)
- profilerRunning = false
-return
-}
-profiler.startProfiling()
- profilerRunning = true
- console.log('started profiling')
-}
-process.on('SIGUSR2', toggleProfiling)
+export const profiler = require("v8-profiler");
+export const fs = require("fs");
 
-`kill -SIGUSR2 [pid]` to start or stop profiling.
+let profilerRunning = false;
+
+export function toggleProfile() {
+    if (profilerRunning) {
+        const profile = libs.profiler.stopProfiling();
+        console.log("stopped profiling");
+        profile.export()
+            .pipe(libs.fs.createWriteStream(`${Date.now()}.cpuprofile`))
+            .once("error", libs.profiler.deleteAllProfiles)
+            .once("finish", libs.profiler.deleteAllProfiles);
+        profilerRunning = false;
+    } else {
+        libs.profiler.startProfiling();
+        profilerRunning = true;
+        console.log("started profiling");
+    }
+}
+
+export function takeSnapshot() {
+    const snapshot = libs.profiler.takeSnapshot();
+    snapshot.export()
+        .pipe(libs.fs.createWriteStream(`${Date.now()}.heapsnapshot`))
+        .on("finish", snapshot.delete);
+}
 </pre>
 <h2>install OS from USB</h2>
 <pre>
