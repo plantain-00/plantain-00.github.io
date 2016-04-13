@@ -7,6 +7,20 @@
     <title>C# tips</title>
 </head>
 <body>
+<h2>aes</h2>
+<pre>
+const mode = "aes-128-ecb";
+
+export function decrypt(token: string): string {
+    const decipher = libs.crypto.createDecipher(mode, key);
+    return decipher.update(token, "hex", "utf8") + decipher.final("utf8");
+}
+
+function encrypt(text: string): string {
+    const cipher = libs.crypto.createCipher(mode, key);
+    return cipher.update(text, "utf8", "hex") + cipher.final("hex");
+}
+</pre>
 <h2>git rebase</h2>
 <pre>
 git reset
