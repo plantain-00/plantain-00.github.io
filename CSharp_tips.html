@@ -366,10 +366,6 @@ python -m SimpleHTTPServer
 move to `golang.org/x/net` and `golang.org/x/tools`
 `go run xyz.go`
 </pre>
-<h2>reload bashrc</h2>
-<pre>
-source ~/.bashrc
-</pre>
 <h2>disable support for export cipher suites and use a 2048-bit Diffie-Hellman group</h2>
 <pre>
 1. openssl dhparam -out dhparams.pem 2048
@@ -422,11 +418,6 @@ swapon  /swapfile1
 vi    /etc/fstab
 /swapfile1 swap swap defaults 0 0
 free -m
-</pre>
-<h2>bash</h2>
-<pre>
-export ANDROID_HOME=/usr/local/opt/android-sdk
-source ~/.bashrc
 </pre>
 <h2>git submodule</h2>
 <pre>
@@ -664,8 +655,6 @@ http://nginx.org/en/docs/install.html
 /etc/nginx
 /usr/local/nginx/
 /usr/local/etc/nginx/
-3. reload
-nginx -s reload
 </pre>
 <h2>cookie may be invalid in localhost</h2>
 <h2>port</h2>
@@ -777,23 +766,6 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 <pre>
 ps aux | grep node
 </pre>
-<h2>nodejs auto deploy</h2>
-<pre>
-git clone XXX .
-npm install --global gulp
-
-cd XXX
-git pull
-gulp XXX
-rsync -a XXX XXX
-FOREVER_ROOT=XXX forever restart -l XXX.log XXX.js
-</pre>
-<h2>npm</h2>
-<pre>
-npm --registry https://registry.npm.taobao.org install socket.io
-npm install -g n
-n stable
-</pre>
 <h2>git</h2>
 <pre>
 git add -A
@@ -809,17 +781,10 @@ git config --system core.longpaths true
 </pre>
 <h2>centos</h2>
 <pre>
-1. query memory
-free -m
 2. ssh
 ssh -p 22 root@1.1.1.1
 3. dns
 /etc/resolv.conf
-5. disk free in MB
-df -m
-6. query cpu status
-top
-q
 7. query cpu
 cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c 
 8. query network
