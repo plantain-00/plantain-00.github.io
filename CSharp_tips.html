@@ -136,6 +136,28 @@
 		</td>
 	</tr>
 </table>
+<h2>alipay and wspay sign</h2>
+<pre>
+function alipaySign(parameters: {}) {
+    const querystring = Object.keys(parameters)
+        .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["sign_type", "sign"].indexOf(key) < 0)
+        .sort()
+        .map(key => key + "=" + parameters[key])
+        .join("&");
+
+    return libs.md5(querystring + alipayMD5Key);
+}
+
+function wspay(parameters: {}) {
+    const querystring = Object.keys(parameters)
+        .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["pfx", "partner_key", "sign", "key"].indexOf(key) < 0)
+        .sort()
+        .map(key => key + "=" + parameters[key])
+        .join("&") + "&key=" + wspayKey;
+
+    return libs.md5(querystring).toUpperCase();
+}
+</pre>
 <h2>git clone a branch</h2>
 <pre>
 git clone -b <branch> <remote_repo> .
