@@ -136,6 +136,17 @@
 		</td>
 	</tr>
 </table>
+<h2>fail2ban</h2>
+<pre>
+1. CentOS 7
+yum install fail2ban -y
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+banaction=firewallcmd-new
+[sshd]
+enabled=true
+systemctl enable fail2ban
+systemctl start fail2ban
+</pre>
 <h2>alipay and wspay sign</h2>
 <pre>
 function alipaySign(parameters: {}) {
