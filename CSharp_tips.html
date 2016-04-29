@@ -138,14 +138,21 @@
 </table>
 <h2>fail2ban</h2>
 <pre>
-1. CentOS 7
+1. CentOS
 yum install fail2ban -y
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-banaction=firewallcmd-new
+
+vim /etc/fail2ban/jail.local
 [sshd]
 enabled=true
+
+CentOS 6:
+service fail2ban restart
+chkconfig fail2ban on
+
+CentOS 7:
+systemctl restart fail2ban.service
 systemctl enable fail2ban
-systemctl start fail2ban
 </pre>
 <h2>alipay and wspay sign</h2>
 <pre>
