@@ -136,6 +136,19 @@
 		</td>
 	</tr>
 </table>
+<h2>nginx basic auth</h2>
+<pre>
+openssl passwd -crypt 123456
+echo 'admin:72guL7V0/tKMo' > auth_file
+server {
+	listen       8001;
+	location / {
+                auth_basic "need login";
+		auth_basic_user_file auth_file;
+		proxy_pass http://test;
+	}
+}
+</pre>
 <h2>pm2 logs</h2>
 <pre>
 pm2 install pm2-logrotate
