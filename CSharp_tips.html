@@ -136,6 +136,10 @@
 		</td>
 	</tr>
 </table>
+<h2>delete redis keys that matches a pattern</h2>
+<pre>
+redis-cli --raw KEYS "pattern" | xargs redis-cli --raw DEL
+</pre>
 <h2>java environment variables</h2>
 <pre>
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64
