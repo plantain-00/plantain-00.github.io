@@ -136,7 +136,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>ws-tool</td>
+		<td>monitor-a-list-from-redis</td>
 		<td>
 			<a href="https://david-dm.org/plantain-00/monitor-a-list-from-redis">
 				<img src="https://david-dm.org/plantain-00/monitor-a-list-from-redis.svg" alt="Dependency Status" style="max-width:100%;">
@@ -150,6 +150,10 @@
 		</td>
 	</tr>
 </table>
+<h2>check logs</h2>
+<pre>
+tail -n -20 -f a.log
+</pre>
 <h2>delete redis keys that matches a pattern</h2>
 <pre>
 redis-cli --raw KEYS "pattern" | xargs redis-cli --raw DEL
@@ -389,6 +393,11 @@ service network restart
 <h2>set a cpu core for a process</h2>
 <pre>
 taskset -pc 7 1622
+</pre>
+<h2>check a cpu core for a process</h2>
+<pre>
+taskset -pc 1622
+ps -o pid,psr,comm -1622
 </pre>
 <h2>check limit of server</h2>
 <pre>
