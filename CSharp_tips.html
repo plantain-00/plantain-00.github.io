@@ -150,6 +150,16 @@
 		</td>
 	</tr>
 </table>
+<h2>xcopy</h2>
+<pre>
+{
+  "scripts": {
+    "sync-recursion": "xcopy /s /Y .\\foo\\*.js ..\\deploy\\foo\\",
+    "sync-no-recursion": "xcopy /Y .\\bar\\*.js ..\\deploy\\bar\\",
+    "sync": "npm run sync-recursion && npm run sync-no-recursion"
+  }
+}
+</pre>
 <h2>check system information</h2>
 <pre>
 uname -a
