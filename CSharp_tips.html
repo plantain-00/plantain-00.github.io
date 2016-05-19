@@ -150,6 +150,25 @@
 		</td>
 	</tr>
 </table>
+<h2>logstash config</h2>
+<pre>
+./bin/logstash agent -f logstash.conf
+
+input {
+    file {
+        path => ["/opt/logs/*.log"]
+    }
+}
+output {
+    elasticsearch {
+        hosts => ["localhost:9200"]
+    }
+}
+</pre>
+<h2>tar</h2>
+<pre>
+tar -zxvf a.tar.gz
+</pre>
 <h2>locate a program file</h2>
 <pre>
 which nginx
