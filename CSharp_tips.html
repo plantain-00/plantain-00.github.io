@@ -150,6 +150,10 @@
 		</td>
 	</tr>
 </table>
+<h2>revert to last commit</h2>
+<pre>
+git reset --hard HEAD^
+</pre>
 <h2>logstash config</h2>
 <pre>
 ./bin/logstash agent -f logstash.conf
@@ -815,11 +819,18 @@ for CentOS 5/6:
 service crond restart
 for CentOS 7:
 systemctl restart crond.service
+for Ubuntu:
+sudo /etc/init.d/cron restart
 3. status
 crontab -u root -l
 service crond status
 4. log
 /var/log/cron
+/var/log/cron.log
+5. enable log
+for Ubuntu:
+sudo vim /etc/rsyslog.d/50-default.conf
+sudo  service rsyslog  restart
 </pre>
 <h2>website develop environment</h2>
 <pre>
