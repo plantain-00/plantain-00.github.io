@@ -150,6 +150,26 @@
 		</td>
 	</tr>
 </table>
+<h2>port 843 tcp service for flash</h2>
+<pre>
+const xml = '<cross-domain-policy><allow-access-from domain="*" to-ports="*" /></cross-domain-policy>';
+const net = require("net");
+
+net.createServer(client => {
+    client.setTimeout(1500, function () {
+        client.destroy();
+    });
+    client.on("data", data => {
+        if (data.toString() === "<policy-file-request/>\0") {
+            client.end(xml);
+        } else {
+            client.destroy();
+        }
+    });
+}).listen(843, () => {
+    console.log("policy service running...");
+});
+</pre>
 <h2>download electron.js too slow</h2>
 <pre>
 export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
