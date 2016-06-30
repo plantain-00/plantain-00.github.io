@@ -150,6 +150,12 @@
 		</td>
 	</tr>
 </table>
+<h2>jsonp</h2>
+<pre>
+if (callback) {
+    response.status(200).send(`${callback}(${JSON.stringify(json)})`);
+}
+</pre>
 <h2>nginx cors</h2>
 <pre>
 location / {
