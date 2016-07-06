@@ -150,6 +150,15 @@
 		</td>
 	</tr>
 </table>
+<h2>test valid name of callback in jsonp</h2>
+<pre>
+const callbackName = new RegExp("^[0-9a-zA-Z_.]+$");
+callbackName.test("name")
+</pre>
+<h2>change editor for linux</h2>
+<pre>
+sudo select-editor
+</pre>
 <h2>jsonp</h2>
 <pre>
 if (callback) {
@@ -310,7 +319,7 @@ systemctl enable fail2ban
 </pre>
 <h2>alipay and wspay sign</h2>
 <pre>
-function alipaySign(parameters: {}) {
+function alipaySign(parameters: any) {
     const querystring = Object.keys(parameters)
         .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["sign_type", "sign"].indexOf(key) < 0)
         .sort()
@@ -320,7 +329,7 @@ function alipaySign(parameters: {}) {
     return libs.md5(querystring + alipayMD5Key);
 }
 
-function wspay(parameters: {}) {
+function wspay(parameters: any) {
     const querystring = Object.keys(parameters)
         .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["pfx", "partner_key", "sign", "key"].indexOf(key) < 0)
         .sort()
@@ -498,17 +507,18 @@ ps -o pid,psr,comm -1622
 <pre>
 1. /etc/sysctl.conf
 cat /proc/sys/fs/file-nr
+
 net.ipv4.tcp_wmem = 4096 87380 4161536
 net.ipv4.tcp_rmem = 4096 87380 4161536
 net.ipv4.tcp_mem = 786432 2097152 3145728
 fs.file-max = 1000000
 fs.nr_open = 1000000
-net.netfilter.nf_conntrack_max = 1048576
-net.nf_conntrack_max = 1048576
+
 sudo /sbin/sysctl -p
 
 2. /etc/security/limits.conf
 cat /proc/29875/limits
+
 *         hard    nofile      1000000
 *         soft    nofile      1000000
 root      hard    nofile      1000000
