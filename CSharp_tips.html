@@ -150,14 +150,13 @@
 		</td>
 	</tr>
 </table>
+<h2>soft link</h2>
+<pre>
+ln -s source dist
+</pre>
 <h2>change typescript sdk in vscode</h2>
 <pre>
 "typescript.tsdk": "node_modules/typescript/lib"
-</pre>
-<h2>test valid name of callback in jsonp</h2>
-<pre>
-const callbackName = new RegExp("^[0-9a-zA-Z_.]+$");
-callbackName.test("name")
 </pre>
 <h2>change editor for linux</h2>
 <pre>
@@ -165,7 +164,9 @@ sudo select-editor
 </pre>
 <h2>jsonp</h2>
 <pre>
+const callbackRegex = new RegExp("^[0-9a-zA-Z_.]+$");
 if (callback) {
+    callbackRegex.test("name");
     response.status(200).send(`${callback}(${JSON.stringify(json)})`);
 }
 </pre>
