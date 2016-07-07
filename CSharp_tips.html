@@ -150,6 +150,31 @@
 		</td>
 	</tr>
 </table>
+<h2>gpg</h2>
+<pre>
+1. install gpg
+`brew install gpg2`
+
+2. create a new gpg key
+`gpg --gen-key`
+choose `RSA and RSA` and `4096`
+show the created key: `gpg --list-secret-keys --keyid-format LONG`
+the result should be like:
+sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
+uid                          Hubot 
+ssb   4096R/42B317FD4BA89E7A 2016-03-10
+
+3. export
+`gpg --armor --export 3AA5C34371567BD2`
+paste the result to somewhere like github
+
+4. let git know
+`git config --global user.signingkey 3AA5C34371567BD2`
+`git config --global commit.gpgsign true`
+
+5. let sourcetree know(optional)
+set path of gpg: `/usr/local/Cellar/gnupg2/2.0.29/bin`
+</pre>
 <h2>soft link</h2>
 <pre>
 ln -s source dist
