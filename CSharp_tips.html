@@ -218,10 +218,6 @@ net.createServer(client => {
 <pre>
 export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
 </pre>
-<h2>revert to last commit</h2>
-<pre>
-git reset --hard HEAD^
-</pre>
 <h2>logstash config</h2>
 <pre>
 ./bin/logstash agent -f logstash.conf
@@ -361,11 +357,6 @@ function encrypt(text: string): string {
     const cipher = libs.crypto.createCipher(mode, key);
     return cipher.update(text, "utf8", "hex") + cipher.final("hex");
 }
-</pre>
-<h2>git rebase</h2>
-<pre>
-git reset
-git push -f
 </pre>
 <h2>protobuf with protobufjs</h2>
 <pre>
@@ -995,6 +986,13 @@ ps aux | grep node
 git add -A
 git reset --hard
 git config --system core.longpaths true
+
+rebase:
+git reset
+git push -f
+
+revert to last commit:
+git reset --hard HEAD^
 </pre>
 <h2>git pull request & fork workflow</h2>
 <pre>
