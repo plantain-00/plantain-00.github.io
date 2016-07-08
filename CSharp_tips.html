@@ -150,6 +150,18 @@
 		</td>
 	</tr>
 </table>
+<h2>nfs</h2>
+1. ubuntu server
+sudo apt-get install nfs-kernel-server
+sudo vim /etc/exports
+/home/shdx2016/mount_test *(rw,sync,no_root_squash)
+sudo /etc/init.d/portmap restart
+sudo /etc/init.d/nfs-kernel-server restart
+showmount -e
+
+2. client
+sudo mount -t nfs 192.168.100.40:/home/shdx2016/mount_test /home/shdx2016/mount_test2
+sudo umount /home/shdx2016/mount_test2
 <h2>gpg</h2>
 <pre>
 1. install gpg
