@@ -150,7 +150,12 @@
 		</td>
 	</tr>
 </table>
+<h2>replace</h2>
+<pre>
+text.replace(word, () => "*".repeat(word.length));
+</pre>
 <h2>nfs</h2>
+<pre>
 1. ubuntu server
 sudo apt-get install nfs-kernel-server
 sudo vim /etc/exports
@@ -162,6 +167,7 @@ showmount -e
 2. client
 sudo mount -t nfs 192.168.100.40:/home/shdx2016/mount_test /home/shdx2016/mount_test2
 sudo umount /home/shdx2016/mount_test2
+</pre>
 <h2>gpg</h2>
 <pre>
 1. install gpg
