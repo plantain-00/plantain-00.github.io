@@ -573,8 +573,18 @@ pm2 start app.js --node-args="--nouse-idle-notification --expose-gc --max-old-sp
 4. profile
 npm install v8-profiler --save
 
-export const profiler = require("v8-profiler");
-export const fs = require("fs");
+type Profiler = {
+    startProfiling: () => void;
+    stopProfiling: () => ProfilerResult;
+    deleteAllProfiles: () => void;
+    takeSnapshot: () => ProfilerResult;
+};
+type ProfilerResult = {
+    export: () => fs.ReadStream;
+    delete: () => any;
+};
+export const profiler: Profiler = require("v8-profiler");
+import * as fs from "fs";
 
 let profilerRunning = false;
 
