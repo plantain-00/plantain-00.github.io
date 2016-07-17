@@ -150,6 +150,10 @@
 		</td>
 	</tr>
 </table>
+<h2>check cron</h2>
+<pre>
+http://crontab.guru/
+</pre>
 <h2>ntp</h2>
 <pre>
 ntpdate -u 192.168.1.1
@@ -571,19 +575,7 @@ root      soft    nofile      1000000
 pm2 start app.js --node-args="--nouse-idle-notification --expose-gc --max-old-space-size=8192" -- -p 9000
 
 4. profile
-npm install v8-profiler --save
-
-type Profiler = {
-    startProfiling: () => void;
-    stopProfiling: () => ProfilerResult;
-    deleteAllProfiles: () => void;
-    takeSnapshot: () => ProfilerResult;
-};
-type ProfilerResult = {
-    export: () => fs.ReadStream;
-    delete: () => any;
-};
-export const profiler: Profiler = require("v8-profiler");
+import * as profiler from "v8-profiler";
 import * as fs from "fs";
 
 let profilerRunning = false;
