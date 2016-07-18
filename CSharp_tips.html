@@ -150,6 +150,25 @@
 		</td>
 	</tr>
 </table>
+<h2>ubuntu start scripts after boot</h2>
+<pre>
+create scripts started with `S` in `/etc/rc.d/init.d`
+then soft link to `/etc/rc.d/rc5.d`
+</pre>
+<h2>bash function</h2>
+<pre>
+foo () {
+    echo $1
+}
+foo "bar"
+</pre>
+<h2>enable ssh for ubuntu</h2>
+<pre>
+sudo apt-get update
+sudo apt-get install openssh-server
+ps -e | grep ssh
+service ssh start
+</pre>
 <h2>check cron</h2>
 <pre>
 http://crontab.guru/
