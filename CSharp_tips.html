@@ -150,6 +150,50 @@
 		</td>
 	</tr>
 </table>
+<h2>supervisor</h2>
+<pre>
+sudo apt-get install python-setuptools
+easy_install supervisor
+echo_supervisord_conf > /etc/supervisord.conf
+[program:redis]
+command=redis-server
+autostart=true
+autorestart=true
+startsecs=3
+supervisord
+supervisorctl
+</pre>
+<h2>ubuntu change root password</h2>
+<pre>
+press ESC to enter recover mode
+mount -rw -o remount /
+passwd root
+</pre>
+<h2>ubuntu host</h2>
+<pre>
+/etc/hosts
+</pre>
+<h2>echo</h2>
+<pre>
+multiline and 
+echo '1st line
+2nd line'
+
+override:
+echo 123 > a.txt
+
+append:
+echo 123 >> a.txt
+
+disable variable:
+echo '$HOME'
+
+enable variable:
+echo "$HOME"
+
+calculate:
+echo admin:$(openssl passwd -crypt 123456)
+</pre>
 <h2>ubuntu start scripts after boot</h2>
 <pre>
 create scripts started with `S` in `/etc/rc.d/init.d`
@@ -240,30 +284,6 @@ if (callback) {
     response.status(200).send(`${callback}(${JSON.stringify(json)})`);
 }
 </pre>
-<h2>nginx cors</h2>
-<pre>
-location / {
-    if ($request_method = 'OPTIONS') {
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
-        add_header 'Access-Control-Max-Age' 1728000;
-        add_header 'Content-Type' 'text/plain charset=UTF-8';
-        add_header 'Content-Length' 0;
-        return 204;
-    }
-    if ($request_method = 'POST') {
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
-    }
-    if ($request_method = 'GET') {
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
-    }
-}
-</pre>
 <h2>port 843 tcp service for flash</h2>
 <pre>
 const xml = '<cross-domain-policy><allow-access-from domain="*" to-ports="*" /></cross-domain-policy>';
@@ -342,14 +362,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
 </pre>
 <h2>nginx basic auth</h2>
 <pre>
-openssl passwd -crypt 123456
-echo 'admin:72guL7V0/tKMo' > auth_file
+echo admin:$(openssl passwd -crypt 123456) > nginx_auth_file.conf
 server {
-	listen       8001;
-	location / {
-                auth_basic "need login";
-		auth_basic_user_file auth_file;
-		proxy_pass http://test;
+    listen       8001;
+    location / {
+        auth_basic "need login";
+	    auth_basic_user_file nginx_auth_file.conf;
+	    proxy_pass http://test;
 	}
 }
 </pre>
@@ -360,10 +379,6 @@ pm2 install pm2-logrotate
 <h2>redis-cli</h2>
 <pre>
 redis-cli --raw get foo
-</pre>
-<h2>store local git password</h2>
-<pre>
-git config --global credential.helper store
 </pre>
 <h2>environment variable</h2>
 <pre>
@@ -409,10 +424,6 @@ function wspay(parameters: any) {
 
     return libs.md5(querystring).toUpperCase();
 }
-</pre>
-<h2>git clone a branch</h2>
-<pre>
-git clone -b <branch> <remote_repo> . --depth=1
 </pre>
 <h2>aes</h2>
 <pre>
@@ -692,10 +703,6 @@ vi    /etc/fstab
 /swapfile1 swap swap defaults 0 0
 free -m
 </pre>
-<h2>git submodule</h2>
-<pre>
-git submodule update --init --recursive
-</pre>
 <h2>react with babel</h2>
 <pre>
 let babel = require("gulp-babel");
@@ -753,151 +760,136 @@ for (let file of jsxFiles) {
 </pre>
 <h2>nginx sample</h2>
 <pre>
-    gzip  on;
-    gzip_http_version 1.1;
-    gzip_vary on;
-    gzip_comp_level 6;
-    gzip_proxied any;
-    gzip_types text/plain application/x-javascript text/css text/javascript application/x-httpd-php image/jpeg image/gif image/png;
-    gzip_buffers 16 8k;
-    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+# cors_header_nginx.conf
+add_header 'Access-Control-Allow-Origin' '*';
+add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
 
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 2048;
+# proxy_set_header_nginx.conf
+proxy_set_header X-Real-IP \$remote_addr;
+proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+proxy_set_header Host  \$http_host;
+proxy_set_header X-Nginx-Proxy true;
 
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
+# http_upgrade_nginx.conf
+proxy_http_version 1.1;
+proxy_set_header Upgrade \$http_upgrade;
+proxy_set_header Connection 'Upgrade';
 
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-    include /etc/nginx/conf.d/*.conf;
-
-    server {
-        listen       80;
-        return       301 https://$host$request_uri;
+server {
+    listen       80;
+    return       301 https://$host$request_uri;
+}
+upstream deployRobot {
+    server localhost:9996;
+}
+server {
+    listen       9995 ssl http2;
+    listen       [::]:9995;
+    ssl on;
+    ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
+    ssl_certificate_key /opt/ssl.key;
+    server_name  yorkyao.xyz;
+    include /opt/cors_header_nginx.conf;
+    location / {
+        proxy_pass http://deployRobot;
     }
-
-    upstream deployRobot {
-        server localhost:9996;
+}
+upstream imageUploader {
+    server localhost:9999;
+}
+server {
+    listen       443 ssl http2;
+    listen       [::]:443;
+    ssl on;
+    ssl_certificate /opt/1_upload.yorkyao.xyz_bundle.crt;
+    ssl_certificate_key /opt/upload_ssl.key;
+    server_name  upload.yorkyao.xyz;
+    include /opt/cors_header_nginx.conf;
+    location / {
+        include /opt/proxy_set_header_nginx.conf;
+        proxy_pass http://imageUploader;
     }
-    server {
-        listen       9995 ssl http2;
-        listen       [::]:9995;
-        ssl on;
-        ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
-        ssl_certificate_key /opt/ssl.key;
-        server_name  yorkyao.xyz;
+}
 
-        location / {
-            proxy_pass http://deployRobot;
-        }
+server {
+    listen       443 ssl http2;
+    listen       [::]:443;
+    ssl on;
+    ssl_certificate /opt/1_img.yorkyao.xyz_bundle.crt;
+    ssl_certificate_key /opt/img_ssl.key;
+    server_name  img.yorkyao.xyz;
+    include /opt/cors_header_nginx.conf;
+    location ~*\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz)$ {
+        root         /opt/backends/images/;
+        access_log off;
     }
+}
 
-    upstream imageUploader {
-        server localhost:9999;
+server {
+    listen       443 ssl http2;
+    listen       [::]:443;
+    ssl on;
+    ssl_certificate /opt/1_doc.yorkyao.xyz_bundle.crt;
+    ssl_certificate_key /opt/doc_ssl.key;
+    server_name  doc.yorkyao.xyz;
+    include /opt/cors_header_nginx.conf;
+    location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
+        root         /opt/doc/_book;
+        expires 1M;
+        access_log off;
+        add_header Cache-Control public;
     }
-    server {
-        listen       443 ssl http2;
-        listen       [::]:443;
-        ssl on;
-        ssl_certificate /opt/1_upload.yorkyao.xyz_bundle.crt;
-        ssl_certificate_key /opt/upload_ssl.key;
-        server_name  upload.yorkyao.xyz;
-
-        location / {
-            proxy_pass http://imageUploader;
-            proxy_set_header        Host            $host;
-            proxy_set_header        X-Real-IP       $remote_addr;
-            proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
+    location ~*\.(html|svg)$ {
+        root         /opt/doc/_book;
+        index index.html;
+        access_log off;
     }
-
-    server {
-        listen       443 ssl http2;
-        listen       [::]:443;
-        ssl on;
-        ssl_certificate /opt/1_img.yorkyao.xyz_bundle.crt;
-        ssl_certificate_key /opt/img_ssl.key;
-        server_name  img.yorkyao.xyz;
-
-        location ~*\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz)$ {
-            root         /opt/backends/images/;
-            access_log off;
-        }
+}
+upstream backends {
+    server localhost:9998;
+}
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+server {
+    listen       443 ssl http2;
+    listen       [::]:443;
+    ssl on;
+    ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
+    ssl_certificate_key /opt/ssl.key;
+    server_name yorkyao.xyz www.yorkyao.xyz;
+    include /opt/cors_header_nginx.conf;
+    location ~*/socket.io/* {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        include /opt/proxy_set_header_nginx.conf;
+        include /opt/http_upgrade_nginx.conf;
+        proxy_pass http://backends;
     }
-
-    server {
-        listen       443 ssl http2;
-        listen       [::]:443;
-        ssl on;
-        ssl_certificate /opt/1_doc.yorkyao.xyz_bundle.crt;
-        ssl_certificate_key /opt/doc_ssl.key;
-        server_name  doc.yorkyao.xyz;
-
-        location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
-            root         /opt/doc/_book;
-            expires 1M;
-            access_log off;
-            add_header Cache-Control public;
-        }
-        location ~*\.(html|svg)$ {
-            root         /opt/doc/_book;
-            index index.html;
-            access_log off;
-        }
+    location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
+        root         /opt/frontends/dest/;
+        expires 1M;
+        access_log off;
+        add_header Cache-Control public;
     }
-
-    upstream backends {
-        server localhost:9998;
+    location ~*\.html$ {
+        root         /opt/frontends/dest/;
+        try_files $uri /index.html;
+        access_log off;
     }
-    map $http_upgrade $connection_upgrade {
-        default upgrade;
-        '' close;
+    location =/ {
+        root         /opt/frontends/dest/;
+        index index.html;
+        access_log off;
     }
-    server {
-        listen       443 ssl http2;
-        listen       [::]:443;
-        ssl on;
-        ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
-        ssl_certificate_key /opt/ssl.key;
-        server_name yorkyao.xyz www.yorkyao.xyz;
-
-        location ~*/socket.io/* {
-            proxy_pass http://backends;
-	        proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header        Host            $host;
-            proxy_set_header        X-Real-IP       $remote_addr;
-            proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Connection "Upgrade";
-        }
-        location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
-            root         /opt/frontends/dest/;
-            expires 1M;
-            access_log off;
-            add_header Cache-Control public;
-        }
-        location ~*\.html$ {
-            root         /opt/frontends/dest/;
-            try_files $uri /index.html;
-            access_log off;
-        }
-        location =/ {
-            root         /opt/frontends/dest/;
-            index index.html;
-            access_log off;
-        }
-        location / {
-            proxy_pass http://backends;
-            proxy_set_header        Host            $host;
-            proxy_set_header        X-Real-IP       $remote_addr;
-            proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
+    location / {
+        include /opt/proxy_set_header_nginx.conf;
+        proxy_pass http://backends;
     }
+}
 </pre>
 <h2>SSL</h2>
 <pre>
@@ -1061,9 +1053,17 @@ git push -f
 
 revert to last commit:
 git reset --hard HEAD^
-</pre>
-<h2>git pull request & fork workflow</h2>
-<pre>
+
+store local git password:
+git config --global credential.helper store
+
+git clone a branch:
+git clone -b <branch> <remote_repo> . --depth=1
+
+git submodule:
+git submodule update --init --recursive
+
+git pull request & fork workflow:
 0. Create a team
 1. Create the main repository, set permissions, clone, commit, push
 2. Fork the repository, clone, commit, push, create pull request
