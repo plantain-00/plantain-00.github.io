@@ -150,6 +150,17 @@
 		</td>
 	</tr>
 </table>
+<h2>vertical align image and text</h2>
+<pre>
+<img style="vertical-align:bottom;">text
+</pre>
+<h2>mysql json</h2>
+<pre>
+select field1->"$.a" from table1;
+select json_extract(field1,"$.a") from table1;
+update table1 set field1= json_set(field1,"$.a",field1->"$.a" + 1) where id = 2;
+select * from table1 where field1->'$.a'=2
+</pre>
 <h2>supervisor</h2>
 <pre>
 sudo apt-get install python-setuptools
