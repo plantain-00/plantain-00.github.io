@@ -360,6 +360,10 @@
             "href": "./demos/shepherd/index.html"
           },
           {
+            "name": "json editor",
+            "href": "./demos/json-editor/index.html"
+          },
+          {
             "name": "hammer",
             "href": "./demos/hammer/index.html"
           },
