@@ -164,6 +164,32 @@
 		</td>
 	</tr>
 </table>
+<h2>create private and public key</h2>
+<pre>
+openssl genrsa -out test.key 1024
+openssl rsa -in test.key -pubout -out test_pub.key
+</pre>
+<h2>RSA sign and verify</h2>
+<pre>
+function rsaSign(text, key) {
+    const signer = crypto.createSign("RSA-SHA1");
+    signer.update(text);
+    return signer.sign(privateKey, "base64");
+}
+
+function rsaVerify(text, key, sign) {
+    const verify = crypto.createVerify("RSA-SHA1");
+    verify.update(text);
+    return verify.verify(publicKey, sign, "base64");
+}
+</pre>
+<h2>RSA encrypt and decrypt</h2>
+<pre>
+crypto.privateDecrypt
+crypto.privateEncrypt
+crypto.publicDecrypt
+crypto.publicEncrypt
+</pre>
 <h2>refresh parent window</h2>
 <pre>
 window.parent.opener.location='';
