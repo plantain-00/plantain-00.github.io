@@ -469,14 +469,39 @@ systemctl enable fail2ban
 </pre>
 <h2>alipay and wspay sign</h2>
 <pre>
-function alipaySign(parameters: any) {
+function composeParameters(parameters: any) {
     const querystring = Object.keys(parameters)
         .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["sign_type", "sign"].indexOf(key) < 0)
         .sort()
-        .map(key => key + "=" + parameters[key])
+        .map(key => `${key}="${parameters[key]}"`)
+        .join("&");
+
+    return querystring;
+}
+
+function alipayMd5Sign(parameters: any) {
+    const querystring = Object.keys(parameters)
+        .filter(key => parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "" && ["sign_type", "sign"].indexOf(key) < 0)
+        .sort()
+        .map(key => `${key}=${parameters[key]}`)
         .join("&");
 
     return libs.md5(querystring + alipayMD5Key);
+}
+
+function alipayRsaVerify(parameters: any, publicKey: string) {
+    const querystring = composeParameters(parameters);
+    const verify = libs.crypto.createVerify("RSA-SHA1");
+    verify.update(querystring);
+    return verify.verify(publicKey, parameters.sign, "base64");
+}
+
+function alipayRsaSign(parameters: any, privateKey: string) {
+    const querystring = composeParameters(parameters);
+    const signer = libs.crypto.createSign("RSA-SHA1");
+    signer.update(querystring);
+    parameters.sign = encodeURIComponent(signer.sign(privateKey, "base64"));
+    return `${querystring}&sign="${parameters.sign}"&sign_type="${parameters.sign_type}"`;
 }
 
 function wspay(parameters: any) {
