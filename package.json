@@ -8,20 +8,20 @@
   "description": "my blogs",
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
-    "css-loader": "^0.23.1",
-    "gulp": "^3.9.0",
-    "gulp-ejs": "^2.0.0",
-    "gulp-minify-css": "^1.2.3",
-    "gulp-minify-html": "^1.0.5",
-    "gulp-postcss": "^6.0.1",
+    "css-loader": "^0.24.0",
+    "gulp": "^3.9.1",
+    "gulp-ejs": "^2.2.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev-hash": "0.0.2",
     "gulp-webpack": "^1.5.0",
     "handlebars": "^4.0.5",
-    "handlebars-loader": "^1.1.4",
+    "handlebars-loader": "^1.3.0",
     "json-loader": "^0.5.4",
-    "style-loader": "^0.13.0",
-    "url-loader": "^0.5.5"
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
   },
   "bugs": {
     "url": "https://github.com/plantain-00/plantain-00.github.io/issues"

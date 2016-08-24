@@ -3,6 +3,10 @@
     "name": "playthings",
     "content": [
       {
+        "name": "file reader",
+        "href": "./playthings/file-reader/index.html"
+      },
+      {
         "name": "video hover",
         "href": "./playthings/video-hover/index.html"
       },
