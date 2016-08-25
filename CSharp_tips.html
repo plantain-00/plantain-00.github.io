@@ -351,6 +351,7 @@ sudo select-editor
 const callbackRegex = new RegExp("^[0-9a-zA-Z_.]+$");
 if (callback) {
     callbackRegex.test("name");
+    response.setHeader("Content-Type","text/javascript");
     response.status(200).send(`${callback}(${JSON.stringify(json)})`);
 }
 </pre>
@@ -859,7 +860,11 @@ for (let file of jsxFiles) {
 add_header "X-Frame-Options" "DENY"
 add_header "X-XSS-Protection" "1; mode=block"
 add_header "Strict-Transport-Security" "max-age=31536000; includeSubDomains" always;
-add_header "Content-Security-Policy" "Content-Security-Policy", "default-src *;script-src 'self';style-src 'self' 'unsafe-inline' 'unsafe-eval';font-src 'self' data:;img-src 'self' data:;connect-src 'self' md.yorkyao.xyz wss://md.yorkyao.xyz"
+add_header "Content-Security-Policy" "default-src *;script-src 'self';style-src 'self' 'unsafe-inline' 'unsafe-eval';font-src 'self' data:;img-src 'self' data:;connect-src 'self' md.yorkyao.xyz wss://md.yorkyao.xyz"
+add_header "Public-Key-Pins" 'pin-sha256="klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY="; pin-sha256="633lt352PKRXbOwf4xSEa1M517scpD3l5f79xMD9r9Q="; max-age=2592000; includeSubDomains';
+add_header "X-Content-Type-Options" "nosniff"
+add_header "X-DNS-Prefetch-Control" "off"
+add_header "X-Download-Options" "noopen"
 
 # cors_header_nginx.conf
 add_header 'Access-Control-Allow-Origin' '*';
