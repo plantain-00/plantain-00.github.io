@@ -863,7 +863,7 @@ for (let file of jsxFiles) {
 </pre>
 <h2>nginx sample</h2>
 <pre>
-# secure_header.conf
+# add_header_nginx.conf
 add_header "X-Frame-Options" "DENY"
 add_header "X-XSS-Protection" "1; mode=block"
 add_header "Strict-Transport-Security" "max-age=31536000; includeSubDomains" always;
@@ -872,8 +872,6 @@ add_header "Public-Key-Pins" 'pin-sha256="klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aI
 add_header "X-Content-Type-Options" "nosniff"
 add_header "X-DNS-Prefetch-Control" "off"
 add_header "X-Download-Options" "noopen"
-
-# cors_header_nginx.conf
 add_header 'Access-Control-Allow-Origin' '*';
 add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
 add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
@@ -903,8 +901,9 @@ server {
     ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
     ssl_certificate_key /opt/ssl.key;
     server_name  yorkyao.xyz;
-    include /opt/cors_header_nginx.conf;
     location / {
+        include /opt/proxy_set_header_nginx.conf;
+        include /opt/add_header_nginx.conf;
         proxy_pass http://deployRobot;
     }
 }
@@ -918,9 +917,9 @@ server {
     ssl_certificate /opt/1_upload.yorkyao.xyz_bundle.crt;
     ssl_certificate_key /opt/upload_ssl.key;
     server_name  upload.yorkyao.xyz;
-    include /opt/cors_header_nginx.conf;
     location / {
         include /opt/proxy_set_header_nginx.conf;
+        include /opt/add_header_nginx.conf;
         proxy_pass http://imageUploader;
     }
 }
@@ -932,7 +931,6 @@ server {
     ssl_certificate /opt/1_img.yorkyao.xyz_bundle.crt;
     ssl_certificate_key /opt/img_ssl.key;
     server_name  img.yorkyao.xyz;
-    include /opt/cors_header_nginx.conf;
     location ~*\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz)$ {
         root         /opt/backends/images/;
         access_log off;
@@ -946,7 +944,6 @@ server {
     ssl_certificate /opt/1_doc.yorkyao.xyz_bundle.crt;
     ssl_certificate_key /opt/doc_ssl.key;
     server_name  doc.yorkyao.xyz;
-    include /opt/cors_header_nginx.conf;
     location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
         root         /opt/doc/_book;
         expires 1M;
@@ -973,13 +970,10 @@ server {
     ssl_certificate /opt/1_yorkyao.xyz_bundle.crt;
     ssl_certificate_key /opt/ssl.key;
     server_name yorkyao.xyz www.yorkyao.xyz;
-    include /opt/cors_header_nginx.conf;
     location ~*/socket.io/* {
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
-        include /opt/proxy_set_header_nginx.conf;
         include /opt/http_upgrade_nginx.conf;
+        include /opt/proxy_set_header_nginx.conf;
+        include /opt/add_header_nginx.conf;
         proxy_pass http://backends;
     }
     location ~*\.(js|css|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|map|mp4|ogg|ogv|webm|htc|json|ttf|woff)$ {
@@ -1000,6 +994,7 @@ server {
     }
     location / {
         include /opt/proxy_set_header_nginx.conf;
+        include /opt/add_header_nginx.conf;
         proxy_pass http://backends;
     }
 }
