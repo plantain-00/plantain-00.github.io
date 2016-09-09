@@ -164,6 +164,25 @@
 		</td>
 	</tr>
 </table>
+<h2>nginx 301 302</h2>
+<pre>
+server {
+    listen       80;
+    server_name  www.example.com;
+    location / {
+    }
+}
+server {
+    listen       80;
+    server_name  example.com;
+    rewrite ^(.*) http://www.example.com$1 permanent; # 301
+}
+server {
+    listen       80;
+    server_name  example.com;
+    rewrite ^(.*) http://www.example.com$1 redirect; # 302
+}
+</pre>
 <h2>check size of directory</h2>
 <pre>
 du -sh foo/
