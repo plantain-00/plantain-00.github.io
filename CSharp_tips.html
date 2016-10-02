@@ -164,6 +164,14 @@
 		</td>
 	</tr>
 </table>
+<h2>acme.sh</h2>
+<pre>
+1. curl https://get.acme.sh | sh
+2. acme.sh --issue --dns -d mydomain.com
+3. add the generated TXT record
+4. acme.sh --renew -d mydomain.com
+5. acme.sh --installcert -d mydomain.com --keypath /opt/mydomain.key --certpath /opt/mydonain.cer --reloadcmd "service nginx reload"
+</pre>
 <h2>nginx 301 302</h2>
 <pre>
 server {
