@@ -164,13 +164,29 @@
 		</td>
 	</tr>
 </table>
+<h2>centos 7 update openssl</h2>
+<pre>
+openssl version
+wget https://www.openssl.org/source/openssl-1.0.2j.tar.gz
+tar -zxvf openssl-1.0.2j.tar.gz
+cd  openssl-1.0.2j
+./config shared zlib 
+make && make install
+mv /usr/bin/openssl /usr/bin/openssl.old 
+mv /usr/include/openssl /usr/include/openssl.old
+ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl 
+ln -s /usr/local/ssl/include/openssl /usr/include/openssl
+echo "/usr/local/ssl/lib" >> /etc/ld.so.conf 
+ldconfig -v
+openssl version
+</pre>
 <h2>acme.sh</h2>
 <pre>
 1. curl https://get.acme.sh | sh
 2. acme.sh --issue --dns -d mydomain.com
 3. add the generated TXT record
 4. acme.sh --renew -d mydomain.com
-5. acme.sh --installcert -d mydomain.com --keypath /opt/mydomain.key --certpath /opt/mydonain.cer --reloadcmd "service nginx reload"
+5. acme.sh --installcert -d mydomain.com --keypath /opt/mydomain.key --certpath /opt/mydonain.cer --capath /opt/mydonain.ca.cer --fullchainpath /opt/mydonain.fullchain.cer --reloadcmd "service nginx reload"
 </pre>
 <h2>nginx 301 302</h2>
 <pre>
