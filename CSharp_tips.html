@@ -133,6 +133,63 @@
 		</td>
 	</tr>
 </table>
+<h2>es decorator</h2>
+<pre>
+const classDecorator1: ClassDecorator = (target: typeof Foo) => {
+    Object.getOwnPropertyNames(target.prototype).forEach(key => {
+        if (key === "constructor") {
+            return;
+        }
+        const descriptor = Object.getOwnPropertyDescriptor(target.prototype, key);
+    });
+};
+const classDecorator2 = (value: number): ClassDecorator => {
+    return (target: typeof Foo) => {
+
+    };
+};
+const propertyDecorator1: PropertyDecorator = (target: Foo, propertyKey: string | symbol) => {
+
+}
+const propertyDecorator2 = (value: number): PropertyDecorator => {
+    return (target: Foo, propertyKey: string | symbol) => {
+
+    }
+}
+const methodDecorator1: MethodDecorator = (target: Foo, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<(bar3: number) => void>) => {
+    return descriptor;
+}
+const methodDecorator2 = (value: number): MethodDecorator => {
+    return (target: Foo, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<(bar3: number) => void>) => {
+        return descriptor;
+    }
+}
+const parameterDecorator1: ParameterDecorator = (target: Foo, propertyKey: string | symbol, parameterIndex: number) => {
+
+}
+const parameterDecorator2 = (value: number): ParameterDecorator => {
+    return (target: Foo, propertyKey: string | symbol, parameterIndex: number) => {
+
+    }
+}
+@classDecorator1
+@classDecorator2(1)
+class Foo {
+    @propertyDecorator1
+    @propertyDecorator2(1)
+    bar1: number;
+    @methodDecorator1
+    @methodDecorator2(1)
+    bar2(
+        @parameterDecorator1
+        @parameterDecorator2(1)
+        bar3: number
+        ) {
+        console.log(bar3);
+    };
+}
+const foo = new Foo();
+</pre>
 <h2>centos 7 update openssl</h2>
 <pre>
 openssl version
