@@ -133,6 +133,50 @@
 		</td>
 	</tr>
 </table>
+<h2>tsconfig.json</h2>
+<pre>
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "noEmitHelpers": true,
+        "jsx": "react",
+        "outDir": "../dist",
+        "declaration": true,
+        "experimentalDecorators": true
+    }
+}
+</pre>
+<h2>tslint.json</h2>
+<pre>
+{
+    "extends": "tslint:latest",
+    "rules": {
+        "forin": false,
+        "interface-name": [ false ],
+        "max-line-length": [ false ],
+        "no-var-requires": false,
+        "no-console": [ false ],
+        "no-string-literal": false,
+        "no-reference": false,
+        "ordered-imports": [ false ],
+        "object-literal-sort-keys": false,
+        "variable-name": [ true, "ban-keywords" ],
+        "no-bitwise": false,
+        "member-access": false,
+        "arrow-parens": false,
+        "array-type": [true, "array"],
+        "max-classes-per-file": [false]
+    }
+}
+</pre>
 <h2>es decorator</h2>
 <pre>
 const classDecorator1: ClassDecorator = (target: typeof Foo) => {

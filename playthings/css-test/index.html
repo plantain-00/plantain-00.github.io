@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title></title>
     <style>
         * {
@@ -9,63 +11,75 @@
             -moz-box-sizing: border-box;
             box-sizing: border-box;
         }
-
+        
         .content-box {
             -webkit-box-sizing: content-box;
             -moz-box-sizing: content-box;
             box-sizing: content-box;
-
             margin: 20px;
             border: 20px solid #000000;
             padding: 20px;
-
             width: 120px;
             height: 40px;
         }
-
+        
         .border-box {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
-
             margin: 20px;
             border: 20px solid #000000;
             padding: 20px;
-
             width: 200px;
             height: 120px;
         }
-
+        
         .inline {
             display: inline;
         }
-
+        
         .inline-block {
             display: inline-block;
         }
-
+        
         .block {
             display: block;
-
             width: 100px;
         }
-
+        
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        
+        .table {
+            display: table;
+        }
+        
+        .table-row {
+            display: table-row;
+        }
+        
+        .table-cell {
+            display: table-cell;
+        }
+        
         .display-box {
             border-radius: 5px;
             border: #000000 1px solid;
             margin: 10px;
             padding: 10px;
         }
-
+        
         .float-left {
             float: left;
         }
-
+        
         .clearfix:before {
             content: " ";
             display: table;
         }
-
+        
         .clearfix:after {
             content: " ";
             display: table;
@@ -73,99 +87,109 @@
         }
     </style>
 </head>
-<body>
-<h2>box model</h2>
 
-<div class="content-box">
-    content-box
-    width: 120px;
-</div>
+<body cz-shortcut-listen="true">
+    <h2>box model</h2>
 
-<div class="border-box">
-    border-box
-    width: 200px;
-</div>
+    <div class="content-box">
+        content-box width: 120px;
+    </div>
 
-<h2>display</h2>
+    <div class="border-box">
+        border-box width: 200px;
+    </div>
 
-<div class="inline display-box">
-    <div class="inline display-box">inline</div>
-    <div class="inline display-box">inline</div>
-    <div class="inline display-box">inline</div>
-    inline
-</div>
+    <h2>display</h2>
+    <div class="inline-block display-box">inline-block</div>
+    <div class="inline-block display-box">inline-block</div>
+    <div class="inline-block display-box">inline-block</div>
+    <div class="inline-block display-box">
+        <div class="block display-box">block</div>
+        inline-block
+    </div>
+    <div class="flex display-box" style="height: 120px;">
+        <div class="display-box">center</div>
+        <div class="display-box" style="align-self: flex-start">flex-start</div>
+        <div class="display-box" style="align-self: flex-end">flex-end</div>
+        flex
+    </div>
+    <div class="table display-box" style="height: 120px;">
+        <div class="table-row display-box" style="height: 50px">
+            <div class="table-cell display-box" style="vertical-align: top">top</div>
+            <div class="table-cell display-box" style="vertical-align: middle">middle</div>
+            <div class="table-cell display-box" style="vertical-align: bottom">bottom</div>
+        </div>
+        <div class="table-row display-box" style="height: 50px">
+            <div class="table-cell display-box" style="vertical-align: top">top</div>
+            <div class="table-cell display-box" style="vertical-align: middle">middle</div>
+            <div class="table-cell display-box" style="vertical-align: bottom">bottom</div>
+        </div>
+        table
+    </div>
 
-<div class="inline-block display-box">
-    <div class="inline display-box">inline</div>
-    <div class="block display-box">block</div>
-    <div class="inline display-box">inline</div>
-    inline-block
-</div>
+    <h2>position</h2>
 
-<h2>position</h2>
+    <div style="margin-bottom: 80px">
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">relative</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box" style="position: fixed;top:563px;left:460px;">fixed</span>
+    </div>
 
-<div style="margin-bottom: 80px">
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">relative</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box" style="position: fixed;top:563px;left:460px;">fixed</span>
-</div>
+    <div style="margin-bottom: 80px">
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span style="position:relative;top:10px;left: 10px;" class="display-box">
+        <span class="display-box" style="position:absolute;top:10px;left: 10px;">absolute</span> relative
+        </span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+    </div>
 
-<div style="margin-bottom: 80px">
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span style="position:relative;top:10px;left: 10px;" class="display-box">
-        <span class="display-box" style="position:absolute;top:10px;left: 10px;">absolute</span>
-        relative
-    </span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-</div>
+    <div style="margin-bottom: 50px">
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span style="position:relative;top:10px;left: 10px;" class="display-box">
+        <span class="display-box" style="position:relative;top:10px;left: 10px;">relative</span> relative
+        </span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+    </div>
 
-<div style="margin-bottom: 50px">
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span style="position:relative;top:10px;left: 10px;" class="display-box">
-        <span class="display-box" style="position:relative;top:10px;left: 10px;">relative</span>
-        relative
-    </span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-</div>
+    <h2>float</h2>
 
-<h2>float</h2>
+    <div class="display-box">
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+    </div>
 
-<div class="display-box">
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-</div>
-
-<div class="display-box clearfix" style="margin-top: 50px;">
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box float-left">float</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-    <span class="display-box">static</span>
-</div>
+    <div class="display-box clearfix" style="margin-top: 50px;">
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box float-left">float</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+        <span class="display-box">static</span>
+    </div>
 
 </body>
+
 </html>
