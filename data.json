@@ -35,10 +35,6 @@
         "href": "./playthings/js-this/index.html"
       },
       {
-        "name": "react.js",
-        "href": "./playthings/reactjs/index.html"
-      },
-      {
         "name": "battery",
         "href": "./playthings/battery/index.html"
       },
@@ -73,10 +69,6 @@
       {
         "name": "editor",
         "href": "./playthings/editor/index.html"
-      },
-      {
-        "name": "promise",
-        "href": "./playthings/promise/index.html"
       },
       {
         "name": "underscore.js",
