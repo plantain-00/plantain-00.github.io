@@ -672,26 +672,6 @@ function encrypt(text: string): string {
     return cipher.update(text, "utf8", "hex") + cipher.final("hex");
 }
 </pre>
-<h2>protobuf with protobufjs</h2>
-<pre>
-import * as ProtoBuf from "protobufjs";
-const protoBuilder = libs.ProtoBuf.loadProtoFile("./man.proto");
-const ManBuilder = protoBuilder.build("Man") as any;
-
-interface Man {
-    age: number;
-    name: string;
-}
-
-export function encode(man: Man): Buffer {
-    const manBuilder = new ManBuilder(man);
-    return manBuilder.toBuffer();
-}
-
-export function decode(buffer: Buffer): Man {
-    return ManBuilder.decode(buffer);
-}
-</pre>
 <h2>ws pressure test</h2>
 <pre>
 1. server
