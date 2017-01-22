@@ -138,6 +138,44 @@
         </td>
 	</tr>
 </table>
+<h2>oracle</h2>
+<pre>
+function executeSafely(connection: oracledb.IConnection, sql: string, bindParams: any[], options?: oracledb.IExecuteOptions) {
+    return new Promise<oracledb.IExecuteReturn>((resolve, reject) => {
+        connection.execute(sql, bindParams, options || {}, (executeError, result) => {
+            if (executeError) {
+                connection.release(releaseError => {
+                    if (releaseError) {
+                        reject(releaseError);
+                    } else {
+                        reject(executeError);
+                    }
+                });
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
+function commitSafely(connection: oracledb.IConnection) {
+    return new Promise<void>((resolve, reject) => {
+        connection.commit(commitError => {
+            if (commitError) {
+                connection.release(releaseError => {
+                    if (releaseError) {
+                        reject(releaseError);
+                    } else {
+                        reject(commitError);
+                    }
+                });
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+</pre>
 <h2>并行、并发、同步/异步</h2>
 <pre>
 并行parallel：可以同时利用CPU的多核心来计算
