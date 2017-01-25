@@ -348,6 +348,10 @@
         "name": "others",
         "content": [
           {
+            "name": "vis.js",
+            "href": "./demos/vis.js/index.html"
+          },
+          {
             "name": "shepherd",
             "href": "./demos/shepherd/index.html"
           },
