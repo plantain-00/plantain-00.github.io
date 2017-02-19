@@ -167,6 +167,14 @@
             <a href="https://www.npmjs.com/package/tree-component"><img src="https://camo.githubusercontent.com/75294da3829ba2a033cf6e224d3db816bd1610bf/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f747265652d636f6d706f6e656e742e737667" alt="Downloads" data-canonical-src="https://img.shields.io/npm/dm/tree-component.svg" style="max-width:100%;"></a>
         </td>
 	</tr>
+    <tr>
+		<td>baogame</td>
+		<td>
+            <a href="https://david-dm.org/plantain-00/baogame"><img src="https://camo.githubusercontent.com/ef1cb49587cb32206008eade2e9fa4e411de676a/68747470733a2f2f64617669642d646d2e6f72672f706c616e7461696e2d30302f62616f67616d652e737667" alt="Dependency Status" data-canonical-src="https://david-dm.org/plantain-00/baogame.svg" style="max-width:100%;"></a>
+            <a href="https://david-dm.org/plantain-00/baogame#info=devDependencies"><img src="https://camo.githubusercontent.com/ac6fb85b710c4402a89bd8f85053e6a8cbec03d6/68747470733a2f2f64617669642d646d2e6f72672f706c616e7461696e2d30302f62616f67616d652f6465762d7374617475732e737667" alt="devDependency Status" data-canonical-src="https://david-dm.org/plantain-00/baogame/dev-status.svg" style="max-width:100%;"></a>
+            <a href="https://travis-ci.org/plantain-00/baogame"><img src="https://camo.githubusercontent.com/ead1cac325f76a215dadf0ce9948c682fb3a5268/68747470733a2f2f7472617669732d63692e6f72672f706c616e7461696e2d30302f62616f67616d652e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/plantain-00/baogame.svg?branch=master" style="max-width:100%;"></a>
+        </td>
+	</tr>
 </table>
 <h2>oracle</h2>
 <pre>
@@ -895,7 +903,7 @@ root      hard    nofile      1000000
 root      soft    nofile      1000000
 
 3. node
-pm2 start app.js --node-args="--nouse-idle-notification --expose-gc --max-old-space-size=8192" -- -p 9000
+pm2 start app.js --name="my app" --node-args="--nouse-idle-notification --expose-gc --max-old-space-size=8192" -- -p 9000
 
 4. profile
 import * as profiler from "v8-profiler";
