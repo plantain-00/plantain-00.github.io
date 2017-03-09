@@ -122,6 +122,63 @@
             border-bottom: 1px solid black;
             width: 100px;
         }
+
+        .progress {
+            height: 50px;
+            width: 50px;
+            position: relative;
+        }
+        .hidden-right,
+        .hidden-left {
+            width: 25px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+        }
+        .hidden-right {
+            right: 0;
+        }
+        .hidden-left {
+            left: 0;
+        }
+        .circle-progress-right,
+        .circle-progress-left {
+            width: 48px;
+            height: 48px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+        }
+        .circle-progress-right {
+            border-top: 1px solid green;
+            border-right: 1px solid green;
+            right: 0;
+            animation: circleProgressLoadRight 5s linear infinite;
+        }
+        .circle-progress-left {
+            border-bottom: 1px solid green;
+            border-left: 1px solid green;
+            left: 0;
+            animation: circleProgressLoadLeft 5s linear infinite;
+        }
+        @keyframes circleProgressLoadRight {
+            0% {
+                transform: rotate(45deg);
+            }
+            50%,100% {
+                transform: rotate(225deg);
+            }
+        }
+        @keyframes circleProgressLoadLeft {
+            0%,50% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: rotate(225deg);
+            }
+        }
     </style>
 </head>
 
@@ -238,6 +295,16 @@
 
     <h2>transform</h2>
     <div class="transform"></div>
+
+    <h2>progress</h2>
+    <div class="progress">
+        <div class="hidden-right">
+            <div class="circle-progress-right"></div>
+        </div>
+        <div class="hidden-left">
+            <div class="circle-progress-left"></div>
+        </div>
+    </div>
 </body>
 
 </html>
