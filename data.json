@@ -393,7 +393,7 @@
           },
           {
             "name": "html5 canvas demo",
-            "href": "./demos/html5 canvas/index.html"
+            "href": "./demos/html5-canvas/index.html"
           },
           {
             "name": "js md5 demo",
