@@ -338,13 +338,23 @@ class Foo {
 }
 const foo = new Foo();
 </pre>
+<h2>zlib</h2>
+<pre>
+cd /usr/local/src  
+wget http://zlib.net/zlib-1.2.11.tar.gz
+tar -zxvf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
+./configure    --prefix=/usr/local/zlib
+make && make  install
+</pre>
 <h2>centos 7 update openssl</h2>
 <pre>
 openssl version
-wget https://www.openssl.org/source/openssl-1.0.2j.tar.gz
-tar -zxvf openssl-1.0.2j.tar.gz
-cd  openssl-1.0.2j
-./config shared zlib 
+cd /usr/local/src
+wget https://www.openssl.org/source/openssl-1.0.2k.tar.gz
+tar -zxvf openssl-1.0.2k.tar.gz
+cd  openssl-1.0.2k
+./config
 make && make install
 mv /usr/bin/openssl /usr/bin/openssl.old 
 mv /usr/include/openssl /usr/include/openssl.old
